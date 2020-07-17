@@ -78,8 +78,7 @@ public class TileGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(RandomInt(0, 4));
-        if((lastTile.transform.position - Target.transform.position).magnitude < genDistance)
+        if((lastTile.transform.position.x - Target.transform.position.x) < genDistance)
         {
             GenNewTile();
         }

@@ -213,11 +213,11 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.8591695
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 3
   m_Material: {fileID: 6200000, guid: 1a104671b5ec7974d8dac6f1d1c939ce, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -237,7 +237,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08, y: -0.17666666}
-  m_Size: {x: 2.1366668, y: 0.9633333}
+  m_Size: {x: 0.9633333, y: 0.9633333}
   m_Direction: 1
 --- !u!114 &9161479265134082248
 MonoBehaviour:
@@ -251,11 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 915f4d1eb9371d3408b75181f9d739c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minSpeed: 0
-  maxSpeed: 0
-  speedUp: 0.1
-  cameraPoint: {fileID: 0}
-  cameraPointPos: {x: 0, y: 0, z: 0}
+  minSpeed: 10
+  maxSpeed: 30
+  speedUp: 5
+  cameraPoint: {fileID: 3472940988626749517}
+  cameraPointPos: {x: 15, y: 12, z: 0}
 --- !u!1 &3472940988606743851
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,23 +313,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_LookaheadTime: 0.03
-  m_LookaheadSmoothing: 10
-  m_LookaheadIgnoreY: 0
-  m_XDamping: 0
-  m_YDamping: 0
+  m_LookaheadTime: 0.7
+  m_LookaheadSmoothing: 13.2
+  m_LookaheadIgnoreY: 1
+  m_XDamping: 3
+  m_YDamping: 3
   m_ZDamping: 1
   m_ScreenX: 0.29
-  m_ScreenY: 0.5
+  m_ScreenY: 0.47
   m_CameraDistance: 10
   m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
-  m_SoftZoneWidth: 0.73
-  m_SoftZoneHeight: 0.94
+  m_SoftZoneWidth: 0.56
+  m_SoftZoneHeight: 0.4
   m_BiasX: 0
-  m_BiasY: 0
+  m_BiasY: -0.00000007450581
   m_CenterOnActivate: 1
   m_GroupFramingMode: 2
   m_AdjustmentMode: 0
@@ -414,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3472940988883031900}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 83.77746, y: 47.44413, z: -10}
+  m_LocalPosition: {x: 77.287125, y: 52.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3472940988606743850}
@@ -443,7 +443,7 @@ MonoBehaviour:
   m_Follow: {fileID: 3472940988455274124}
   m_Lens:
     FieldOfView: 40
-    OrthographicSize: 5
+    OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
     Dutch: 0
