@@ -54,7 +54,11 @@ public class TileGenerator : MonoBehaviour
         tmpTile.GetComponent<TileInfo>().isExample = false;
 
         Vector3 newTilePos;
-        if (lastTile == null) newTilePos = transform.position;
+        if (lastTile == null)
+        {
+            newTilePos = transform.position;
+            newTilePos += (tmpTile.GetComponent<TileInfo>().tileLength) / 2;
+        }
         else
         {
             newTilePos = lastTile.transform.position;
