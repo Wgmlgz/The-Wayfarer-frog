@@ -20,6 +20,10 @@ public class ZhabaController : MonoBehaviour
     public float maxjumpTime = 1f;
     public float jumpHieght = 10;
 
+    public ParticleSystem sandParticles;
+
+    public float rotationSpeed = 1f;
+
     private Vector2 tmpVelosity;
     private Vector3 lastFixedUpdateFramePos;
     private Vector3 lastUpdateFramePos;
@@ -40,26 +44,28 @@ public class ZhabaController : MonoBehaviour
         jumpTime += Time.fixedDeltaTime;
         if (!clipMode)
         {
+            sandParticles.Pause();
             RB.bodyType = RigidbodyType2D.Dynamic;
             GetComponent<CapsuleCollider2D>().enabled = true;
 
-            if (RB.velocity.magnitude < minSpeed) RB.velocity = RB.velocity.normalized * minSpeed;
-            if (RB.velocity.magnitude > maxSpeed) RB.velocity = RB.velocity.normalized * maxSpeed;
+            //if (RB.velocity.magnitude < minSpeed) RB.velocity = RB.velocity.normalized * minSpeed;
+            //if (RB.velocity.magnitude > maxSpeed) RB.velocity = RB.velocity.normalized * maxSpeed;
 
-            RB.velocity = new Vector2(RB.velocity.x + speedUp * Time.fixedDeltaTime, RB.velocity.y);
+            //RB.velocity = new Vector2(RB.velocity.x + speedUp * Time.fixedDeltaTime, RB.velocity.y);
 
             //RB.velocity = RB.velocity.normalized * minSpeed;
 
             Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
             if (GetComponent<CapsuleCollider2D>().IsTouchingLayers())
             {
-
+                transform.rotation = Quaternion.identity;
                 if (jumpTime > maxjumpTime) {
                     clipMode = true;
                 }
+            }else if (Input.GetKey(KeyCode.Space))
+            {
+                transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z + rotationSpeed * Time.fixedDeltaTime);
             }
-            else
-            {}
         }
         else
         {
@@ -71,16 +77,9 @@ public class ZhabaController : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            clipMode = false;
-            RB.bodyType = RigidbodyType2D.Dynamic;
-            RB.velocity = tmpVelosity;
-            RB.velocity = new Vector2(RB.velocity.x, jumpHieght);
-            jumpTime = 0f;
-        }
         if (clipMode)
         {
+            sandParticles.Play();
             RB.velocity = Vector2.zero;
             RB.bodyType = RigidbodyType2D.Kinematic;
             GetComponent<CapsuleCollider2D>().enabled = false;
@@ -93,7 +92,7 @@ public class ZhabaController : MonoBehaviour
             */
 
             RaycastHit2D hit = Physics2D.Raycast(
-                transform.rotation * Vector3.up * 999 + transform.rotation.normalized * Vector2.right * minSpeed * Time.deltaTime + transform.position,
+                transform.rotation * Vector3.up * 5 + transform.rotation.normalized * Vector2.right * minSpeed * Time.deltaTime + transform.position,
                 (transform.rotation * -Vector3.up)
             );
 
@@ -103,6 +102,15 @@ public class ZhabaController : MonoBehaviour
             Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(hit.normal.y, hit.normal.x) * Mathf.Rad2Deg - 90f, Vector3.forward);
 
             transform.rotation = Quaternion.Lerp(transform.rotation, tq, Time.deltaTime * angleSmooth);
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                clipMode = false;
+                RB.bodyType = RigidbodyType2D.Dynamic;
+                RB.velocity = tmpVelosity;
+                RB.velocity = (RB.velocity + (Vector2)(transform.rotation * Vector3.up * jumpHieght));
+                jumpTime = 0f;
+            }
         }
 
         body.transform.position = Vector3.Lerp(body.transform.position, transform.position, posSmooth * Time.deltaTime);
