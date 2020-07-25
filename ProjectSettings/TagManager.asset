@@ -4,15 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - can_dialog
-  - Phantom
-  - MovingPlatform
-  - Pod
-  - main
-  - Restart
   - GameOverlay
-  - dialogUi
   - AudioManager
+  - Ground
   layers:
   - Default
   - TransparentFX

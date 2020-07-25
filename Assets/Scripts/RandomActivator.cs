@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class RandomActivator : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Range(0, 1)] public float chance = .5f;
+    
+    public void Refresh()
     {
-        
+        gameObject.SetActive(Random.value < chance);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        Refresh();
     }
 }

@@ -1,0 +1,30 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class UIManager : MonoBehaviour
+{
+    public GameObject mainUI;
+    public GameObject settingsUI;
+    public GameObject gameUI;
+    public GameObject characterSelectionUI;
+    public GameObject deathUI;
+
+    public GameObject camIdle;
+    public GameObject camCharacterSelection;
+
+    public void ToGame()
+    {
+
+    }
+    public void ToCharacterSelect()
+    {
+        camIdle.gameObject.SetActive(false);
+        camCharacterSelection.gameObject.SetActive(true);
+    }
+    public void FromCharacterSelect()
+    {
+        camIdle.gameObject.SetActive(true);
+        camCharacterSelection.gameObject.SetActive(false);
+    }
+}
