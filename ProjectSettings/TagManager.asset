@@ -41,6 +41,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Space
+    uniqueID: 2430516067
+    locked: 0
+  - name: BG
+    uniqueID: 2680767285
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

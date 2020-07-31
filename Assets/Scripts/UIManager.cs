@@ -5,7 +5,6 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public GameObject mainUI;
-    public GameObject settingsUI;
     public GameObject gameUI;
     public GameObject characterSelectionUI;
     public GameObject deathUI;
@@ -13,9 +12,12 @@ public class UIManager : MonoBehaviour
     public GameObject camIdle;
     public GameObject camCharacterSelection;
 
+    private void Start()
+    {
+    }
     public void ToGame()
     {
-
+        GetComponent<Animation>().Play();
     }
     public void ToCharacterSelect()
     {
@@ -26,5 +28,9 @@ public class UIManager : MonoBehaviour
     {
         camIdle.gameObject.SetActive(true);
         camCharacterSelection.gameObject.SetActive(false);
+    }
+    public void ToDeath()
+    {
+        deathUI.SetActive(true);
     }
 }
