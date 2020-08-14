@@ -20,7 +20,7 @@ public class Coin : MonoBehaviour
             1);*/
         //AudioManager.AudioManager.m_instance.PlaySFX(1);
 
-        this.gameObject.AddComponent(typeof(Rigidbody2D));
+        gameObject.AddComponent(typeof(Rigidbody2D));
         this.GetComponent<Rigidbody2D>().simulated = true;
         this.GetComponent<Rigidbody2D>().gravityScale = 4f;
         this.GetComponent<Rigidbody2D>().AddRelativeForce(collectForce);
@@ -33,7 +33,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<CoinCollector>() != null)
+        if (collision.GetComponent<CoinCollector>() != null && collected == false)
         {
 
             collected = true;

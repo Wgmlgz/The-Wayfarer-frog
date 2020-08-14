@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bee4244728d3624681a593e50799455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chance: 0.5
+  chance: 1
   variations: []
 --- !u!1001 &3560348850549034516
 PrefabInstance:

@@ -7,13 +7,21 @@ public class Trigger : MonoBehaviour
 {
     public GameObject target;
     public UnityEvent onEnter;
+    public bool doOnce;
+    private bool isOff;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject);
         if (collision.gameObject == target)
         {
-            onEnter.Invoke();
+            if (isOff == false)
+            {
+                onEnter.Invoke();
+                if (doOnce)
+                {
+                    isOff = true;
+                }
+            }
         }
     }
 }

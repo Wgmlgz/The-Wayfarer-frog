@@ -9,17 +9,24 @@ public class RandomActivator : MonoBehaviour
 
     public void Refresh()
     {
-        if (variations.Length > 0)
+        if (variations.Length <= 0)
         {
             gameObject.SetActive(Random.value < chance);
         }
         else
         {
-            foreach (var i in variations)
+            int tmp = Random.Range(0, variations.Length);
+            for (int i = 0; i < variations.Length; i++)
             {
-                i.SetActive(false);
+                if(i == tmp && Random.value < chance)
+                {
+                    variations[i].SetActive(true);
+                }
+                else
+                {
+                    variations[i].SetActive(false);
+                }
             }
-            variations[Random.Range(0, variations.Length)].SetActive(Random.value < chance);
         }
     }
 

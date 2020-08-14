@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DialogCore : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class DialogCore : MonoBehaviour
     public GameObject regularGM;
     public GameObject sequenceGM;
 
+    [Header("Events")]
+    public UnityEvent onStart;
+    public UnityEvent onEnd;
     [Header("private")]
     public Dialog npc;
     public int activeSequence;
@@ -20,6 +24,12 @@ public class DialogCore : MonoBehaviour
     {
         npc = dialogRequester;
         StartSequence(0);
+        if (npc.cam != null)
+        {
+            Cinemachine.CinemachineVirtualCamera cam = npc.cam;
+            cam.Priority = 9999;
+        }
+        onStart.Invoke();
     }
     public void DisplayNext()
     {
@@ -68,10 +78,17 @@ public class DialogCore : MonoBehaviour
         text2.text = s2;
         text2.gameObject.GetComponent<TextAnimation>().StartAnimation();
     }
-    private void HideUI()
+    public void HideUI()
     {
         regularGM.SetActive(false);
         sequenceGM.SetActive(false);
+
+        if (npc.cam)
+        {
+            Cinemachine.CinemachineVirtualCamera cam = npc.cam;
+            cam.Priority = -9999;
+        }
+        onEnd.Invoke();
     }
     private void StartSequence(int n, int startReplica = 0)
     {

@@ -11,15 +11,20 @@ public class CoinCollector : MonoBehaviour
         // Coins_id
         public bool storeCoins;
         public int id;
-
+    [Header("UI")]
+        public TMPro.TextMeshProUGUI indicator;
+        public float timeLeftMax = 5f;
     [Header("Events")]
         public UnityEvent onCoinsValueChanged;
+        public UnityEvent onTimeLeft;
 
+    private float timeLeft;
     private void Awake()
     {
         if (storeCoins)
         {
             coins = PlayerPrefs.GetInt("Coins_" + id.ToString());
+            ChangeCoins();
         }
     }
 
@@ -40,6 +45,16 @@ public class CoinCollector : MonoBehaviour
     public void ChangeCoins()
     {
         PlayerPrefs.SetInt("Coins_" + id.ToString(), coins);
+        indicator.SetText(coins.ToString());
+        timeLeft = timeLeftMax;
         onCoinsValueChanged.Invoke();
+    }
+    private void Update()
+    {
+        timeLeft -= Time.deltaTime;
+        if(timeLeft < 0)
+        {
+            onTimeLeft.Invoke();
+        }
     }
 }
