@@ -7,6 +7,7 @@ using Cinemachine;
 public class ZhabaController : MonoBehaviour
 {
     [Header("global")]
+        public bool isGod;
         public bool isPlaying = false;
         public bool clipMode = false;
         public int zhabaTipe;
@@ -277,6 +278,14 @@ public class ZhabaController : MonoBehaviour
         if((GetComponent<Score>().distance / maxXSpeedDist) > 1f) maxSpeed = maxXSpeed;
         //head.transform.rotation = body.transform.rotation;
     }
+    public void SetToGod()
+    {
+        isGod = true;
+    }
+    public void SetToPlaying()
+    {
+        isPlaying = true;
+    }
     public void ToGame()
     {
         isPlaying = true;
@@ -289,6 +298,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void Death()
     {
+        if (isGod) return;
         isPlaying = false;
         onDeath.Invoke();
     }

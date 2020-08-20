@@ -16,7 +16,6 @@ public class TileGenerator : MonoBehaviour
     public float genDistance;
 
     [Header("background")]
-    public bool isBackground;
     public float bgOffset;
     public float bgFactor;
     public int layerPos;
@@ -74,22 +73,6 @@ public class TileGenerator : MonoBehaviour
         }
 
         tmpTile.transform.position = newTilePos;
-        try
-        {
-            if (isBackground)
-            {
-                var tmp = tmpTile.GetComponent<ParalaxEffect>();
-                tmp.ResetPos(newTilePos);
-                tmp.factor = bgFactor;
-                tmp.forceYOffset = bgOffset;
-
-                tmpTile.GetComponentInChildren<SpriteRenderer>().sortingOrder = layerPos;
-            }
-        }
-        finally
-        {
-
-        }
         lastTile = tmpTile;
     }
 

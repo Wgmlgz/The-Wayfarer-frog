@@ -35,7 +35,6 @@ public class ZhabaSelector : MonoBehaviour
         SetHat(PlayerPrefs.GetInt("SelectedHat"));
         SelectToad(PlayerPrefs.GetInt("SelectedToad"));
 
-
         for (int i = 0; i < locks.Count; i++)
         {
             if(PlayerPrefs.GetInt("ToadLock" + i.ToString()) == 1)
