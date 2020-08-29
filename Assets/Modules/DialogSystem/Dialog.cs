@@ -7,12 +7,8 @@ using UnityEngine.Events;
 public class SubList
 {
     [TextArea] public string[] replicas;
-    public bool isEnd;
-    public bool isNext;
-    public int nextSequence;
-    public bool isSequence;
-    public int firstSequence;
-    public int secondSequence;
+    public int firstSequence = -1;
+    public int secondSequence = -1;
 }
 
 public class Dialog : MonoBehaviour

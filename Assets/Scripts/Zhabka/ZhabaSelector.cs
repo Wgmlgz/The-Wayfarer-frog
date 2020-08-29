@@ -83,7 +83,7 @@ public class ZhabaSelector : MonoBehaviour
     {
         selectedN = j;
         PlayerPrefs.SetInt("SelectedToad", j);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>().zhabaTipe = selectedN;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>().zhabaType = selectedN;
 
         foreach (var i in staT)
         {

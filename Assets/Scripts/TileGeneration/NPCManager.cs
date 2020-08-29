@@ -22,10 +22,7 @@ public class NPCManager : MonoBehaviour
 
         foreach (var i in NPCs)
         {
-            if (
-                (d.gameObject.transform.position - GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().startPos).magnitude *
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().distanceFactor < 
-                i.spawnDistance) return false;
+            if (GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().GetDist(d.gameObject.transform) < i.spawnDistance) return false;
 
             if (i.NPCName == d.NPCName)
             {

@@ -8,6 +8,8 @@ public class Score : MonoBehaviour
         public Transform target;
         public int finalScore;
         public int score;
+        public int highScore;
+        public int highDist;
 
     [Header("calculation")]
         public float distance;
@@ -27,6 +29,8 @@ public class Score : MonoBehaviour
     void Start()
     {
         startPos = target.transform.position;
+        highScore = PlayerPrefs.GetInt("HighScore");
+        highDist = PlayerPrefs.GetInt("HighDist");
     }
     void Update()
     {
@@ -46,12 +50,33 @@ public class Score : MonoBehaviour
             scoreTimer += Time.deltaTime;
         }
 
-        distance = (target.transform.position - startPos).magnitude * distanceFactor;
-        finalScore = Mathf.RoundToInt(distance) + score;
+        distance = GetDist();
+        finalScore = GetDist() + score;
 
         scoreText.SetText(finalScore.ToString());
 
         distanceText.SetText("distance: " + Mathf.RoundToInt(distance).ToString());
+    }
+    private void LateUpdate()
+    {
+        if(highScore > score)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+        }
+        if (highDist > GetDist())
+        {
+            highDist = GetDist();
+            PlayerPrefs.SetInt("HighDist", highDist);
+        }
+    }
+    public int GetDist(Transform t = null)
+    {
+        if(t == null)
+        {
+            t = target.transform;
+        }
+        return Mathf.RoundToInt((t.position - startPos).magnitude * distanceFactor);
     }
     public void AddScore(int i, string comment = "")
     {

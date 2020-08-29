@@ -26,7 +26,7 @@ public class Death : MonoBehaviour
         {
             if (collision.GetComponent<ZhabaController>() != null)
             {
-                collision.GetComponent<ZhabaController>().Death();
+                collision.GetComponent<ZhabaController>().Death("cactus");
             }
         }
     }

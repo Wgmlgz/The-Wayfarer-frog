@@ -328,10 +328,6 @@ MonoBehaviour:
   - replicas:
     - You see a strange cat
     - Strange cat looks straight at you
-    isEnd: 0
-    isNext: 0
-    nextSequence: 0
-    isSequence: 1
     firstSequence: 1
     secondSequence: 2
   - replicas:
@@ -344,11 +340,7 @@ MonoBehaviour:
     - so...
     - LEAVE ME FUCKING ALONE STUPID RETARD!!!!!
     - '[You think it''s better not to touch this cat and go away]'
-    isEnd: 1
-    isNext: 0
-    nextSequence: 0
-    isSequence: 0
-    firstSequence: 0
+    firstSequence: -1
     secondSequence: 0
   - replicas:
     - '[Run away as fast as you can]'
@@ -360,10 +352,6 @@ MonoBehaviour:
     - U ARE NOT
     - nobody r fucking batter than i am
     - do u understand?
-    isEnd: 0
-    isNext: 0
-    nextSequence: 0
-    isSequence: 1
     firstSequence: 3
     secondSequence: 4
   - replicas:
@@ -373,11 +361,7 @@ MonoBehaviour:
     - now i len you go fuck yourself
     - GO AWAY STUPID RETARD!!!!!!!!
     - ...
-    isEnd: 1
-    isNext: 0
-    nextSequence: 0
-    isSequence: 0
-    firstSequence: 0
+    firstSequence: -1
     secondSequence: 0
   - replicas:
     - Fuck YOU, retard
@@ -385,11 +369,7 @@ MonoBehaviour:
     - Fuck YOU
     - RETARD
     - go fuck yourself, motherfucker
-    isEnd: 1
-    isNext: 0
-    nextSequence: 0
-    isSequence: 0
-    firstSequence: 0
+    firstSequence: -1
     secondSequence: 0
   Events: []
   cam: {fileID: 2704272109815807510}

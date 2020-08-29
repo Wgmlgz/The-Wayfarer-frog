@@ -106,20 +106,23 @@ public class DialogCore : MonoBehaviour
     }
     private void FinishSequence()
     {
-        if (npc.sequences[activeSequence].isNext)
+        int t1 = npc.sequences[activeSequence].firstSequence;
+        int t2 = npc.sequences[activeSequence].secondSequence;
+
+        if(t1 == -1)
         {
-            StartSequence(npc.sequences[activeSequence].nextSequence);
+            HideUI();
         }
-        else if (npc.sequences[activeSequence].isSequence)
+        else if(t2 == -1)
+        {
+            StartSequence(t1);
+        }
+        else
         {
             DisplaySequence(
                 npc.sequences[npc.sequences[activeSequence].firstSequence].replicas[0],
                 npc.sequences[npc.sequences[activeSequence].secondSequence].replicas[0]
             );
-        }
-        else
-        {
-            HideUI();
         }
     }
     private void Start()

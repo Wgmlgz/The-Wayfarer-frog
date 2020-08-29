@@ -9,8 +9,9 @@ public class ZhabaController : MonoBehaviour
     [Header("global")]
         public bool isGod;
         public bool isPlaying = false;
+        public bool stopPlay = false;
         public bool clipMode = false;
-        public int zhabaTipe;
+        public int zhabaType;
         public LayerMask ground;
         public UnityEvent onPlay;
         public UnityEvent onDeath;
@@ -23,7 +24,17 @@ public class ZhabaController : MonoBehaviour
         public int tmpScore;
         public bool dubJ;
 
-    [Header("phisics control")]
+    [Header("Abilities")]
+        public bool canDoubleJump;
+        public bool canInfJump;
+        public bool canFall;
+        public bool fly;
+        public int cactusesLeft;
+        public bool ignoreHead;
+        //public float coinMod = 1f;
+        public float rotMod = 1f;
+
+    [Header("physics control")]
         public float minSpeed;
         public float curSpeed;
         public float maxSpeed;
@@ -57,10 +68,9 @@ public class ZhabaController : MonoBehaviour
         public float offsetFactor = 1.5f;
 
     //private
-    private Rigidbody2D RB;
-        private Vector2 tmpVelosity;
-        private Vector3 lastFixedUpdateFramePos;
-        private Vector3 lastUpdateFramePos;
+        private Rigidbody2D RB;
+        public Vector2 tmpVelosity;
+        public Vector3 lastUpdateFramePos;
         private bool inputA;
 
     private void Awake()
@@ -73,127 +83,35 @@ public class ZhabaController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (isPlaying)
-        {
-            jumpTime += Time.fixedDeltaTime;
-            if (!clipMode)
-            {
-                sandParticles.Pause();
-                RB.bodyType = RigidbodyType2D.Dynamic;
-                GetComponent<CapsuleCollider2D>().enabled = true;
 
-                //if (RB.velocity.magnitude < minSpeed) RB.velocity = RB.velocity.normalized * minSpeed;
-                //if (RB.velocity.magnitude > maxSpeed) RB.velocity = RB.velocity.normalized * maxSpeed;
-
-                //RB.velocity = new Vector2(RB.velocity.x + speedUp * Time.fixedDeltaTime, RB.velocity.y);
-
-                //RB.velocity = RB.velocity.normalized * minSpeed;
-
-                Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
-                if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(ground))
-                {
-                    //death check
-                    RaycastHit2D[] hitAll = Physics2D.RaycastAll(transform.rotation * Vector3.up * 5,(transform.rotation * -Vector3.up));
-                    RaycastHit2D hit = new RaycastHit2D();
-                    foreach (RaycastHit2D i in hitAll)
-                    {
-                        if (i.transform.gameObject.CompareTag("Ground"))
-                        {
-                            hit = i;
-                            break;
-                        }
-                    }
-                    float tmpAngle = Mathf.Abs(
-                        Quaternion.Angle(
-                        body.transform.rotation,
-                        Quaternion.AngleAxis(Mathf.Atan2(hit.normal.x, hit.normal.y) * Mathf.Rad2Deg, Vector3.forward))
-                    );
-
-                    
-                    if (jumpTime > maxjumpTime)
-                    {
-                        float t = body.transform.rotation.eulerAngles.z;
-                        if (t > 180) t = 360 - t;
-                        Debug.Log(t);
-                        if (t > deathAngle) Death();
-
-                        body.transform.rotation = Quaternion.identity;
-                        //body.transform.position = transform.position;
-                        Debug.Log((GetComponent<Score>().score - tmpScore) * scoreAddFactor);
-                        curSpeed += (GetComponent<Score>().score - tmpScore) * scoreAddFactor;
-                        clipMode = true;
-                    }
-                }
-                else if (Input.GetKey(KeyCode.Space) || inputA)
-                {
-                    body.transform.rotation = Quaternion.Euler(0, 0, body.transform.rotation.eulerAngles.z + rotationSpeed * Time.fixedDeltaTime);
-                    flipTmp += (rotationSpeed * Time.fixedDeltaTime);
-                    if (flipTmp > 300 && lastFFlipTmp < 300)
-                    {
-                        GetComponent<Score>().AddScore(5, "flip");
-                        //flipTmp = 0;
-                    }
-                    else if(flipTmp > 630 && lastFFlipTmp < 630)
-                    {
-                        GetComponent<Score>().AddScore(15, "double flip");
-                    }
-                    else if (flipTmp > 960 && lastFFlipTmp < 960)
-                    {
-                        GetComponent<Score>().AddScore(30, "flip flip flip");
-                    }
-                    else if (flipTmp > 1260 && lastFFlipTmp < 1260)
-                    {
-                        GetComponent<Score>().AddScore(50, "flip flip flip flip");
-                    }
-                    else if (flipTmp > 1560 && lastFFlipTmp < 1560)
-                    {
-                        GetComponent<Score>().AddScore(100, "OMG is it real????????? (flip flip flip flip flip)");
-                    }
-                    else if (flipTmp > 1860 && lastFFlipTmp < 1860)
-                    {
-                        GetComponent<Score>().AddScore(200, "U r > ilskr flip flip flip flip flip flip)");
-                    }
-                    else if (flipTmp > 2160 && lastFFlipTmp < 2160)
-                    {
-                        GetComponent<Score>().AddScore(500, "f f f f f f f l l l l l l l i i i i i i i p p p p p p p");
-                    }
-                    else if (flipTmp > 2460 && lastFFlipTmp < 2460)
-                    {
-                        GetComponent<Score>().AddScore(1000, "ffffffff8llllllll8iiiiiiii8pppppppp8");
-                    }
-                    lastFFlipTmp = flipTmp;
-                }
-                else
-                {
-                    body.transform.rotation =
-                        Quaternion.Lerp(body.transform.rotation,
-                        Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward),
-                        Time.deltaTime * rotationSpeedAuto);
-                }
-            }
-            else
-            {
-                flipTmp = 0;
-                lastFFlipTmp = 0;
-                lastFixedUpdateFramePos = transform.position;
-            }
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.Space) || inputA)
-            {
-                ToGame();
-                //Jump();
-            }
-        }
     }
     void Update()
     {
+        canDoubleJump = false;
+        canInfJump = false;
+        if(zhabaType == 1)
+        {
+            canDoubleJump = true;
+        }
+        if(zhabaType == 2)
+        {
+            canInfJump = true;
+        }
+
+
         if (isPlaying)
         {
+            jumpTime += Time.deltaTime;
             RB.simulated = true;
+
+
+            
+
             if (clipMode)
             {
+                flipTmp = 0;
+                lastFFlipTmp = 0;
+
                 GetComponent<Score>().cleanScoreTime = 0;
                 sandParticles.Play();
                 RB.velocity = Vector2.zero;
@@ -231,10 +149,104 @@ public class ZhabaController : MonoBehaviour
                 {
                     Jump();
                 }
+                tmpVelosity = (1f / Time.deltaTime) * (transform.position - lastUpdateFramePos);
             }
             else
             {
                 GetComponent<Score>().cleanScoreTime = 9999;
+
+                sandParticles.Pause();
+                RB.bodyType = RigidbodyType2D.Dynamic;
+                GetComponent<CapsuleCollider2D>().enabled = true;
+
+                //if (RB.velocity.magnitude < minSpeed) RB.velocity = RB.velocity.normalized * minSpeed;
+                //if (RB.velocity.magnitude > maxSpeed) RB.velocity = RB.velocity.normalized * maxSpeed;
+
+                //RB.velocity = new Vector2(RB.velocity.x + speedUp * Time.fixedDeltaTime, RB.velocity.y);
+
+                //RB.velocity = RB.velocity.normalized * minSpeed;
+
+                Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
+                if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(ground))
+                {
+                    //death check
+                    RaycastHit2D[] hitAll = Physics2D.RaycastAll(transform.rotation * Vector3.up * 5, (transform.rotation * -Vector3.up));
+                    RaycastHit2D hit = new RaycastHit2D();
+                    foreach (RaycastHit2D i in hitAll)
+                    {
+                        if (i.transform.gameObject.CompareTag("Ground"))
+                        {
+                            hit = i;
+                            break;
+                        }
+                    }
+                    float tmpAngle = Mathf.Abs(
+                        Quaternion.Angle(
+                        body.transform.rotation,
+                        Quaternion.AngleAxis(Mathf.Atan2(hit.normal.x, hit.normal.y) * Mathf.Rad2Deg, Vector3.forward))
+                    );
+
+
+                    if (jumpTime > maxjumpTime)
+                    {
+                        float t = body.transform.rotation.eulerAngles.z;
+                        if (t > 180) t = 360 - t;
+                        Debug.Log(t);
+                        if (t > deathAngle) Death("head");
+
+                        body.transform.rotation = Quaternion.identity;
+                        //body.transform.position = transform.position;
+                        Debug.Log((GetComponent<Score>().score - tmpScore) * scoreAddFactor);
+                        curSpeed += (GetComponent<Score>().score - tmpScore) * scoreAddFactor;
+                        clipMode = true;
+                    }
+                }
+                else if (Input.GetKey(KeyCode.Space) || inputA)
+                {
+                    body.transform.rotation = Quaternion.Euler(0, 0, body.transform.rotation.eulerAngles.z + rotationSpeed * Time.deltaTime * rotMod);
+                    flipTmp += (rotationSpeed * Time.deltaTime * rotMod);
+                    if (flipTmp > 300 && lastFFlipTmp < 300)
+                    {
+                        GetComponent<Score>().AddScore(5, "flip");
+                        //flipTmp = 0;
+                    }
+                    else if (flipTmp > 630 && lastFFlipTmp < 630)
+                    {
+                        GetComponent<Score>().AddScore(15, "double flip");
+                    }
+                    else if (flipTmp > 960 && lastFFlipTmp < 960)
+                    {
+                        GetComponent<Score>().AddScore(30, "flip flip flip");
+                    }
+                    else if (flipTmp > 1260 && lastFFlipTmp < 1260)
+                    {
+                        GetComponent<Score>().AddScore(50, "flip flip flip flip");
+                    }
+                    else if (flipTmp > 1560 && lastFFlipTmp < 1560)
+                    {
+                        GetComponent<Score>().AddScore(100, "OMG is it real????????? (flip flip flip flip flip)");
+                    }
+                    else if (flipTmp > 1860 && lastFFlipTmp < 1860)
+                    {
+                        GetComponent<Score>().AddScore(200, "U r > ilskr flip flip flip flip flip flip)");
+                    }
+                    else if (flipTmp > 2160 && lastFFlipTmp < 2160)
+                    {
+                        GetComponent<Score>().AddScore(500, "f f f f f f f l l l l l l l i i i i i i i p p p p p p p");
+                    }
+                    else if (flipTmp > 2460 && lastFFlipTmp < 2460)
+                    {
+                        GetComponent<Score>().AddScore(1000, "ffffffff8llllllll8iiiiiiii8pppppppp8");
+                    }
+                    lastFFlipTmp = flipTmp;
+                }
+                else
+                {
+                    body.transform.rotation =
+                        Quaternion.Lerp(body.transform.rotation,
+                        Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward),
+                        Time.deltaTime * rotationSpeedAuto);
+                }
             }
 
             /*RaycastHit2D[] hitAllCam = Physics2D.RaycastAll(
@@ -254,14 +266,17 @@ public class ZhabaController : MonoBehaviour
         }
         else
         {
+            if (Input.GetKey(KeyCode.Space) || inputA)
+            {
+                ToGame();
+                //Jump();
+            }
             sandParticles.Pause();
             RB.simulated = false;
         }
 
-        tmpVelosity = (1f / Time.deltaTime) * (transform.position - lastUpdateFramePos);
-        lastUpdateFramePos = transform.position;
-
         body.transform.position = Vector3.Lerp(body.transform.position, transform.position, posSmooth * Time.deltaTime);
+        lastUpdateFramePos = transform.position;
     }
     private void LateUpdate()
     {
@@ -288,6 +303,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void ToGame()
     {
+        if (stopPlay) return;
         isPlaying = true;
         sceneCam.gameObject.SetActive(false);
         gameCam.gameObject.SetActive(true);
@@ -296,10 +312,21 @@ public class ZhabaController : MonoBehaviour
 
         onPlay.Invoke();
     }
-    public void Death()
+    public void Death(string s = "ded")
     {
         if (isGod) return;
+        if(s == "cactus")
+        {
+            cactusesLeft--;
+            if (cactusesLeft >= 0) return;
+        }
+        if(s == "head")
+        {
+            if (ignoreHead) return;
+        }
         isPlaying = false;
+        stopPlay = true;
+        
         onDeath.Invoke();
     }
     public void SetTimeScale(float i)
@@ -308,7 +335,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void Jump(float hieght = -1f)
     {
-        if (zhabaTipe == 1)
+        if (canDoubleJump)
         {
             if (clipMode)
             {
@@ -320,7 +347,7 @@ public class ZhabaController : MonoBehaviour
                 else dubJ = true;
             }
         }
-        else if (zhabaTipe == 2)
+        else if (canInfJump)
         {
             if (clipMode)
             {
@@ -339,9 +366,8 @@ public class ZhabaController : MonoBehaviour
                 body.transform.rotation = transform.rotation;
             }
         }
-        
-        clipMode = false;
-        RB.bodyType = RigidbodyType2D.Dynamic;
+
+
 
         if (hieght == -1f)
         {
@@ -349,11 +375,14 @@ public class ZhabaController : MonoBehaviour
             GetComponent<Score>().AddScore(1, "jump");
             tmpVelosity.y = jumpHieght;
         }
-        else if (hieght == 0f) {
-
+        else if (hieght == 0f)
+        {
+            if (!clipMode) return;
         }
         else tmpVelosity.y = hieght;
 
+        clipMode = false;
+        RB.bodyType = RigidbodyType2D.Dynamic;
         RB.velocity = tmpVelosity;
         //RB.velocity = (RB.velocity + (Vector2)(Vector3.up * jumpHieght));
         jumpTime = 0f;
@@ -369,5 +398,11 @@ public class ZhabaController : MonoBehaviour
     public void SetIsPlaing(bool b)
     {
         isPlaying = b;
+    }
+    public void Fall()
+    {
+        if (!canFall) return;
+        transform.rotation = Quaternion.identity;
+        clipMode = true;
     }
 }
