@@ -7,6 +7,8 @@ using UnityEngine;
 public class Biom
 {
     public string name;
+    public int minBiomSize = 2;
+    public int maxBiomSize = 5;
     public List<GameObject> tiles;
 }
 
@@ -22,8 +24,6 @@ public class TileGenerator : MonoBehaviour
 
     public int BiomsCount;
     public Biom[] bioms;
-    public int minBiomSize = 2;
-    public int maxBiomSize = 5;
 
     [SerializeField] int currentBiom = -1;
     [SerializeField] float currentBiomSize;
@@ -40,10 +40,16 @@ public class TileGenerator : MonoBehaviour
 
         return Random.Range(minV, maxV);
     }
-    public void ChangeBiom()
+    public void ChangeBiom(int i = -1)
     {
-        currentBiom = RandomInt(0, BiomsCount);
-        currentBiomSize = RandomInt(minBiomSize, maxBiomSize);
+        if(i == -1){
+            currentBiom = RandomInt(0, BiomsCount);   
+        }
+        else
+        {
+            currentBiom = i;
+        }
+        currentBiomSize = RandomInt(bioms[currentBiom].minBiomSize, bioms[currentBiom].maxBiomSize);
         currentBiomFilling = 0;
     }
     public void GenNewTile()

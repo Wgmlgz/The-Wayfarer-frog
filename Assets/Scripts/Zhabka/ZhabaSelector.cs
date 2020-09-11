@@ -16,6 +16,7 @@ public class Zhabka
 }
 public class ZhabaSelector : MonoBehaviour
 {
+    public GameObject mainCam;
     public int viewN;
 
     public int selectedN;
@@ -30,10 +31,13 @@ public class ZhabaSelector : MonoBehaviour
     public List<GameObject> hatDA;
     public GameObject hatNET;
 
+    private ZhabaController zh;
+
     private void Start()
     {
-        SetHat(PlayerPrefs.GetInt("SelectedHat"));
+        zh = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
         SelectToad(PlayerPrefs.GetInt("SelectedToad"));
+        SetHat(PlayerPrefs.GetInt("SelectedHat"));
 
         for (int i = 0; i < locks.Count; i++)
         {
@@ -43,9 +47,30 @@ public class ZhabaSelector : MonoBehaviour
             }
             else
             {
-                UnlockToad(i);
+                if (isLock[i])
+                {
+                    LockToad(i);
+                }
+                else
+                {
+                    UnlockToad(i);
+                }
             }
         }
+
+
+        //wednesday frog
+        LockToad(2);
+        if(System.DateTime.Now.DayOfWeek == System.DayOfWeek.Wednesday)
+        {
+            UnlockToad(2);
+        }
+    }
+    public void ViewTop(){
+        viewN = 0;
+        ViewInt(0);
+        cams[0].Priority = -9999;
+        mainCam.SetActive(true);        
     }
     public void ViewLeft()
     {
@@ -83,7 +108,6 @@ public class ZhabaSelector : MonoBehaviour
     {
         selectedN = j;
         PlayerPrefs.SetInt("SelectedToad", j);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>().zhabaType = selectedN;
 
         foreach (var i in staT)
         {
@@ -97,12 +121,63 @@ public class ZhabaSelector : MonoBehaviour
         }
         toads[j].skin.SetActive(true);
 
-        SetHat(selectedHat);
+        zh.canDoubleJump = false;
+        zh.ignoreHead = false;
+        zh.cactusesLeft = 0;
+        zh.canSecondLife = false;
+        zh.rotMod = 1;
+        zh.canFall = false;
+        zh.gameObject.GetComponent<CoinCollector>().coinMult = 1;
+
+        if (selectedN == 0)
+        {
+            //
+        }
+        else if (selectedN == 1)
+        {
+            zh.cactusesLeft = 3;
+        }
+        else if (selectedN == 2)
+        {
+            zh.gameObject.GetComponent<CoinCollector>().coinMult *= 3;
+            zh.canDoubleJump = true;
+        }
+        else if (selectedN == 3)
+        {
+            zh.canDoubleJump = true;
+        }
+        else if (selectedN == 4)
+        {
+            zh.ignoreHead = true;
+            zh.cactusesLeft = 3;
+        }
+        else if (selectedN == 5)
+        {
+            zh.canDoubleJump = true;
+            zh.rotMod = 1.5f;
+            zh.gameObject.GetComponent<CoinCollector>().coinMult *= 2;
+        }
+        else if (selectedN == 6)
+        {
+            zh.canDoubleJump = true;
+            zh.ignoreHead = true;
+            zh.canSecondLife = true;
+            zh.rotMod *= 2;
+            zh.canFall = true;
+            zh.cactusesLeft = 3;
+            zh.gameObject.GetComponent<CoinCollector>().coinMult *= 4;
+        }
+
+        SetHatBonus();
     }
     public void LockToad(int j)
     {
         locks[j].SetActive(true);
         PlayerPrefs.SetInt("ToadLock" + j.ToString(), 1);
+        if(selectedN == j)
+        {
+            selectedN = 0;
+        }
     }
     public void UnlockToad(int j)
     {
@@ -114,6 +189,14 @@ public class ZhabaSelector : MonoBehaviour
         selectedHat = j;
         PlayerPrefs.SetInt("SelectedHat", j);
 
+        
+        
+        SelectToad(selectedN);
+    }
+    void SetHatBonus()
+    {
+        int j = selectedHat;
+        
         foreach (var i in toads[selectedN].hats)
         {
             i.SetActive(false);
@@ -124,7 +207,33 @@ public class ZhabaSelector : MonoBehaviour
         {
             i.SetActive(false);
         }
+
         if(j != -1) hatDA[j].SetActive(true);
         hatNET.SetActive(j == -1);
+
+        if (selectedHat == 0)
+        {
+            zh.rotMod *= 2;
+        }
+        else if (selectedHat == 1)
+        {
+            zh.canSecondLife = true;
+        }
+        else if (selectedHat == 2)
+        {
+            zh.cactusesLeft += 3;
+        }
+        else if (selectedHat == 3)
+        {
+            zh.ignoreHead = true;
+        }
+        else if (selectedHat == 4)
+        {
+            zh.gameObject.GetComponent<CoinCollector>().coinMult *= 2;
+        }
+        else if (selectedHat == 5)
+        {
+            zh.canFall = true;
+        }
     }
 }

@@ -12,7 +12,7 @@ public class TileInfo : MonoBehaviour
     {
         if (isExample == false)
         {
-            if (generator.GetComponent<TileGenerator>().Target.transform.position.x - transform.position.x
+            if (generator.GetComponent<TileGenerator>().Target.transform.position.x - tileLength.x - transform.position.x
                 > generator.GetComponent<TileGenerator>().genDistance
                 && gameObject != generator.GetComponent<TileGenerator>().lastTile)
             {

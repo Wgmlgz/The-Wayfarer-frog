@@ -78,17 +78,19 @@ public class DialogCore : MonoBehaviour
         text2.text = s2;
         text2.gameObject.GetComponent<TextAnimation>().StartAnimation();
     }
-    public void HideUI()
+    public void HideUI(bool b = true)
     {
         regularGM.SetActive(false);
         sequenceGM.SetActive(false);
 
-        if (npc.cam)
-        {
-            Cinemachine.CinemachineVirtualCamera cam = npc.cam;
-            cam.Priority = -9999;
+        if(npc){
+            if (npc.cam)
+            {
+                Cinemachine.CinemachineVirtualCamera cam = npc.cam;
+                cam.Priority = -9999;
+            }
         }
-        onEnd.Invoke();
+        if(b) onEnd.Invoke();
     }
     private void StartSequence(int n, int startReplica = 0)
     {
@@ -127,6 +129,6 @@ public class DialogCore : MonoBehaviour
     }
     private void Start()
     {
-        HideUI();
+        HideUI(false);
     }
 }

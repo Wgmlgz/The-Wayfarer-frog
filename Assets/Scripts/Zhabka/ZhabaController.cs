@@ -11,7 +11,6 @@ public class ZhabaController : MonoBehaviour
         public bool isPlaying = false;
         public bool stopPlay = false;
         public bool clipMode = false;
-        public int zhabaType;
         public LayerMask ground;
         public UnityEvent onPlay;
         public UnityEvent onDeath;
@@ -33,6 +32,8 @@ public class ZhabaController : MonoBehaviour
         public bool ignoreHead;
         //public float coinMod = 1f;
         public float rotMod = 1f;
+        public bool canSecondLife;
+        private bool secendLifeUsed;
 
     [Header("physics control")]
         public float minSpeed;
@@ -87,26 +88,11 @@ public class ZhabaController : MonoBehaviour
     }
     void Update()
     {
-        canDoubleJump = false;
-        canInfJump = false;
-        if(zhabaType == 1)
-        {
-            canDoubleJump = true;
-        }
-        if(zhabaType == 2)
-        {
-            canInfJump = true;
-        }
-
-
         if (isPlaying)
         {
             jumpTime += Time.deltaTime;
             RB.simulated = true;
-
-
             
-
             if (clipMode)
             {
                 flipTmp = 0;
@@ -191,12 +177,9 @@ public class ZhabaController : MonoBehaviour
                     {
                         float t = body.transform.rotation.eulerAngles.z;
                         if (t > 180) t = 360 - t;
-                        Debug.Log(t);
                         if (t > deathAngle) Death("head");
 
                         body.transform.rotation = Quaternion.identity;
-                        //body.transform.position = transform.position;
-                        Debug.Log((GetComponent<Score>().score - tmpScore) * scoreAddFactor);
                         curSpeed += (GetComponent<Score>().score - tmpScore) * scoreAddFactor;
                         clipMode = true;
                     }
@@ -395,7 +378,7 @@ public class ZhabaController : MonoBehaviour
     {
         inputA = false;
     }
-    public void SetIsPlaing(bool b)
+    public void SetIsPlay(bool b)
     {
         isPlaying = b;
     }
@@ -404,5 +387,12 @@ public class ZhabaController : MonoBehaviour
         if (!canFall) return;
         transform.rotation = Quaternion.identity;
         clipMode = true;
+    }
+
+    public void Slow(){
+        curSpeed = minSpeed;
+    }
+    public void Fast(){
+        curSpeed = maxSpeed;
     }
 }

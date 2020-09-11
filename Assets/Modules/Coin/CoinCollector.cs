@@ -11,6 +11,8 @@ public class CoinCollector : MonoBehaviour
         // Coins_id
         public bool storeCoins;
         public int id;
+    [Header("Main")]
+        public int coinMult = 1;
     [Header("UI")]
         public TMPro.TextMeshProUGUI indicator;
         public float timeLeftMax = 5f;
@@ -39,7 +41,7 @@ public class CoinCollector : MonoBehaviour
     }
     public void AddCoins(int i = 1)
     {
-        coins += i;
+        coins += i * coinMult;
         ChangeCoins();
     }
     public void ChangeCoins()
