@@ -57,18 +57,23 @@ public class Score : MonoBehaviour
 
         distanceText.SetText("distance: " + Mathf.RoundToInt(distance).ToString());
     }
-    private void LateUpdate()
+
+    public void RefreshHighScore()
     {
-        if(highScore > score)
+        if(highScore < finalScore)
         {
             highScore = score;
             PlayerPrefs.SetInt("HighScore", highScore);
         }
-        if (highDist > GetDist())
+        if (highDist < GetDist())
         {
             highDist = GetDist();
             PlayerPrefs.SetInt("HighDist", highDist);
         }
+    }
+    private void LateUpdate()
+    {
+
     }
     public int GetDist(Transform t = null)
     {

@@ -14,6 +14,7 @@ public class ZhabaController : MonoBehaviour
         public LayerMask ground;
         public UnityEvent onPlay;
         public UnityEvent onDeath;
+        
 
     [Header("gameplay control")]
         public float deathAngle;
@@ -22,6 +23,7 @@ public class ZhabaController : MonoBehaviour
         public float scoreAddFactor;
         public int tmpScore;
         public bool dubJ;
+        public int secondLifes;
 
     [Header("Abilities")]
         public bool canDoubleJump;
@@ -32,8 +34,6 @@ public class ZhabaController : MonoBehaviour
         public bool ignoreHead;
         //public float coinMod = 1f;
         public float rotMod = 1f;
-        public bool canSecondLife;
-        private bool secendLifeUsed;
 
     [Header("physics control")]
         public float minSpeed;
@@ -68,6 +68,9 @@ public class ZhabaController : MonoBehaviour
         [Range(0f, 1f)] public float camMult = .5f;
         public float offsetFactor = 1.5f;
 
+    [Header("Links")]
+        public DeathUi DUI;
+        
     //private
         private Rigidbody2D RB;
         public Vector2 tmpVelosity;
@@ -80,6 +83,7 @@ public class ZhabaController : MonoBehaviour
     }
     void Start()
     {
+        secondLifes = PlayerPrefs.GetInt("SL");
         //RB.velocity = new Vector2(minSpeed, 0f);
     }
     private void FixedUpdate()
@@ -190,7 +194,7 @@ public class ZhabaController : MonoBehaviour
                     flipTmp += (rotationSpeed * Time.deltaTime * rotMod);
                     if (flipTmp > 300 && lastFFlipTmp < 300)
                     {
-                        GetComponent<Score>().AddScore(5, "flip");
+                        GetComponent<Score>().AddScore(10, "flip");
                         //flipTmp = 0;
                     }
                     else if (flipTmp > 630 && lastFFlipTmp < 630)
@@ -207,19 +211,19 @@ public class ZhabaController : MonoBehaviour
                     }
                     else if (flipTmp > 1560 && lastFFlipTmp < 1560)
                     {
-                        GetComponent<Score>().AddScore(100, "OMG is it real????????? (flip flip flip flip flip)");
+                        GetComponent<Score>().AddScore(100, "5 flips");
                     }
                     else if (flipTmp > 1860 && lastFFlipTmp < 1860)
                     {
-                        GetComponent<Score>().AddScore(200, "U r > ilskr flip flip flip flip flip flip)");
+                        GetComponent<Score>().AddScore(200, "6 flips");
                     }
                     else if (flipTmp > 2160 && lastFFlipTmp < 2160)
                     {
-                        GetComponent<Score>().AddScore(500, "f f f f f f f l l l l l l l i i i i i i i p p p p p p p");
+                        GetComponent<Score>().AddScore(500, "7 flips");
                     }
                     else if (flipTmp > 2460 && lastFFlipTmp < 2460)
                     {
-                        GetComponent<Score>().AddScore(1000, "ffffffff8llllllll8iiiiiiii8pppppppp8");
+                        GetComponent<Score>().AddScore(1000, "8 flips");
                     }
                     lastFFlipTmp = flipTmp;
                 }
@@ -295,6 +299,13 @@ public class ZhabaController : MonoBehaviour
 
         onPlay.Invoke();
     }
+    public void Continue(){
+        isPlaying = true;
+
+        RB.velocity = new Vector2(minSpeed, 0f);
+
+        onPlay.Invoke();
+    }
     public void Death(string s = "ded")
     {
         if (isGod) return;
@@ -310,6 +321,15 @@ public class ZhabaController : MonoBehaviour
         isPlaying = false;
         stopPlay = true;
         
+        int t1 = PlayerPrefs.GetInt("HighDist");
+        int t2 = GetComponent<Score>().GetDist();
+        float t3 = t1;
+        if(t2 > t1) {
+            t3 = t2;
+        }
+        DUI.SetLine(0, t1 / t3);
+        DUI.SetLine(1, t2 / t3);
+
         onDeath.Invoke();
     }
     public void SetTimeScale(float i)
@@ -355,7 +375,7 @@ public class ZhabaController : MonoBehaviour
         if (hieght == -1f)
         {
             tmpScore = GetComponent<Score>().score;
-            GetComponent<Score>().AddScore(1, "jump");
+            GetComponent<Score>().AddScore(5, "jump");
             tmpVelosity.y = jumpHieght;
         }
         else if (hieght == 0f)

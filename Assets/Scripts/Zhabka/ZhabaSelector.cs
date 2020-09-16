@@ -124,7 +124,6 @@ public class ZhabaSelector : MonoBehaviour
         zh.canDoubleJump = false;
         zh.ignoreHead = false;
         zh.cactusesLeft = 0;
-        zh.canSecondLife = false;
         zh.rotMod = 1;
         zh.canFall = false;
         zh.gameObject.GetComponent<CoinCollector>().coinMult = 1;
@@ -161,7 +160,6 @@ public class ZhabaSelector : MonoBehaviour
         {
             zh.canDoubleJump = true;
             zh.ignoreHead = true;
-            zh.canSecondLife = true;
             zh.rotMod *= 2;
             zh.canFall = true;
             zh.cactusesLeft = 3;
@@ -217,7 +215,7 @@ public class ZhabaSelector : MonoBehaviour
         }
         else if (selectedHat == 1)
         {
-            zh.canSecondLife = true;
+
         }
         else if (selectedHat == 2)
         {

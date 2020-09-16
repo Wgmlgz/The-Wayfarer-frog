@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
+    public bool DBG;
     public string saveName = "idName";
     public int stage = -1;
     public int maxStage = 10;
@@ -11,17 +12,25 @@ public class Upgrade : MonoBehaviour
     public int[] costs;
     public GameObject[] boxes;
     public TMPro.TextMeshProUGUI btnSt;
+    public GameObject maxGO;
 
     [Header("Using")]
     public bool forRS;
 
-    public ZhabaController ZH;
-    public CoinCollector CN;
+    private ZhabaController ZH;
+    private CoinCollector CN;
     private void Start() {
+        if(PlayerPrefs.HasKey(saveName) == false){
+            PlayerPrefs.SetInt(saveName, -1);
+        }
+        stage = PlayerPrefs.GetInt(saveName);
+
         SetBoxes();
+        SetName();
+        SetBonus();
+
         ZH = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
         CN = ZH.gameObject.GetComponent<CoinCollector>();
-        SetName();
     }
     void SetBonus(){
         if(forRS){
@@ -36,6 +45,7 @@ public class Upgrade : MonoBehaviour
                 boxes[i].SetActive(false);
             }
         }
+        maxGO.SetActive(stage == maxStage - 1);
     }
     void SetName(){
         btnSt.SetText("Buy " + ((stage == maxStage - 1)?"(Max)" : "( " + (costs[stage + 1].ToString() + " coins)")));
@@ -43,12 +53,17 @@ public class Upgrade : MonoBehaviour
     public void Buy(){
         if(stage < maxStage - 1){
             if(CN.coins >= costs[stage + 1]){
-                CN.coins -= costs[stage + 1];
+                CN.ChangeCoins(-costs[stage + 1]);
                 stage += 1;
                 PlayerPrefs.SetInt(saveName, stage);
                 SetBoxes();
                 SetName();
             }
+        }
+    }
+    private void Update() {
+        if(DBG){
+            SetBonus();
         }
     }
 }

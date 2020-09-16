@@ -14,7 +14,7 @@ public class CoinCollector : MonoBehaviour
     [Header("Main")]
         public int coinMult = 1;
     [Header("UI")]
-        public TMPro.TextMeshProUGUI indicator;
+        public TMPro.TextMeshProUGUI[] indicators;
         public float timeLeftMax = 5f;
     [Header("Events")]
         public UnityEvent onCoinsValueChanged;
@@ -36,18 +36,22 @@ public class CoinCollector : MonoBehaviour
     }
     public void SetCoins(int i = 0)
     {
-        coins = i;
-        ChangeCoins();
+        ChangeCoins(i);
     }
     public void AddCoins(int i = 1)
     {
-        coins += i * coinMult;
-        ChangeCoins();
+        ChangeCoins(i * coinMult);
     }
-    public void ChangeCoins()
+    public void ChangeCoins(int c = 0)
     {
+        coins += c;
         PlayerPrefs.SetInt("Coins_" + id.ToString(), coins);
-        indicator.SetText(coins.ToString());
+        
+        foreach (var i in indicators)
+        {
+            i.SetText(coins.ToString());
+        }
+        
         timeLeft = timeLeftMax;
         onCoinsValueChanged.Invoke();
     }

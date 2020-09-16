@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     public void ToGame()
     {
         GetComponent<Animation>().Play();
+        deathUI.SetActive(false);
     }
     public void ToCharacterSelect()
     {
