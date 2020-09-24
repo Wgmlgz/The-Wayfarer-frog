@@ -43,7 +43,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1.2, y: -2.36}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &478340349114397264
 GameObject:
@@ -546,8 +546,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.34}
-  m_SizeDelta: {x: 5, y: 0.25539875}
+  m_AnchoredPosition: {x: 0, y: -1.438}
+  m_SizeDelta: {x: 5, y: 0.45077205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4620461203786102973
 CanvasRenderer:
@@ -576,7 +576,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rotation Speed
+  m_text: 'Second life
+
+    spawn chance'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c2adb9e37a1c315468b1893e54d11e1e, type: 2}
   m_sharedMaterial: {fileID: -5790109239637495125, guid: c2adb9e37a1c315468b1893e54d11e1e,
@@ -615,7 +617,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
@@ -651,12 +653,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 4620461203786102970}
-    characterCount: 14
+    characterCount: 24
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 3
+    wordCount: 4
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -719,20 +721,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85417f2aef422224288bd8cb77fa61a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DBG: 0
   saveName: idName
   stage: -1
   maxStage: 10
   values:
+  - 0
+  - 0.1
+  - 0.2
+  - 0.3
+  - 0.4
+  - 0.5
+  - 0.6
+  - 0.7
+  - 0.8
+  - 0.9
   - 1
-  - 2
-  - 3
-  - 4
-  - 5
-  - 6
-  - 7
-  - 8
-  - 9
-  - 10
   costs: 0a000000140000001e00000028000000320000003c00000046000000500000005a00000064000000
   boxes:
   - {fileID: 1966243378950400836}

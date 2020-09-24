@@ -42,6 +42,7 @@ public class DeathUi : MonoBehaviour
     public void UseSeconLife(){
         if(ZH.secondLifes > 0){
             ZH.secondLifes -= 1;
+            PlayerPrefs.SetInt("SL", ZH.secondLifes);
             ZH.Continue();
             PrepareDeathScreen();
         }

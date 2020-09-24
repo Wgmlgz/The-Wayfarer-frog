@@ -30,7 +30,7 @@ public class ZhabaController : MonoBehaviour
         public bool canInfJump;
         public bool canFall;
         public bool fly;
-        public int cactusesLeft;
+        public int hpLeft;
         public bool ignoreHead;
         //public float coinMod = 1f;
         public float rotMod = 1f;
@@ -70,6 +70,7 @@ public class ZhabaController : MonoBehaviour
 
     [Header("Links")]
         public DeathUi DUI;
+        public UIManager UIM;
         
     //private
         private Rigidbody2D RB;
@@ -296,7 +297,7 @@ public class ZhabaController : MonoBehaviour
         gameCam.gameObject.SetActive(true);
 
         RB.velocity = new Vector2(minSpeed, 0f);
-
+        UIM.SetupHearts(hpLeft + 1);
         onPlay.Invoke();
     }
     public void Continue(){
@@ -309,10 +310,16 @@ public class ZhabaController : MonoBehaviour
     public void Death(string s = "ded")
     {
         if (isGod) return;
+        
+        hpLeft--;
+        if (hpLeft >= 0) {
+            UIM.RemoveHeart();
+            return;
+        }
+
         if(s == "cactus")
         {
-            cactusesLeft--;
-            if (cactusesLeft >= 0) return;
+            
         }
         if(s == "head")
         {

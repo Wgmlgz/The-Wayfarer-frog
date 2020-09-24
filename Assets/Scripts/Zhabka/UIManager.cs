@@ -12,6 +12,12 @@ public class UIManager : MonoBehaviour
     public GameObject camIdle;
     public GameObject camCharacterSelection;
 
+    public GameObject[] hearts;
+    public int acitveHeart;
+
+    private float hpVisibleTime = 4f;
+    private int maxHp;
+    public float lastHpActive;
     private void Start()
     {
     }
@@ -33,5 +39,47 @@ public class UIManager : MonoBehaviour
     public void ToDeath()
     {
         deathUI.SetActive(true);
+    }
+
+    public void SetupHearts(int maxHearts)
+    {
+        maxHp = maxHearts;
+        acitveHeart = maxHearts - 1;
+        ShowHp();
+    }
+
+    public void ShowHp()
+    {
+        lastHpActive = hpVisibleTime;
+        for (int i = 0; i < 10; ++i)
+        {
+            hearts[i].SetActive(i <= acitveHeart + 1 && i < maxHp);
+        }
+    }
+
+    public void HideHp()
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            hearts[i].SetActive(false);
+        }
+    }
+    public void RemoveHeart()
+    {
+        if (acitveHeart >= 0)
+        {
+            hearts[acitveHeart].GetComponent<Animation>().Play();
+            acitveHeart--;
+        }
+
+        ShowHp();
+    }
+    private void Update()
+    {
+        lastHpActive -= Time.deltaTime;
+        if (lastHpActive < 0f)
+        {
+            HideHp();
+        }
     }
 }

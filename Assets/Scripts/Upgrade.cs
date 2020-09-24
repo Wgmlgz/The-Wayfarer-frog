@@ -34,7 +34,7 @@ public class Upgrade : MonoBehaviour
     }
     void SetBonus(){
         if(forRS){
-            ZH.rotationSpeed = values[stage];
+            ZH.rotationSpeed = values[stage - 1];
         }
     }
     void SetBoxes(){
