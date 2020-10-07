@@ -7,6 +7,7 @@ public class Trigger : MonoBehaviour
 {
     public GameObject target;
     public UnityEvent onEnter;
+    public UnityEvent onStay;
     public bool doOnce;
     private bool isOff;
 
@@ -22,6 +23,12 @@ public class Trigger : MonoBehaviour
                     isOff = true;
                 }
             }
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision) {
+        if (collision.gameObject == target) {
+            onStay.Invoke();
         }
     }
 }

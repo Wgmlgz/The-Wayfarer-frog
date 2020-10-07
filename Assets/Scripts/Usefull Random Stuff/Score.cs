@@ -20,6 +20,7 @@ public class Score : MonoBehaviour
         public TMPro.TextMeshProUGUI scoreText;
         public TMPro.TextMeshProUGUI distanceText;
         public GameObject addScoreExample;
+        public GameObject scoreBodyExample;
         public GameObject scoreDed;
         public List<GameObject> aaaa;
 
@@ -107,6 +108,14 @@ public class Score : MonoBehaviour
         }
 
         aaaa.Add(tmp);
+
+        GameObject tmp1 = Instantiate(scoreBodyExample);
+        tmp1.SetActive(true);
+        tmp1.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-20f, 20f));
+        tmp1.transform.position = gameObject.transform.position;
+        tmp1.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        tmp1.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(1500f, 1500f));
+        tmp1.GetComponentInChildren<TMPro.TextMeshProUGUI>().GetComponent<TMPro.TextMeshProUGUI>().SetText("+ " + i.ToString());
     }
     public void ClearTable()
     {

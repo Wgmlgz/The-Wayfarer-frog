@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public ZhabaController ZH;
     public GameObject mainUI;
     public GameObject gameUI;
     public GameObject characterSelectionUI;
@@ -18,6 +20,8 @@ public class UIManager : MonoBehaviour
     private float hpVisibleTime = 4f;
     private int maxHp;
     public float lastHpActive;
+    public TMPro.TextMeshProUGUI redText;
+    public Slider speedVis;
     private void Start()
     {
     }
@@ -81,5 +85,16 @@ public class UIManager : MonoBehaviour
         {
             HideHp();
         }
+
+        speedVis.value = (float)(ZH.curSpeed - ZH.minSpeed) / (ZH.maxSpeed - ZH.minSpeed);
+    }
+
+    public void SetRedText (string s) {
+        redText.gameObject.SetActive(true);
+        redText.SetText(s);
+    }
+
+    public void HedeRedText () {
+        redText.gameObject.SetActive(false);
     }
 }

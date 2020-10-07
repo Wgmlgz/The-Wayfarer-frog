@@ -24,6 +24,11 @@ public class ZhabaController : MonoBehaviour
         public int tmpScore;
         public bool dubJ;
         public int secondLifes;
+        public bool doConstVelosity;
+        public float constVelosity;
+
+        public bool doConstMaxSpeed;
+        public float constMaxSpeed;
 
     [Header("Abilities")]
         public bool canDoubleJump;
@@ -115,6 +120,10 @@ public class ZhabaController : MonoBehaviour
                 if (curSpeed < minSpeed) curSpeed = minSpeed;
                 if (curSpeed > maxSpeed) curSpeed = maxSpeed;
 
+                if (doConstVelosity) {
+                    curSpeed = constVelosity;
+                }
+
                 //raycast
                 RaycastHit2D[] hitAll = Physics2D.RaycastAll(
                     transform.rotation * Vector3.up * 5 + transform.rotation.normalized * Vector2.right * curSpeed * Time.deltaTime + transform.position,
@@ -144,6 +153,7 @@ public class ZhabaController : MonoBehaviour
             }
             else
             {
+                if (doConstVelosity) Fall();
                 GetComponent<Score>().cleanScoreTime = 9999;
 
                 sandParticles.Pause();
@@ -279,11 +289,15 @@ public class ZhabaController : MonoBehaviour
 
         maxSpeed = (GetComponent<Score>().distance / maxXSpeedDist) * (maxXSpeed - startMaxSpeed) + startMaxSpeed;
         if((GetComponent<Score>().distance / maxXSpeedDist) > 1f) maxSpeed = maxXSpeed;
+
+        if (doConstMaxSpeed) {
+            maxSpeed = constMaxSpeed;
+        }
         //head.transform.rotation = body.transform.rotation;
     }
-    public void SetToGod()
+    public void SetToGod(bool b = true)
     {
-        isGod = true;
+        isGod = b;
     }
     public void SetToPlaying()
     {
@@ -345,6 +359,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void Jump(float hieght = -1f)
     {
+        if (doConstVelosity) return;
         if (canDoubleJump)
         {
             if (clipMode)
@@ -382,7 +397,7 @@ public class ZhabaController : MonoBehaviour
         if (hieght == -1f)
         {
             tmpScore = GetComponent<Score>().score;
-            GetComponent<Score>().AddScore(5, "jump");
+            //GetComponent<Score>().AddScore(5, "jump");
             tmpVelosity.y = jumpHieght;
         }
         else if (hieght == 0f)

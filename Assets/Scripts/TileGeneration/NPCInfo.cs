@@ -10,9 +10,12 @@ public class NPCInfo : MonoBehaviour
 
     private void Start()
     {
-        if (!zhabka.GetComponent<NPCManager>().LifeRequest(GetComponent<NPCInfo>()))
+        bool canLive = zhabka.GetComponent<NPCManager>().LifeRequest(GetComponent<NPCInfo>());
+        if (!canLive)
         {
             Destroy(gameObject);
+        } else if (NPCName == "Box"){
+            zhabka.GetComponent<NPCManager>().spawnedBox = GetComponent<Box>();
         }
     }
 }
