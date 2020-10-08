@@ -45,6 +45,7 @@ public class Box : MonoBehaviour
         UM.SetRedText("Win");
         ZH.doConstMaxSpeed = false;
         ZH.gameObject.GetComponent<CoinCollector>().AddCoins(reward);
+        PlayerPrefs.SetInt("SBox", 1);
         Invoke("EndEndFight", 3);
     }
 

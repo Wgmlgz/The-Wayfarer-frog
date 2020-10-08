@@ -123,7 +123,7 @@ public class ZhabaSelector : MonoBehaviour
 
         zh.canDoubleJump = false;
         zh.ignoreHead = false;
-        zh.hpLeft = 0;
+        zh.hpMax = 0;
         zh.rotMod = 1;
         zh.canFall = false;
         zh.gameObject.GetComponent<CoinCollector>().coinMult = 1;
@@ -134,7 +134,7 @@ public class ZhabaSelector : MonoBehaviour
         }
         else if (selectedN == 1)
         {
-            zh.hpLeft = 3;
+            zh.hpMax = 3;
         }
         else if (selectedN == 2)
         {
@@ -148,7 +148,7 @@ public class ZhabaSelector : MonoBehaviour
         else if (selectedN == 4)
         {
             zh.ignoreHead = true;
-            zh.hpLeft = 3;
+            zh.hpMax = 3;
         }
         else if (selectedN == 5)
         {
@@ -162,10 +162,10 @@ public class ZhabaSelector : MonoBehaviour
             zh.ignoreHead = true;
             zh.rotMod *= 2;
             zh.canFall = true;
-            zh.hpLeft = 3;
+            zh.hpMax = 3;
             zh.gameObject.GetComponent<CoinCollector>().coinMult *= 4;
         }
-
+        zh.RestoreLives();
         SetHatBonus();
     }
     public void LockToad(int j)

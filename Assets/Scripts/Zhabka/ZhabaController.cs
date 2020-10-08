@@ -36,6 +36,7 @@ public class ZhabaController : MonoBehaviour
         public bool canFall;
         public bool fly;
         public int hpLeft;
+        public int hpMax;
         public bool ignoreHead;
         //public float coinMod = 1f;
         public float rotMod = 1f;
@@ -436,5 +437,8 @@ public class ZhabaController : MonoBehaviour
     }
     public void Fast(){
         curSpeed = maxSpeed;
+    }
+    public void RestoreLives() {
+        hpLeft = hpMax;
     }
 }

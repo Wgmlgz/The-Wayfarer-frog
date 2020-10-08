@@ -17,8 +17,11 @@ public class NPCManager : MonoBehaviour
     public List<NPCInfo> whiteList;
 
     public Box spawnedBox;
+    public NPCInfo spawnedGod;
     public string place;
     public string oldPlace;
+
+    public int needToPray;
 
     public bool LifeRequest(NPCInfo d)
     {
@@ -28,6 +31,9 @@ public class NPCManager : MonoBehaviour
         {
             if (i.NPCName == d.NPCName)
             {
+                if (d.name == "Altar") {
+                    spawnedGod = d;
+                }
                 if (GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().GetDist(d.gameObject.transform) < i.spawnDistance) {
                     Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().GetDist(d.gameObject.transform));
                     Debug.Log(i.spawnDistance);
@@ -75,6 +81,24 @@ public class NPCManager : MonoBehaviour
     }
     void BoxEnd() {
         spawnedBox.EndFight();
+    }
+
+    public void GodPray(){
+        int prayTimes = PlayerPrefs.GetInt("PrayTimes");
+        prayTimes += 1;
+        if (prayTimes == needToPray) {
+            spawnedGod.gameObject.GetComponent<Dialog>().sequences[1].replicas[3] =
+            "Congratulations! You got the God's of the space stamp!";
+            PlayerPrefs.SetInt("SGod", 1);
+        } else if (prayTimes < needToPray) {
+            spawnedGod.gameObject.GetComponent<Dialog>().sequences[1].replicas[3] =
+            "You need to pray " + (needToPray - prayTimes).ToString() + " more times to get the God's of the space stamp";
+        } else {
+            spawnedGod.gameObject.GetComponent<Dialog>().sequences[1].replicas[3] =
+            "You already have the God's of the space stamp, and in total you prayed "
+            + prayTimes.ToString() + " times";
+        }
+        PlayerPrefs.SetInt("PrayTimes", prayTimes);
     }
 
 }

@@ -1731,7 +1731,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -7041,7 +7041,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -8081,7 +8081,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -11912,22 +11912,42 @@ PrefabInstance:
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[1].replicas.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[2].replicas.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[3].replicas.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[4].replicas.Array.size
-      value: 0
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -11957,27 +11977,27 @@ PrefabInstance:
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[1].firstSequence
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[2].firstSequence
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[2].secondSequence
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[3].firstSequence
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: sequences.Array.data[4].firstSequence
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -11993,6 +12013,206 @@ PrefabInstance:
         type: 3}
       propertyPath: sequences.Array.data[0].replicas.Array.data[2]
       value: Suddenly, in the sky you the god of the space.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[0]
+      value: '*Pray for the god of space*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[1]
+      value: '#2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[2]
+      value: Your prayer was answered.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[3]
+      value: You need to pray 2 more times to get the God's of the space stamp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[2].replicas.Array.data[0]
+      value: '*Talk to the god of space*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[2].replicas.Array.data[1]
+      value: Hi little frog!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[2].replicas.Array.data[2]
+      value: What did you want to ask me for?
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[2].replicas.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[2].replicas.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].replicas.Array.data[0]
+      value: Give me 50 coins please
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].replicas.Array.data[1]
+      value: Ok, bro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].replicas.Array.data[2]
+      value: '#0'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].replicas.Array.data[3]
+      value: These are your coins
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].replicas.Array.data[4]
+      value: Good luck, bro!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].replicas.Array.data[0]
+      value: Please restore my lives
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].replicas.Array.data[1]
+      value: Ok, bro
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].replicas.Array.data[2]
+      value: '#1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].replicas.Array.data[3]
+      value: Good luck, bro!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].replicas.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[3].secondSequence
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[4].secondSequence
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[4]
+      value: Good luck, bro!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].replicas.Array.data[5]
+      value: Good luck, bro!
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: sequences.Array.data[1].secondSequence
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2088037330}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddCoins
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5698814636306847127}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestoreLives
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2088037335}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GodPray
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: Events.Array.data[2].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274677, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -12288,7 +12508,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -13326,6 +13546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 730381714}
+  - component: {fileID: 730381715}
   m_Layer: 0
   m_Name: Keys
   m_TagString: Untagged
@@ -13354,6 +13575,23 @@ Transform:
   m_Father: {fileID: 879059763}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &730381715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 730381713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b3377a7cc295ed4ea7d33e9be817325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  god: {fileID: 12515502}
+  box: {fileID: 837666550}
+  triangle: {fileID: 0}
+  coin: {fileID: 0}
+  ok: {fileID: 0}
 --- !u!1001 &743192901
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42245,7 +42483,7 @@ MonoBehaviour:
     spawnOnce: 1
     isSpawned: 0
   - NPCName: Altar
-    spawnDistance: 500
+    spawnDistance: 10
     spawnOnce: 1
     isSpawned: 0
   - NPCName: Box
@@ -42257,8 +42495,10 @@ MonoBehaviour:
   - {fileID: 622247612}
   - {fileID: 2064288814}
   spawnedBox: {fileID: 0}
+  spawnedGod: {fileID: 0}
   place: 
   oldPlace: 
+  needToPray: 2
 --- !u!114 &2088037336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45735,6 +45975,7 @@ MonoBehaviour:
   canFall: 0
   fly: 0
   hpLeft: 0
+  hpMax: 0
   ignoreHead: 0
   rotMod: 1
   minSpeed: 20
