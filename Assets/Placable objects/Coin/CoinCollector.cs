@@ -40,7 +40,11 @@ public class CoinCollector : MonoBehaviour
     }
     public void AddCoins(int i = 1)
     {
-        ChangeCoins(i * coinMult);
+        if (i < 0) {
+            ChangeCoins(i);
+        } else {
+            ChangeCoins(i * coinMult);
+        }
     }
     public void ChangeCoins(int c = 0)
     {
@@ -53,6 +57,9 @@ public class CoinCollector : MonoBehaviour
         }
         
         timeLeft = timeLeftMax;
+        if (Time.timeSinceLevelLoad < 1f) {
+            timeLeft = -1f;
+        }
         onCoinsValueChanged.Invoke();
     }
     private void Update()

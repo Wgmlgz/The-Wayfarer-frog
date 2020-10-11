@@ -18,7 +18,9 @@ public class Upgrade : MonoBehaviour
     public bool forRS;
     public bool forHP;
     public bool forAC;
-
+    public bool forSL;
+    public bool forMS;
+    public bool forMC;
     private ZhabaController ZH;
     private CoinCollector CN;
 
@@ -49,6 +51,15 @@ public class Upgrade : MonoBehaviour
         }
         if (forAC) {
             ZH.speedUp = val;
+        }
+        if (forSL) {
+            ZH.heartSpawnChance = val;
+        }
+        if (forMS) {
+            ZH.startMaxSpeed = valInt;
+        }
+        if (forMC) {
+            ZH.megaCoinSpawnChance = val;
         }
     }
     void SetBoxes(){

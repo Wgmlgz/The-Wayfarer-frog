@@ -753,6 +753,8 @@ MonoBehaviour:
   maxGO: {fileID: 2770750277573502409}
   forRS: 0
   forHP: 0
+  forAC: 0
+  forSL: 0
 --- !u!1 &5282021287365031552
 GameObject:
   m_ObjectHideFlags: 0

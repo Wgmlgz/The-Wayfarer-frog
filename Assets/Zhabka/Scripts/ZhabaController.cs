@@ -42,6 +42,7 @@ public class ZhabaController : MonoBehaviour
         public bool ignoreHead;
 
         public float heartSpawnChance = 0f;
+        public float megaCoinSpawnChance = 0f;
         //public float coinMod = 1f;
         public float rotMod = 1f;
 
@@ -275,7 +276,8 @@ public class ZhabaController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space) || inputA)
             {
-                ToGame();
+                Debug.Log("ToGameAAAA");
+                Continue();
                 //Jump();
             }
             sandParticles.Pause();
@@ -291,7 +293,8 @@ public class ZhabaController : MonoBehaviour
         {
             body.transform.rotation = transform.rotation;
         }
-        gameCam.m_Lens.OrthographicSize = Mathf.Lerp(gameCam.m_Lens.OrthographicSize, ((curSpeed + camSize) * camMult), camSmooth * Time.deltaTime);
+        gameCam.m_Lens.OrthographicSize =
+            Mathf.Lerp(gameCam.m_Lens.OrthographicSize, ((curSpeed + camSize) * camMult), camSmooth * Time.deltaTime);
         Vector3 tmp = gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         tmp.x = gameCam.m_Lens.OrthographicSize * offsetFactor;
         gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = tmp;
@@ -316,6 +319,7 @@ public class ZhabaController : MonoBehaviour
     {
         if (stopPlay) return;
         isPlaying = true;
+        Debug.Log("ToGame");
         sceneCam.gameObject.SetActive(false);
         gameCam.gameObject.SetActive(true);
 
@@ -457,5 +461,6 @@ public class ZhabaController : MonoBehaviour
         if (hpLeft > 14) {
             hpLeft = 14;
         }
+        UIM.AddLiveAnim();
     }
 }

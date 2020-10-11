@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Coin : MonoBehaviour
 {
+    public int coins = 1;
     [SerializeField] Vector2 collectForce = new Vector2(0, 500f);
     private bool collected;
 
@@ -37,7 +38,7 @@ public class Coin : MonoBehaviour
         {
 
             collected = true;
-            collision.GetComponent<CoinCollector>().AddCoins();
+            collision.GetComponent<CoinCollector>().AddCoins(coins);
 
             Collect();
             Invoke("VihodVOkno", 5);

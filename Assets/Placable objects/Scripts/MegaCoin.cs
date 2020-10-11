@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Heart : MonoBehaviour
-{
+public class MegaCoin : MonoBehaviour {
     private ZhabaController ZH;
 
-    private void Start() {
+    private void Awake() {
         ZH = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
-        GetComponent<RandomActivator>().chance = ZH.heartSpawnChance;
+        GetComponent<RandomActivator>().chance = ZH.megaCoinSpawnChance;
+        GetComponent<RandomActivator>().Refresh();
     }
 }

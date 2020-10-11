@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3395238674942732945}
   - component: {fileID: 3395238674942732950}
   m_Layer: 5
-  m_Name: 1
+  m_Name: UIHeart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -87,6 +87,7 @@ Animation:
   m_Animation: {fileID: 7400000, guid: aeb5ded2a1db395469308df64e95e264, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: aeb5ded2a1db395469308df64e95e264, type: 2}
+  - {fileID: 7400000, guid: 982ac44e8447bd64b88c83fb574fff55, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0

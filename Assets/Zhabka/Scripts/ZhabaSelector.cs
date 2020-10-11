@@ -129,7 +129,7 @@ public class ZhabaSelector : MonoBehaviour
         }
         else if (selectedN == 1)
         {
-            zh.hpMaxToad = 3;
+            zh.hpMaxToad = 2;
         }
         else if (selectedN == 2)
         {
@@ -143,7 +143,7 @@ public class ZhabaSelector : MonoBehaviour
         else if (selectedN == 4)
         {
             zh.ignoreHead = true;
-            zh.hpMaxToad = 3;
+            zh.hpMaxToad = 1;
         }
         else if (selectedN == 5)
         {
@@ -182,8 +182,6 @@ public class ZhabaSelector : MonoBehaviour
         selectedHat = j;
         PlayerPrefs.SetInt("SelectedHat", j);
 
-        
-        
         SelectToad(selectedN);
     }
     void SetHatBonus()
@@ -211,7 +209,7 @@ public class ZhabaSelector : MonoBehaviour
         }
         else if (selectedHat == 1)
         {
-
+            zh.hpMaxHat += 1;
         }
         else if (selectedHat == 2)
         {

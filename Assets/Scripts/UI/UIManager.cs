@@ -55,6 +55,7 @@ public class UIManager : MonoBehaviour
     public void ShowHp()
     {
         lastHpActive = hpVisibleTime;
+        //acitveHeart = ZH.hpLeft - 1;
         for (int i = 0; i < 15; ++i)
         {
             hearts[i].SetActive(i <= acitveHeart + 1 && i < maxHp);
@@ -96,5 +97,11 @@ public class UIManager : MonoBehaviour
 
     public void HedeRedText () {
         redText.gameObject.SetActive(false);
+    }
+
+    public void AddLiveAnim () {
+        maxHp++;
+        acitveHeart++;
+        hearts[acitveHeart].GetComponent<Animation>().Play("HpAdd");
     }
 }
