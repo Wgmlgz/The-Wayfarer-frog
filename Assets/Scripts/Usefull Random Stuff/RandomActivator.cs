@@ -9,6 +9,9 @@ public class RandomActivator : MonoBehaviour
 
     public void Refresh()
     {
+        if (Time.timeSinceLevelLoad < 1f) {
+            return;
+        }
         if (variations.Length <= 0)
         {
             gameObject.SetActive(Random.value < chance);
