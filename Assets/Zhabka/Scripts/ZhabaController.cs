@@ -62,6 +62,9 @@ public class ZhabaController : MonoBehaviour
         public float rotationSpeed = 1f;
         public float rotationSpeedAuto = 1f;
 
+        public bool doCustomRotDir;
+        public Vector2 customRotDir;
+
     [Header("smooth")]
         public float angleSmooth = 1f;
         public float posSmooth = 1f;
@@ -250,9 +253,11 @@ public class ZhabaController : MonoBehaviour
                 }
                 else
                 {
+                    Vector2 tmpRotDir = RB.velocity;
+                    if (doCustomRotDir) tmpRotDir = customRotDir;
                     body.transform.rotation =
                         Quaternion.Lerp(body.transform.rotation,
-                        Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward),
+                        Quaternion.AngleAxis(Mathf.Atan2(tmpRotDir.y, tmpRotDir.x) * Mathf.Rad2Deg, Vector3.forward),
                         Time.deltaTime * rotationSpeedAuto);
                 }
             }

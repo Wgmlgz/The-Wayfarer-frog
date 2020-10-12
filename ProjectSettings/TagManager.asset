@@ -7,6 +7,7 @@ TagManager:
   - GameOverlay
   - AudioManager
   - Ground
+  - ZhabkaBody
   layers:
   - Default
   - TransparentFX
