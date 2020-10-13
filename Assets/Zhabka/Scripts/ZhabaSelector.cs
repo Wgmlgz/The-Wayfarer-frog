@@ -155,7 +155,7 @@ public class ZhabaSelector : MonoBehaviour
         {
             zh.canDoubleJump = true;
             zh.ignoreHead = true;
-            zh.rotMod *= 2;
+            zh.rotMod *= 1.5f;;
             zh.canFall = true;
             zh.hpMaxToad = 3;
             zh.gameObject.GetComponent<CoinCollector>().coinMult *= 4;
@@ -205,7 +205,7 @@ public class ZhabaSelector : MonoBehaviour
 
         if (selectedHat == 0)
         {
-            zh.rotMod *= 2;
+            zh.rotMod *= 1.5f;;
         }
         else if (selectedHat == 1)
         {

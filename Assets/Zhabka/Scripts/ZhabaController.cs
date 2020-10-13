@@ -98,8 +98,7 @@ public class ZhabaController : MonoBehaviour
     }
     void Start()
     {
-        secondLifes = PlayerPrefs.GetInt("SL");
-        //RB.velocity = new Vector2(minSpeed, 0f);
+
     }
     private void FixedUpdate()
     {
@@ -281,9 +280,13 @@ public class ZhabaController : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.Space) || inputA)
             {
-                Debug.Log("ToGameAAAA");
-                Continue();
-                //Jump();
+                if (stopPlay) {
+
+                } else {
+                    Debug.Log("ToGameAAAA");
+                    Continue();
+                    //Jump();
+                }
             }
             sandParticles.Pause();
             RB.simulated = false;
@@ -294,6 +297,7 @@ public class ZhabaController : MonoBehaviour
     }
     private void LateUpdate()
     {
+        if (curSpeed > maxSpeed) curSpeed = maxSpeed;
         if (clipMode)
         {
             body.transform.rotation = transform.rotation;
@@ -342,6 +346,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void Death(string s = "ded")
     {
+        Debug.Log("death");
         if (isGod) return;
 
         if(s == "cactus")
@@ -354,6 +359,7 @@ public class ZhabaController : MonoBehaviour
         }
 
         hpLeft--;
+        curSpeed = minSpeed;
         if (hpLeft >= 0) {
             UIM.RemoveHeart();
             return;
@@ -372,6 +378,10 @@ public class ZhabaController : MonoBehaviour
         DUI.SetLine(1, t2 / t3);
 
         onDeath.Invoke();
+    }
+    public void InstantDeath () {
+        hpLeft = 0;
+        Death("Instant"); 
     }
     public void SetTimeScale(float i)
     {
@@ -459,6 +469,7 @@ public class ZhabaController : MonoBehaviour
     }
     public void RestoreLives() {
         hpLeft = hpMax + hpMaxHat + hpMaxToad;
+        UIM.SetupHearts(hpLeft + 1);
     }
 
     public void AddLife() {
