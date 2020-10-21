@@ -7,6 +7,7 @@ using UnityEngine;
 public class Biom
 {
     public string name;
+    public bool canGen;
     public int minBiomSize = 2;
     public int maxBiomSize = 5;
     public List<GameObject> tiles;
@@ -40,10 +41,13 @@ public class TileGenerator : MonoBehaviour
 
         return Random.Range(minV, maxV);
     }
-    public void ChangeBiom(int i = -1)
-    {
+    public void ChangeBiom(int i = -1) {
         if(i == -1){
-            currentBiom = RandomInt(0, BiomsCount);   
+            currentBiom = RandomInt(0, bioms.Length);
+            if (bioms[currentBiom].canGen == false) {
+                ChangeBiom();
+                return;
+            }
         }
         else
         {

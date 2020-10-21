@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 8925839882837754599}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 0.1, z: 0}
   m_Children: []
   m_Father: {fileID: 8925839884005983790}
   m_RootOrder: 0
@@ -222,7 +222,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 0.20497617, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -284,7 +284,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 5
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -667,7 +667,7 @@ ParticleSystem:
     donutRadius: 0.2
     m_Position: {x: 10, y: 0, z: 0}
     m_Rotation: {x: 0, y: -90, z: 0}
-    m_Scale: {x: 0, y: 457.1, z: 22.69}
+    m_Scale: {x: 0, y: 457.1, z: 45.38}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 30
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -4854,7 +4854,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e1333d334db53794cab4ba17f05814b2, type: 3}
-  m_Color: {r: 0.5235849, g: 0.7589756, b: 1, a: 0.050980393}
+  m_Color: {r: 0.5235849, g: 0.7589756, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4877,6 +4877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  velocity: 10
+  velocity: 30
   PS: {fileID: 0}
-  customRotDir: {x: 1, y: -1}
+  customRotDir: {x: 1, y: -3}

@@ -55,7 +55,7 @@ public class ZhabaController : MonoBehaviour
         public float maxXSpeedDist = 1000;
         public float speedUp = 0.1f;
 
-        private float jumpTime = 0f;
+        [HideInInspector] public float jumpTime = 0f;
         public float maxjumpTime = 1f;
         public float jumpHieght = 10;
 
@@ -138,7 +138,8 @@ public class ZhabaController : MonoBehaviour
 
                 //raycast
                 RaycastHit2D[] hitAll = Physics2D.RaycastAll(
-                    transform.rotation * Vector3.up * 5 + transform.rotation.normalized * Vector2.right * curSpeed * Time.deltaTime + transform.position,
+                    transform.rotation * Vector3.up * 5 +
+                    transform.rotation.normalized * Vector2.right * curSpeed * Time.deltaTime + transform.position,
                     (transform.rotation * -Vector3.up)
                 );
                 RaycastHit2D hit = new RaycastHit2D();
@@ -230,23 +231,23 @@ public class ZhabaController : MonoBehaviour
                     }
                     else if (flipTmp > 1260 && lastFFlipTmp < 1260)
                     {
-                        GetComponent<Score>().AddScore(50, "flip flip flip flip");
+                        GetComponent<Score>().AddScore(30, "flip flip flip flip");
                     }
                     else if (flipTmp > 1560 && lastFFlipTmp < 1560)
                     {
-                        GetComponent<Score>().AddScore(100, "5 flips");
+                        GetComponent<Score>().AddScore(30, "5 flips");
                     }
                     else if (flipTmp > 1860 && lastFFlipTmp < 1860)
                     {
-                        GetComponent<Score>().AddScore(200, "6 flips");
+                        GetComponent<Score>().AddScore(30, "6 flips");
                     }
                     else if (flipTmp > 2160 && lastFFlipTmp < 2160)
                     {
-                        GetComponent<Score>().AddScore(500, "7 flips");
+                        GetComponent<Score>().AddScore(30, "7 flips");
                     }
                     else if (flipTmp > 2460 && lastFFlipTmp < 2460)
                     {
-                        GetComponent<Score>().AddScore(1000, "8 flips");
+                        GetComponent<Score>().AddScore(30, "8 flips");
                     }
                     lastFFlipTmp = flipTmp;
                 }

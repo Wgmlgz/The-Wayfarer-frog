@@ -6,16 +6,19 @@ public class Wind : MonoBehaviour
 {
     Vector2 direction;
     float force;
-    public bool active;
+    public bool active = false;
     [Range(0, 1000f)]public float velocity;
     private GameObject ZHB;
     private GameObject ZH;
+    private ZhabaController ZHC;
     public ParticleSystem PS;
     public Vector2 customRotDir;
     
     private void Awake() {
         ZHB = GameObject.FindGameObjectWithTag("ZhabkaBody");
         ZH = GameObject.FindGameObjectWithTag("Player");
+        PS = GameObject.FindGameObjectWithTag("WindParticles").GetComponent<ParticleSystem>();
+        ZHC = ZH.GetComponent<ZhabaController>();
     }
 
     public void ToActive (){
@@ -29,14 +32,16 @@ public class Wind : MonoBehaviour
         active = false;
         ZH.GetComponent<ZhabaController>().doCustomRotDir = false;
         ZH.GetComponent<Rigidbody2D>().gravityScale = 6f;
+
+        var emission = PS.emission;
+        emission.rateOverTime = 0;
         //ZH.GetComponent<ZhabaController>().customRotDir = customRotDir;
     }
     private void Update() {
         if (active) {
             ApplyForce();
         } else {
-            var emission = PS.emission;
-            emission.rateOverTime = 0;
+
         }
     }
     public void ApplyForce(){
@@ -46,21 +51,25 @@ public class Wind : MonoBehaviour
             angle /= 45f;
             if (angle > 1) angle = 1 - (angle - 1);
             angle *= 1.3f;
-            angle -= 0.3f;
+            angle -= .3f;
         } else {
             angle = 0;
         }
 
         var emission = PS.emission;
-        if (angle > 0) {
+        if (angle > 0 && ZHC.jumpTime > ZHC.maxjumpTime) {
             ZH.GetComponent<Rigidbody2D>().velocity =
-            new Vector2(ZH.GetComponent<Rigidbody2D>().velocity.x, angle * velocity);
+            new Vector2(
+                Mathf.Lerp(ZH.GetComponent<Rigidbody2D>().velocity.x,
+                    ZH.GetComponent<ZhabaController>().minSpeed,
+                    Time.deltaTime * 0.5f),
+                angle * velocity);
             emission.rateOverTime = 80f * angle + 20;
         } else {
             emission.rateOverTime = 0;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerStay2D(Collider2D collision) {
         if (collision.gameObject == ZH) {
             ToActive();
         }
