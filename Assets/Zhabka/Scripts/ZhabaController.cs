@@ -12,9 +12,11 @@ public class ZhabaController : MonoBehaviour
         public bool stopPlay = false;
         public bool clipMode = false;
         public LayerMask ground;
+        public LayerMask mountains;
         public UnityEvent onPlay;
         public UnityEvent onDeath;
-        
+        public float actualCurSpeed;
+
 
     [Header("gameplay control")]
         public float deathAngle;
@@ -88,31 +90,21 @@ public class ZhabaController : MonoBehaviour
         
     //private
         private Rigidbody2D RB;
-        public Vector2 tmpVelosity;
-        public Vector3 lastUpdateFramePos;
+        private Vector2 tmpVelosity;
+        private Vector3 lastUpdateFramePos;
+        private float lastDeath;
         private bool inputA;
 
-    private void Awake()
-    {
+    private void Awake() {
         RB = GetComponent<Rigidbody2D>();
     }
-    void Start()
-    {
-
-    }
-    private void FixedUpdate()
-    {
-
-    }
-    void Update()
-    {
-        if (isPlaying)
-        {
+    void Update() {
+        if (isPlaying) {
             jumpTime += Time.deltaTime;
+            lastDeath += Time.deltaTime;
             RB.simulated = true;
             
-            if (clipMode)
-            {
+            if (clipMode) {
                 flipTmp = 0;
                 lastFFlipTmp = 0;
 
@@ -143,8 +135,7 @@ public class ZhabaController : MonoBehaviour
                     (transform.rotation * -Vector3.up)
                 );
                 RaycastHit2D hit = new RaycastHit2D();
-                foreach (RaycastHit2D i in hitAll)
-                {
+                foreach (RaycastHit2D i in hitAll) {
                     if (i.transform.gameObject.CompareTag("Ground"))
                     {
                         hit = i;
@@ -158,14 +149,12 @@ public class ZhabaController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(transform.rotation, tq, Time.deltaTime * angleSmooth);
 
                 //if jump
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
+                if (Input.GetKeyDown(KeyCode.Space)) {
                     Jump();
                 }
                 tmpVelosity = (1f / Time.deltaTime) * (transform.position - lastUpdateFramePos);
             }
-            else
-            {
+            else {
                 if (doConstVelosity) Fall();
                 GetComponent<Score>().cleanScoreTime = 9999;
 
@@ -181,15 +170,12 @@ public class ZhabaController : MonoBehaviour
                 //RB.velocity = RB.velocity.normalized * minSpeed;
 
                 Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
-                if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(ground))
-                {
+                if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(ground)) {
                     //death check
                     RaycastHit2D[] hitAll = Physics2D.RaycastAll(transform.rotation * Vector3.up * 5, (transform.rotation * -Vector3.up));
                     RaycastHit2D hit = new RaycastHit2D();
-                    foreach (RaycastHit2D i in hitAll)
-                    {
-                        if (i.transform.gameObject.CompareTag("Ground"))
-                        {
+                    foreach (RaycastHit2D i in hitAll) {
+                        if (i.transform.gameObject.CompareTag("Ground")) {
                             hit = i;
                             break;
                         }
@@ -201,8 +187,7 @@ public class ZhabaController : MonoBehaviour
                     );
 
 
-                    if (jumpTime > maxjumpTime)
-                    {
+                    if (jumpTime > maxjumpTime) {
                         float t = body.transform.rotation.eulerAngles.z;
                         if (t > 180) t = 360 - t;
                         if (t > deathAngle) Death("head");
@@ -212,47 +197,36 @@ public class ZhabaController : MonoBehaviour
                         clipMode = true;
                     }
                 }
-                else if (Input.GetKey(KeyCode.Space) || inputA)
-                {
+                else if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(mountains)) {
+                    Jump();
+                    jumpTime = 0f;
+                    RB.velocity = new Vector2(minSpeed, 100);
+                    Death();
+                }
+                else if (Input.GetKey(KeyCode.Space) || inputA) {
                     body.transform.rotation = Quaternion.Euler(0, 0, body.transform.rotation.eulerAngles.z + rotationSpeed * Time.deltaTime * rotMod);
                     flipTmp += (rotationSpeed * Time.deltaTime * rotMod);
-                    if (flipTmp > 300 && lastFFlipTmp < 300)
-                    {
+                    if (flipTmp > 300 && lastFFlipTmp < 300) {
                         GetComponent<Score>().AddScore(10, "flip");
-                        //flipTmp = 0;
-                    }
-                    else if (flipTmp > 630 && lastFFlipTmp < 630)
-                    {
+                    } else if (flipTmp > 630 && lastFFlipTmp < 630) {
                         GetComponent<Score>().AddScore(15, "double flip");
-                    }
-                    else if (flipTmp > 960 && lastFFlipTmp < 960)
-                    {
+                    } else if (flipTmp > 960 && lastFFlipTmp < 960) {
                         GetComponent<Score>().AddScore(30, "flip flip flip");
-                    }
-                    else if (flipTmp > 1260 && lastFFlipTmp < 1260)
-                    {
+                    } else if (flipTmp > 1260 && lastFFlipTmp < 1260) {
                         GetComponent<Score>().AddScore(30, "flip flip flip flip");
-                    }
-                    else if (flipTmp > 1560 && lastFFlipTmp < 1560)
-                    {
+                    } else if (flipTmp > 1560 && lastFFlipTmp < 1560) {
                         GetComponent<Score>().AddScore(30, "5 flips");
-                    }
-                    else if (flipTmp > 1860 && lastFFlipTmp < 1860)
-                    {
+                    } else if (flipTmp > 1860 && lastFFlipTmp < 1860) {
                         GetComponent<Score>().AddScore(30, "6 flips");
-                    }
-                    else if (flipTmp > 2160 && lastFFlipTmp < 2160)
-                    {
+                    } else if (flipTmp > 2160 && lastFFlipTmp < 2160) {
                         GetComponent<Score>().AddScore(30, "7 flips");
-                    }
-                    else if (flipTmp > 2460 && lastFFlipTmp < 2460)
-                    {
+                    } else if (flipTmp > 2460 && lastFFlipTmp < 2460) {
                         GetComponent<Score>().AddScore(30, "8 flips");
                     }
+
                     lastFFlipTmp = flipTmp;
                 }
-                else
-                {
+                else {
                     Vector2 tmpRotDir = RB.velocity;
                     if (doCustomRotDir) tmpRotDir = customRotDir;
                     body.transform.rotation =
@@ -277,14 +251,11 @@ public class ZhabaController : MonoBehaviour
             }
             cameraPoint.transform.position = Vector3.Lerp(cameraPoint.transform.position, hitCam.point, camSmooth * Time.deltaTime);*/
         }
-        else
-        {
-            if (Input.GetKey(KeyCode.Space) || inputA)
-            {
+        else {
+            if (Input.GetKey(KeyCode.Space) || inputA) {
                 if (stopPlay) {
 
                 } else {
-                    Debug.Log("ToGameAAAA");
                     Continue();
                     //Jump();
                 }
@@ -299,12 +270,14 @@ public class ZhabaController : MonoBehaviour
     private void LateUpdate()
     {
         if (curSpeed > maxSpeed) curSpeed = maxSpeed;
-        if (clipMode)
-        {
+        actualCurSpeed = curSpeed;
+        if (clipMode) {
             body.transform.rotation = transform.rotation;
+        } else {
+            actualCurSpeed = RB.velocity.magnitude;
         }
         gameCam.m_Lens.OrthographicSize =
-            Mathf.Lerp(gameCam.m_Lens.OrthographicSize, ((curSpeed + camSize) * camMult), camSmooth * Time.deltaTime);
+            Mathf.Lerp(gameCam.m_Lens.OrthographicSize, ((actualCurSpeed + camSize) * camMult), camSmooth * Time.deltaTime);
         Vector3 tmp = gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         tmp.x = gameCam.m_Lens.OrthographicSize * offsetFactor;
         gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = tmp;
@@ -348,6 +321,8 @@ public class ZhabaController : MonoBehaviour
     public void Death(string s = "ded")
     {
         Debug.Log("death");
+        if (lastDeath < 1) return;
+        else lastDeath = 0;
         if (isGod) return;
 
         if(s == "cactus")
@@ -428,7 +403,7 @@ public class ZhabaController : MonoBehaviour
         if (hieght == -1f)
         {
             tmpScore = GetComponent<Score>().score;
-            //GetComponent<Score>().AddScore(5, "jump");
+            GetComponent<Score>().AddScore(1, "jump");
             tmpVelosity.y = jumpHieght;
         }
         else if (hieght == 0f)

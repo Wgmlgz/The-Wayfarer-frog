@@ -1212,7 +1212,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -1445,9 +1445,9 @@ ParticleSystem:
         m_RotationOrder: 4
     startColor:
       serializedVersion: 2
-      minMaxState: 2
+      minMaxState: 0
       minColor: {r: 1, g: 0.33490568, b: 0.33490568, a: 1}
-      maxColor: {r: 1, g: 0.5540099, b: 0.514151, a: 1}
+      maxColor: {r: 0.5566038, g: 0.5566038, b: 0.5566038, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1509,7 +1509,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.07
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -1826,7 +1826,7 @@ ParticleSystem:
         m_RotationOrder: 4
     randomizeRotationDirection: 0
     maxNumParticles: 1000
-    size3D: 1
+    size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -2196,7 +2196,7 @@ ParticleSystem:
     m_BurstCount: 0
     m_Bursts: []
   SizeModule:
-    enabled: 0
+    enabled: 1
     curve:
       serializedVersion: 2
       minMaxState: 1
@@ -2207,22 +2207,22 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 1
-          tangentMode: 0
-          weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
-        - serializedVersion: 3
-          time: 1
           value: 1
-          inSlope: 1
+          inSlope: 0
           outSlope: 0
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.33333334
-          outWeight: 0.33333334
+          inWeight: 0
+          outWeight: 0
+        - serializedVersion: 3
+          time: 1
+          value: 0
+          inSlope: -2
+          outSlope: -2
+          tangentMode: 0
+          weightedMode: 0
+          inWeight: 0
+          outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
@@ -3293,7 +3293,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 0
+    inWorldSpace: 1
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -10737,7 +10737,7 @@ GameObject:
   - component: {fileID: 326252072}
   - component: {fileID: 326252071}
   - component: {fileID: 326252070}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile4
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -22514,7 +22514,7 @@ GameObject:
   - component: {fileID: 921998165}
   - component: {fileID: 921998164}
   - component: {fileID: 921998163}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile0
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -24800,7 +24800,7 @@ GameObject:
   - component: {fileID: 980499045}
   - component: {fileID: 980499044}
   - component: {fileID: 980499043}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile1
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -33379,7 +33379,7 @@ GameObject:
   - component: {fileID: 1218623296}
   - component: {fileID: 1218623295}
   - component: {fileID: 1218623294}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile3
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -34376,8 +34376,8 @@ MonoBehaviour:
   bioms:
   - name: Desert
     canGen: 1
-    minBiomSize: 1
-    maxBiomSize: 2
+    minBiomSize: 10
+    maxBiomSize: 50
     tiles:
     - {fileID: 416899943}
     - {fileID: 965320149}
@@ -34414,8 +34414,8 @@ MonoBehaviour:
     - {fileID: 525644645}
   - name: Mountains
     canGen: 1
-    minBiomSize: 1
-    maxBiomSize: 2
+    minBiomSize: 5
+    maxBiomSize: 20
     tiles:
     - {fileID: 921998161}
     - {fileID: 980499041}
@@ -34998,7 +34998,7 @@ GameObject:
   - component: {fileID: 1293131377}
   - component: {fileID: 1293131376}
   - component: {fileID: 1293131375}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile5
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -40698,7 +40698,7 @@ GameObject:
   - component: {fileID: 1588622968}
   - component: {fileID: 1588622967}
   - component: {fileID: 1588622966}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile6
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -42922,7 +42922,7 @@ GameObject:
   - component: {fileID: 1672801049}
   - component: {fileID: 1672801048}
   - component: {fileID: 1672801047}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: MountainTile2
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -54723,6 +54723,9 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 256
+  mountains:
+    serializedVersion: 2
+    m_Bits: 512
   onPlay:
     m_PersistentCalls:
       m_Calls:
@@ -54784,6 +54787,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  actualCurSpeed: 0
   deathAngle: 80
   flipTmp: 0
   lastFFlipTmp: 0
@@ -54823,7 +54827,7 @@ MonoBehaviour:
   customRotDir: {x: 0, y: 0}
   angleSmooth: 10
   posSmooth: 20
-  camSmooth: 1
+  camSmooth: 0.2
   body: {fileID: 952302350}
   sandParticles: {fileID: 1177141410}
   sceneCam: {fileID: 133327639}
@@ -54833,8 +54837,6 @@ MonoBehaviour:
   offsetFactor: 1.5
   DUI: {fileID: 479798948}
   UIM: {fileID: 1288166110}
-  tmpVelosity: {x: 0, y: 0}
-  lastUpdateFramePos: {x: 0, y: 0, z: 0}
 --- !u!4 &5889451172359420449
 Transform:
   m_ObjectHideFlags: 0

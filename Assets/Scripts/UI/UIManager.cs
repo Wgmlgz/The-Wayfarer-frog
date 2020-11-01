@@ -87,7 +87,8 @@ public class UIManager : MonoBehaviour
             HideHp();
         }
 
-        speedVis.value = (float)(ZH.curSpeed - ZH.minSpeed) / (ZH.maxSpeed - ZH.minSpeed);
+        speedVis.value = (float)(ZH.actualCurSpeed - ZH.minSpeed) / (ZH.maxSpeed - ZH.minSpeed);
+        if (ZH.clipMode == false) speedVis.value = 0;
     }
 
     public void SetRedText (string s) {

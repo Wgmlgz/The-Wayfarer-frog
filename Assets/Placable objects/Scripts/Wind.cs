@@ -13,6 +13,9 @@ public class Wind : MonoBehaviour
     private ZhabaController ZHC;
     public ParticleSystem PS;
     public Vector2 customRotDir;
+
+
+    private float timeLastTouch;
     
     private void Awake() {
         ZHB = GameObject.FindGameObjectWithTag("ZhabkaBody");
@@ -21,7 +24,7 @@ public class Wind : MonoBehaviour
         ZHC = ZH.GetComponent<ZhabaController>();
     }
 
-    public void ToActive (){
+    public void ToActive () {
         active = true;
         ZH.GetComponent<ZhabaController>().doCustomRotDir = true;
         ZH.GetComponent<ZhabaController>().customRotDir = customRotDir;
@@ -44,17 +47,31 @@ public class Wind : MonoBehaviour
 
         }
     }
-    public void ApplyForce(){
+    public void ApplyForce() {
+        timeLastTouch -= Time.deltaTime;
+        // calc angle factor
         float angle = ZHB.transform.rotation.eulerAngles.z;
-
         if (angle < 90f) {
             angle /= 45f;
             if (angle > 1) angle = 1 - (angle - 1);
-            angle *= 1.3f;
-            angle -= .3f;
+            //angle *= 1.3f;
+            //angle -= .3f;
         } else {
             angle = 0;
         }
+
+        // calc dist factor
+        var zhp = ZH.transform.position;
+        //RaycastHit2D[] hitAll = Physics2D.RaycastAll(zhp, (-Vector3.up) + zhp);
+        //RaycastHit2D hit = new RaycastHit2D();
+        //foreach (RaycastHit2D i in hitAll) {
+        //    if (i.transform.gameObject.CompareTag("Ground")) {
+        //        hit = i;
+        //        break;
+        //    }
+        //}
+        //float distFactor = Vector2.Distance(hit.transform.position, zhp);
+        //Debug.Log(distFactor);
 
         var emission = PS.emission;
         if (angle > 0 && ZHC.jumpTime > ZHC.maxjumpTime) {
@@ -63,7 +80,9 @@ public class Wind : MonoBehaviour
                 Mathf.Lerp(ZH.GetComponent<Rigidbody2D>().velocity.x,
                     ZH.GetComponent<ZhabaController>().minSpeed,
                     Time.deltaTime * 0.5f),
-                angle * velocity);
+                angle * velocity
+                //* distFactor
+                );
             emission.rateOverTime = 80f * angle + 20;
         } else {
             emission.rateOverTime = 0;
