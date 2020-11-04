@@ -4877,6 +4877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  velocity: 30
+  velocity: 40
   PS: {fileID: 0}
   customRotDir: {x: 1, y: -3}

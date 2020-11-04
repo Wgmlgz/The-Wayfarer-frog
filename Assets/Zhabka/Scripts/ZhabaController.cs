@@ -136,8 +136,14 @@ public class ZhabaController : MonoBehaviour
                 );
                 RaycastHit2D hit = new RaycastHit2D();
                 foreach (RaycastHit2D i in hitAll) {
-                    if (i.transform.gameObject.CompareTag("Ground"))
-                    {
+                    if (i.transform.gameObject.CompareTag("Ground")) {
+                        if (i.transform.gameObject.layer == 9) {
+                            Jump();
+                            jumpTime = 0f;
+                            RB.velocity = new Vector2(minSpeed, 100);
+                            Death();
+                        }
+                        Debug.Log(i.transform.gameObject.layer.ToString());
                         hit = i;
                         break;
                     }
@@ -267,8 +273,7 @@ public class ZhabaController : MonoBehaviour
         body.transform.position = Vector3.Lerp(body.transform.position, transform.position, posSmooth * Time.deltaTime);
         lastUpdateFramePos = transform.position;
     }
-    private void LateUpdate()
-    {
+    private void LateUpdate() {
         if (curSpeed > maxSpeed) curSpeed = maxSpeed;
         actualCurSpeed = curSpeed;
         if (clipMode) {
@@ -290,16 +295,13 @@ public class ZhabaController : MonoBehaviour
         }
         //head.transform.rotation = body.transform.rotation;
     }
-    public void SetToGod(bool b = true)
-    {
+    public void SetToGod(bool b = true) {
         isGod = b;
     }
-    public void SetToPlaying()
-    {
+    public void SetToPlaying() {
         isPlaying = true;
     }
-    public void ToGame()
-    {
+    public void ToGame() {
         if (stopPlay) return;
         isPlaying = true;
         Debug.Log("ToGame");
@@ -311,15 +313,14 @@ public class ZhabaController : MonoBehaviour
         UIM.SetupHearts(hpLeft + 1);
         onPlay.Invoke();
     }
-    public void Continue(){
+    public void Continue() {
         isPlaying = true;
 
         RB.velocity = new Vector2(minSpeed, 0f);
 
         onPlay.Invoke();
     }
-    public void Death(string s = "ded")
-    {
+    public void Death(string s = "ded") {
         Debug.Log("death");
         if (lastDeath < 1) return;
         else lastDeath = 0;
@@ -418,25 +419,20 @@ public class ZhabaController : MonoBehaviour
         //RB.velocity = (RB.velocity + (Vector2)(Vector3.up * jumpHieght));
         jumpTime = 0f;
     }
-    public void InputAOn()
-    {
+    public void InputAOn() {
         inputA = true;
     }
-    public void InputAOff()
-    {
+    public void InputAOff() {
         inputA = false;
     }
-    public void SetIsPlay(bool b)
-    {
+    public void SetIsPlay(bool b) {
         isPlaying = b;
     }
-    public void Fall()
-    {
+    public void Fall() {
         if (!canFall) return;
         transform.rotation = Quaternion.identity;
         clipMode = true;
     }
-
     public void Slow(){
         curSpeed = minSpeed;
     }
@@ -447,7 +443,6 @@ public class ZhabaController : MonoBehaviour
         hpLeft = hpMax + hpMaxHat + hpMaxToad;
         UIM.SetupHearts(hpLeft + 1);
     }
-
     public void AddLife() {
         hpLeft += 1;
         if (hpLeft > 14) {
