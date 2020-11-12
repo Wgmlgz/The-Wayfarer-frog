@@ -24,12 +24,10 @@ public class DeathUi : MonoBehaviour
     public void SetLine(int n, float val){
         lnVals[n] = val;
     }
-
     public void PrepareDeathScreen(){
         textBSL.SetText("Buy\n(" + slCost + " coins)");
         textUseSL.SetText("Use\n(" + ZH.secondLifes + " left)");
     }
-
     public void BuyLife(){
         if(ZH.GetComponent<CoinCollector>().GetCoins() >= slCost){
             ZH.secondLifes += 1;
@@ -38,7 +36,6 @@ public class DeathUi : MonoBehaviour
         }
         PrepareDeathScreen();
     }
-
     public void UseSeconLife(){
         if(ZH.secondLifes > 0){
             ZH.secondLifes -= 1;

@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - ZhabkaBody
   - WindParticles
+  - ZhSelect
   layers:
   - Default
   - TransparentFX
