@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wind : MonoBehaviour
-{
+public class Wind : MonoBehaviour {
     Vector2 direction;
     float force;
     public bool active = false;
-    [Range(0, 1000f)]public float velocity;
+    [Range(0, 1000f)] public float velocity;
     private GameObject ZHB;
     private GameObject ZH;
     private ZhabaController ZHC;
@@ -16,7 +15,7 @@ public class Wind : MonoBehaviour
 
 
     private float timeLastTouch;
-    
+
     private void Awake() {
         ZHB = GameObject.FindGameObjectWithTag("ZhabkaBody");
         ZH = GameObject.FindGameObjectWithTag("Player");
@@ -24,7 +23,7 @@ public class Wind : MonoBehaviour
         ZHC = ZH.GetComponent<ZhabaController>();
     }
 
-    public void ToActive () {
+    public void ToActive() {
         active = true;
         ZH.GetComponent<ZhabaController>().doCustomRotDir = true;
         ZH.GetComponent<ZhabaController>().customRotDir = customRotDir;

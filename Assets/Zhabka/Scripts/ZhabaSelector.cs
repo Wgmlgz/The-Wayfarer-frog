@@ -38,12 +38,12 @@ public class ZhabaSelector : MonoBehaviour {
 
     private void Start() {
         zh = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
-        SelectToad(PlayerPrefs.GetInt("SelectedToad"));
-        SetHat(PlayerPrefs.GetInt("SelectedHat"));
 
-        UnlockToad(0);
+        int sel_t = PlayerPrefs.GetInt("SelectedToad");
+        int sel_h = PlayerPrefs.GetInt("SelectedHat");
+
         for (int i = 1; i < locks.Count; i++) {
-            if (PlayerPrefs.GetInt("ToadLock" + i.ToString()) == 1) {
+            if (PlayerPrefs.GetInt("ToadLock" + i.ToString()) == 1 || PlayerPrefs.HasKey("ToadLock" + i.ToString()) == false) {
                 LockToad(i);
             } else {
                 if (isLock[i]) {
@@ -53,13 +53,15 @@ public class ZhabaSelector : MonoBehaviour {
                 }
             }
         }
-
+        UnlockToad(0);
 
         //wednesday frog
         LockToad(2);
         if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Wednesday) {
             UnlockToad(2);
         }
+        SelectToad(sel_t);
+        SetHat(sel_h);
     }
     public void ViewTop() {
         viewN = 0;

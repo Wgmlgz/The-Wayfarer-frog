@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id" xmlns:tools="http://schemas.android.com/tools">
+  <string name="firebase_database_url" translatable="false">https://the-wayfarer-frog-20255110.firebaseio.com</string>
+  <string name="gcm_defaultSenderId" translatable="false">1097621267839</string>
+  <string name="google_storage_bucket" translatable="false">the-wayfarer-frog-20255110.appspot.com</string>
+  <string name="project_id" translatable="false">the-wayfarer-frog-20255110</string>
+  <string name="google_api_key" translatable="false">AIzaSyDEMFulkHPbj-FcI8wwhKXgiLJqHFA0o1E</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDEMFulkHPbj-FcI8wwhKXgiLJqHFA0o1E</string>
+  <string name="google_app_id" translatable="false">1:1097621267839:android:5309ae52c50c752448e64a</string>
+  <string name="default_android_client_id" translatable="false">1097621267839-3v2nkqnkuet0r2t57ag752po9uhndhvf.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">1097621267839-3lhn9mdbn4a5202pir374ehflrpplpr1.apps.googleusercontent.com</string>
+</resources>

@@ -17,6 +17,8 @@ public class Levels : MonoBehaviour {
     private void Awake() {
         hp = PlayerPrefs.GetInt("hp");
         level = PlayerPrefs.GetInt("level");
+        
+        if (PlayerPrefs.HasKey("last_feed") == false) PlayerPrefs.SetString("last_feed", new DateTime(10, 10, 10).ToString());
         UpdateUI();
     }
     public void NextLevel() {
@@ -57,13 +59,11 @@ public class Levels : MonoBehaviour {
     }
     public long TimeSinceFeed() {
         DateTime end = DateTime.Parse(PlayerPrefs.GetString("last_feed")).AddSeconds(5);
-        //DateTime end = DateTime.Parse(PlayerPrefs.GetString("last_feed")).AddHours(12);
         DateTime now = DateTime.Now;
 
         long elapsedTicks = end.Ticks - now.Ticks;
         TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
 
-        //TimeSpan elapsedSpan = new TimeSpan(elapsedTicks);
         return elapsedTicks;
     }
     public void FeedToad() {

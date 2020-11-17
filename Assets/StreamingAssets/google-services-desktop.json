@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1097621267839",
+    "firebase_url": "https://the-wayfarer-frog-20255110.firebaseio.com",
+    "project_id": "the-wayfarer-frog-20255110",
+    "storage_bucket": "the-wayfarer-frog-20255110.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1097621267839:android:5309ae52c50c752448e64a",
+        "android_client_info": {
+          "package_name": "com.Wgmlgz.TheWayfarerfrog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1097621267839-3v2nkqnkuet0r2t57ag752po9uhndhvf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Wgmlgz.TheWayfarerfrog",
+            "certificate_hash": "d76e65fecc7ccb1693d459545fbbe7e7986349e7"
+          }
+        },
+        {
+          "client_id": "1097621267839-3lhn9mdbn4a5202pir374ehflrpplpr1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEMFulkHPbj-FcI8wwhKXgiLJqHFA0o1E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1097621267839-3lhn9mdbn4a5202pir374ehflrpplpr1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

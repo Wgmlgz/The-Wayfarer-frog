@@ -86,6 +86,7 @@ public class ZhabaController : MonoBehaviour {
     [Header("Links")]
     public DeathUi DUI;
     public UIManager UIM;
+    public FirebaseLogger FL;
 
     //private
     private Rigidbody2D RB;
@@ -96,6 +97,7 @@ public class ZhabaController : MonoBehaviour {
 
     private void Awake() {
         RB = GetComponent<Rigidbody2D>();
+        FL = GetComponent<FirebaseLogger>();
     }
     void Update() {
         if (isPlaying) {
@@ -140,9 +142,8 @@ public class ZhabaController : MonoBehaviour {
                             Jump();
                             jumpTime = 0f;
                             RB.velocity = new Vector2(minSpeed, 100);
-                            Death();
+                            //Death();
                         }
-                        Debug.Log(i.transform.gameObject.layer.ToString());
                         hit = i;
                         break;
                     }
@@ -189,7 +190,6 @@ public class ZhabaController : MonoBehaviour {
                         body.transform.rotation,
                         Quaternion.AngleAxis(Mathf.Atan2(hit.normal.x, hit.normal.y) * Mathf.Rad2Deg, Vector3.forward))
                     );
-
 
                     if (jumpTime > maxjumpTime) {
                         float t = body.transform.rotation.eulerAngles.z;
@@ -306,6 +306,7 @@ public class ZhabaController : MonoBehaviour {
         RestoreLives();
         UIM.SetupHearts(hpLeft + 1);
         onPlay.Invoke();
+        FL.NewGame();
     }
     public void Continue() {
         isPlaying = true;

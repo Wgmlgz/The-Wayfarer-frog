@@ -83,6 +83,7 @@ public class Upgrade : MonoBehaviour
                 PlayerPrefs.SetInt(saveName, stage);
                 SetBoxes();
                 SetName();
+                ZH.gameObject.GetComponent<FirebaseLogger>().Log("Upgrade", saveName, stage);
             }
         }
     }
