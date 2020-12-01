@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Box : MonoBehaviour
-{
+public class Boss : MonoBehaviour {
     public ZhabaController ZH;
     public TileGenerator TG;
     public UIManager UM;
@@ -19,7 +18,7 @@ public class Box : MonoBehaviour
         ZH.doConstVelosity = true;
         ZH.constVelosity = 0;
 
-        TG.ChangeBiom (1);
+        TG.ChangeBiom(1);
         ZH.SetToGod();
         Invoke("MoveZhaba", 3);
         //Invoke("StartFight", 4);

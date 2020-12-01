@@ -66,7 +66,7 @@ public class Wind : MonoBehaviour {
         //foreach (RaycastHit2D i in hitAll) {
         //    if (i.transform.gameObject.CompareTag("Ground")) {
         //        hit = i;
-        //        break;
+        //          8 &* break;
         //    }
         //}
         //float distFactor = Vector2.Distance(hit.transform.position, zhp);

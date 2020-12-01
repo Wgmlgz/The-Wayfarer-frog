@@ -4,8 +4,7 @@ using UnityEngine;
 
 
 [System.Serializable]
-public class Biom
-{
+public class Biom {
     public string name;
     public bool canGen;
     public int minBiomSize = 2;
@@ -13,8 +12,7 @@ public class Biom
     public List<GameObject> tiles;
 }
 
-public class TileGenerator : MonoBehaviour
-{
+public class TileGenerator : MonoBehaviour {
     public GameObject Target;
     public float genDistance;
 
@@ -30,9 +28,14 @@ public class TileGenerator : MonoBehaviour
     [SerializeField] float currentBiomSize;
     [SerializeField] float currentBiomFilling;
     [SerializeField] public GameObject lastTile;
-
-    private int RandomInt(int minV, int maxV)
-    {
+    private void Awake() {
+        foreach (var i in bioms) {
+            foreach (var j in i.tiles) {
+                j.GetComponent<TileInfo>().biome_name = i.name;
+            }
+        }
+    }
+    private int RandomInt(int minV, int maxV) {
         float i = Random.Range(minV, maxV);
 
         int j = Mathf.RoundToInt(i);
@@ -42,22 +45,19 @@ public class TileGenerator : MonoBehaviour
         return Random.Range(minV, maxV);
     }
     public void ChangeBiom(int i = -1) {
-        if(i == -1){
+        if (i == -1) {
             currentBiom = RandomInt(0, bioms.Length);
             if (bioms[currentBiom].canGen == false) {
                 ChangeBiom();
                 return;
             }
-        }
-        else
-        {
+        } else {
             currentBiom = i;
         }
         currentBiomSize = RandomInt(bioms[currentBiom].minBiomSize, bioms[currentBiom].maxBiomSize);
         currentBiomFilling = 0;
     }
-    public void GenNewTile()
-    {
+    public void GenNewTile() {
         if (currentBiom == -1) ChangeBiom();
         if (currentBiomSize == currentBiomFilling) ChangeBiom();
 
@@ -70,13 +70,10 @@ public class TileGenerator : MonoBehaviour
         tmpTile.GetComponent<TileInfo>().isExample = false;
 
         Vector3 newTilePos;
-        if (lastTile == null)
-        {
+        if (lastTile == null) {
             newTilePos = transform.position;
             newTilePos += (tmpTile.GetComponent<TileInfo>().tileLength) / 2;
-        }
-        else
-        {
+        } else {
             newTilePos = lastTile.transform.position;
             newTilePos += (lastTile.GetComponent<TileInfo>().tileLength) / 2;
             newTilePos += (tmpTile.GetComponent<TileInfo>().tileLength) / 2;
@@ -85,23 +82,19 @@ public class TileGenerator : MonoBehaviour
         tmpTile.transform.position = newTilePos;
         lastTile = tmpTile;
     }
-
-    void Start()
-    {
-        for (int i = 0; i < 2; ++i)
-        {
+    public void SrartGen() {
+        for (int i = 0; i < 2; ++i) {
             GenNewTile();
         }
+    }
+    void Start() {
+
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if ((lastTile.transform.position.x - Target.transform.position.x) < genDistance)
-        {
+    void Update() {
+        if ((lastTile.transform.position.x - Target.transform.position.x) < genDistance) {
             GenNewTile();
         }
     }
-
-
 }

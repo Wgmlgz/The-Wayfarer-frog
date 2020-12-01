@@ -159,7 +159,7 @@ public class ZhabaController : MonoBehaviour {
                     Jump();
                 }
                 tmpVelosity = (1f / Time.deltaTime) * (transform.position - lastUpdateFramePos);
-            } else {
+            }else {
                 if (doConstVelosity) Fall();
                 GetComponent<Score>().cleanScoreTime = 9999;
 

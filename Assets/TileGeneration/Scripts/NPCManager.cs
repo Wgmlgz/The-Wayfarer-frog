@@ -3,50 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class NPC
-{
+public class NPC {
     public string NPCName = "Zhabka";
     public int spawnDistance = 50;
     public bool spawnOnce = true;
     public bool isSpawned = false;
 }
 
-public class NPCManager : MonoBehaviour
-{
+public class NPCManager : MonoBehaviour {
     public List<NPC> NPCs;
     public List<NPCInfo> whiteList;
 
-    public Box spawnedBox;
+    public Boss spawnedBox;
     public NPCInfo spawnedGod;
+
     public string place;
     public string oldPlace;
+    public float min_dist;
 
     public int needToPray;
 
-    public bool LifeRequest(NPCInfo d)
-    {
+    public bool LifeRequest(NPCInfo d) {
         foreach (var i in whiteList) if (i == d) return true;
 
-        foreach (var i in NPCs)
-        {
-            if (i.NPCName == d.NPCName)
-            {
+        foreach (var i in NPCs) {
+            if (i.NPCName == d.NPCName) {
                 if (d.name == "Altar") {
                     spawnedGod = d;
                 }
                 if (GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().GetDist(d.gameObject.transform) < i.spawnDistance) {
                     return false;
                 }
-                if (i.spawnOnce)
-                {
+                if (i.spawnOnce) {
                     if (i.isSpawned) return false;
-                    else
-                    {
+                    else {
                         i.isSpawned = true;
                         return true;
                     }
-                }
-                else return true;
+                } else return true;
             }
         }
         return false;
@@ -59,27 +53,30 @@ public class NPCManager : MonoBehaviour
         place = name;
     }
     public void SetPlaceToBox() {
-        SetPlace("Box");
+        //SetPlace("Box");
     }
     private void Update() {
-        
+
     }
     private void LateUpdate() {
-        if (oldPlace == "Box" && place == "None") {
+        if (place == "None") Debug.LogWarning(place);
+        else Debug.Log(place);
+        if (oldPlace == "Box" && place != "Box") {
             BoxEnd();
         }
-        if (oldPlace == "None" && place == "Box") {
+        if (oldPlace != "Box" && place == "Box") {
             StartBoxFight();
         }
 
         oldPlace = place;
-        place = "None";
+        //place = "None";
+        min_dist = 99999999999;
     }
     void BoxEnd() {
         spawnedBox.EndFight();
     }
 
-    public void GodPray(){
+    public void GodPray() {
         int prayTimes = PlayerPrefs.GetInt("PrayTimes");
         prayTimes += 1;
         if (prayTimes == needToPray) {
