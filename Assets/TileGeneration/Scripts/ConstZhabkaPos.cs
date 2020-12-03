@@ -7,6 +7,7 @@ public class ConstZhabkaPos : MonoBehaviour {
     private GameObject ZH;
     public GameObject cam_target;
     public GameObject ded;
+    public Pepe pep;
     public Vector2 vel;
     public float offset;
     public float speed;
@@ -16,9 +17,8 @@ public class ConstZhabkaPos : MonoBehaviour {
         //cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
 
-    // Update is called once per frame
-
     public void UpdateZhPos() {
+        pep.is_in_wind = true;
         cam_target.GetComponent<ZhCamTarget>().da = true;
         var t = ZHB.transform.position;
 

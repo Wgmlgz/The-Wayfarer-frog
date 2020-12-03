@@ -13,6 +13,8 @@ public class NPCInfo : MonoBehaviour {
             Destroy(gameObject);
         } else if (NPCName == "Box") {
             zhabka.GetComponent<NPCManager>().spawnedBox = GetComponent<Boss>();
+        } else if (NPCName == "Pepe") {
+            zhabka.GetComponent<NPCManager>().spawnedPepe = GetComponent<Boss>();
         }
     }
 }

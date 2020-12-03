@@ -15,6 +15,7 @@ public class NPCManager : MonoBehaviour {
     public List<NPCInfo> whiteList;
 
     public Boss spawnedBox;
+    public Boss spawnedPepe;
     public NPCInfo spawnedGod;
 
     public string place;
@@ -46,9 +47,6 @@ public class NPCManager : MonoBehaviour {
         return false;
     }
 
-    public void StartBoxFight() {
-        spawnedBox.StartFight();
-    }
     public void SetPlace(string name) {
         place = name;
     }
@@ -62,18 +60,22 @@ public class NPCManager : MonoBehaviour {
         if (place == "None") Debug.LogWarning(place);
         else Debug.Log(place);
         if (oldPlace == "Box" && place != "Box") {
-            BoxEnd();
+            spawnedBox.EndBoxFight();
         }
         if (oldPlace != "Box" && place == "Box") {
-            StartBoxFight();
+            spawnedBox.StartBoxFight();
+        }
+
+        if (oldPlace == "Pepe" && place != "Pepe") {
+            spawnedPepe.EndPepeFight();
+        }
+        if (oldPlace != "Pepe" && place == "Pepe") {
+            spawnedPepe.StartPepeFight();
         }
 
         oldPlace = place;
         //place = "None";
         min_dist = 99999999999;
-    }
-    void BoxEnd() {
-        spawnedBox.EndFight();
     }
 
     public void GodPray() {
