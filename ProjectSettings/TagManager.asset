@@ -10,6 +10,7 @@ TagManager:
   - ZhabkaBody
   - WindParticles
   - ZhSelect
+  - MapU
   layers:
   - Default
   - TransparentFX

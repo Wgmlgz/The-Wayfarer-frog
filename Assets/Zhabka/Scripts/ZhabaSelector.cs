@@ -12,11 +12,6 @@ public struct UnlockRequirements {
     public int coins;
     public int level;
 }
-[System.Serializable]
-public class Zhabka {
-    public GameObject skin;
-    public List<GameObject> hats;
-}
 public class ZhabaSelector : MonoBehaviour {
     public GameObject mainCam;
     public int viewN;
@@ -30,7 +25,7 @@ public class ZhabaSelector : MonoBehaviour {
     public List<Arrows> ars;
     public List<TMPro.TextMeshProUGUI> staT;
     public List<GameObject> locks;
-    public List<Zhabka> toads;
+    public ZhabaSoul zsoul;
     public List<GameObject> hatDA;
     public GameObject hatNET;
 
@@ -102,11 +97,7 @@ public class ZhabaSelector : MonoBehaviour {
             i.SetText("(tap on toad to select)");
         }
         staT[j].SetText("selected");
-
-        foreach (var i in toads) {
-            i.skin.SetActive(false);
-        }
-        toads[j].skin.SetActive(true);
+        zsoul.selectToad(j);
 
         zh.canDoubleJump = false;
         zh.ignoreHead = false;
@@ -163,11 +154,7 @@ public class ZhabaSelector : MonoBehaviour {
     void SetHatBonus() {
         int j = selectedHat;
         zh.hpMaxHat = 0;
-
-        foreach (var i in toads[selectedN].hats) {
-            i.SetActive(false);
-        }
-        if (j != -1) toads[selectedN].hats[j].SetActive(true);
+        zsoul.selectHat(selectedHat);
 
         foreach (var i in hatDA) {
             i.SetActive(false);
