@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour {
-    public static void toMapSt() { SceneManager.LoadScene("Map"); }
+    public static void toMapSt()   { SceneManager.LoadScene("Map");   }
     public static void toCargoSt() { SceneManager.LoadScene("Cargo"); }
-    public static void toMainSt() { SceneManager.LoadScene("Tasks"); }
-    public static void toTasksSt() { }
+    public static void toTasksSt() { SceneManager.LoadScene("Tasks"); }
+    public static void toMainSt()  { SceneManager.LoadScene("Main");  }
 
-    public void toMap() { SceneManager.LoadScene("Map"); }
-    public void toCargo() { SceneManager.LoadScene("Cargo"); }
-    public void toTasks() { SceneManager.LoadScene("Tasks"); }
-    public void toMain() { }
+    public void toMap()   { toMapSt();   } 
+    public void toCargo() { toCargoSt(); }
+    public void toTasks() { toTasksSt(); }
+    public void toMain()  { toMainSt();  }
 }

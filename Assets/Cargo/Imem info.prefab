@@ -526,6 +526,10 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: 7b0fc30385e3e7e47a7cf283a92d2121, type: 3}
   - name: jim
     img: {fileID: 21300000, guid: acf8756472fbc2f4cbbb149db16dd083, type: 3}
+  - name: atomic_bomb
+    img: {fileID: 21300000, guid: 22d9257c2abe86f46ae7ee8cbe85c267, type: 3}
+  - name: pizza
+    img: {fileID: 21300000, guid: 3297fd0abdc76624986691c022e56e2a, type: 3}
   item:
     name: Default name
     weight: 10

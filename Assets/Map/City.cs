@@ -10,6 +10,13 @@ public class City : MonoBehaviour {
     public List<Item> items;
     GameObject map_u;
 
+    public static int getDistance(City a, City b, float da = 10) {
+        int ret;
+        var delta = a.GetComponent<RectTransform>().position -
+            b.GetComponent<RectTransform>().position;
+        ret = Mathf.RoundToInt(delta.magnitude * da);
+        return ret;
+    }
     void addItemsFromTasks(List<TaskData> n_tasks) {
         foreach (var i in n_tasks) {
             foreach (var j in i.items) {
@@ -41,13 +48,36 @@ public class City : MonoBehaviour {
             tasks = loaded_tasks;
             addItemsFromTasks(tasks);
         }
+        if(name == PlayerPrefs.GetString("CurrentCity")) {
+            map_u.GetComponent<MapU>().cur_city = this;
+            scopeSelf();
+        }
+        if (name == PlayerPrefs.GetString("TargetCity")) {
+            map_u.GetComponent<MapU>().target_city = this;
+            map_u.GetComponent<ImgLine>().target = gameObject.GetComponent<RectTransform>();
+            var d = getDistance(this, map_u.GetComponent<MapU>().cur_city);
+            //PlayerPrefs.SetInt("DistanceToTargetCity", d);
+            map_u.GetComponent<MapU>().distance_text.SetText(d.ToString() + " m.");
+        }
     }
-    
+    public void scopeSelf() {
+        map_u.GetComponent<MapU>().map.anchoredPosition
+            = -GetComponent<RectTransform>().localPosition;
+
+    }
     public void targetSelf() {
-        if (map_u.GetComponent<MapU>().cur_city != this)
-            map_u.GetComponent<ImgLine>().target = gameObject.GetComponent<RectTransform>(); 
+        scopeSelf();
+        if (map_u.GetComponent<MapU>().cur_city != this) {
+            map_u.GetComponent<MapU>().target_city = this;
+            map_u.GetComponent<ImgLine>().target = gameObject.GetComponent<RectTransform>();
+            PlayerPrefs.SetString("TargetCity", name);
+            var d = getDistance(this, map_u.GetComponent<MapU>().cur_city);
+            PlayerPrefs.SetInt("DistanceToTargetCity", d);
+            map_u.GetComponent<MapU>().distance_text.SetText(d.ToString() + " m.");
+        }
     }
     public void tpSelf() {
         map_u.GetComponent<MapU>().cur_city = this;
+        PlayerPrefs.SetString("CurrentCity", name);
     }
 }

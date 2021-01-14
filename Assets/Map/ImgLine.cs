@@ -16,6 +16,7 @@ public class ImgLine : MonoBehaviour {
         obj.position = from.position;
 
         var delta = target.position - from.position;
+        delta.z = 0;
         obj.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg);
 
         obj.localScale = new Vector2(delta.magnitude, obj.localScale.y);
