@@ -26,7 +26,7 @@ public class Score : MonoBehaviour {
     public float scoreTimer;
     public float cleanScoreTime;
 
-    float target_distance;
+    int target_distance;
 
     void Start() {
         startPos = target.transform.position;
@@ -54,10 +54,6 @@ public class Score : MonoBehaviour {
         distanceText.SetText("distance: " + Mathf.RoundToInt(distance).ToString() +
             " / " +
             target_distance.ToString());
-        if (distance >= target_distance) {
-            PlayerPrefs.SetString("CurrentCity", PlayerPrefs.GetString("TargetCity"));
-            ScenesManager.toMapSt();
-        }
     }
 
     public void RefreshHighScore() {
@@ -77,7 +73,10 @@ public class Score : MonoBehaviour {
         if (t == null) {
             t = target.transform;
         }
-        return Mathf.RoundToInt((t.position - startPos).magnitude * distanceFactor);
+        return GetDist(t.position);
+    }
+    public int GetDist(Vector3 t) {
+        return Mathf.RoundToInt((t - startPos).magnitude * distanceFactor);
     }
     public void AddScore(int i, string comment = "") {
         score += i;

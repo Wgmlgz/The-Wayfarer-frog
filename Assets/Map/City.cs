@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class City : MonoBehaviour {
+    public TMPro.TextMeshProUGUI tasks_count_text;
     public List<TaskData> default_tasks;
     public List<TaskData> tasks;
 
     public List<Item> default_items;
     public List<Item> items;
+    bool load_success = true;
     GameObject map_u;
 
     public static int getDistance(City a, City b, float da = 10) {
@@ -36,8 +38,10 @@ public class City : MonoBehaviour {
         
         ItemsListUtility.saveListObj(items, name);
         ItemsListUtility.saveListObj(tasks, name + "_tasks");
+        load_success = false;
     }
     private void Awake() {
+        load_success = true;
         map_u = GameObject.FindGameObjectWithTag("MapU");
         var loaded_items = ItemsListUtility.loadList(name);
         if (loaded_items == null) {
@@ -58,6 +62,13 @@ public class City : MonoBehaviour {
             var d = getDistance(this, map_u.GetComponent<MapU>().cur_city);
             //PlayerPrefs.SetInt("DistanceToTargetCity", d);
             map_u.GetComponent<MapU>().distance_text.SetText(d.ToString() + " m.");
+        }
+        tasks_count_text.SetText(tasks.Count.ToString());
+        if (tasks.Count == 0) tasks_count_text.SetText("");
+    }
+    private void Start() {
+        if (name == PlayerPrefs.GetString("CurrentCity")) {
+            scopeSelf();
         }
     }
     public void scopeSelf() {

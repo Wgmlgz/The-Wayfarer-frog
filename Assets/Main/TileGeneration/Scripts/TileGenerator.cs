@@ -14,6 +14,7 @@ public class Biom {
 
 public class TileGenerator : MonoBehaviour {
     public GameObject Target;
+    public Score score;
     public float genDistance;
 
     [Header("background")]
@@ -28,7 +29,11 @@ public class TileGenerator : MonoBehaviour {
     [SerializeField] float currentBiomSize;
     [SerializeField] float currentBiomFilling;
     [SerializeField] public GameObject lastTile;
+
+    int target_distance;
+
     private void Awake() {
+        target_distance = PlayerPrefs.GetInt("DistanceToTargetCity");
         foreach (var i in bioms) {
             foreach (var j in i.tiles) {
                 j.GetComponent<TileInfo>().biome_name = i.name;
@@ -60,11 +65,16 @@ public class TileGenerator : MonoBehaviour {
     public void GenNewTile() {
         if (currentBiom == -1) ChangeBiom();
         if (currentBiomSize == currentBiomFilling) ChangeBiom();
-
+        score.GetDist();
         currentBiomFilling += 1;
 
         GameObject tmpTile = null;
-
+        if (lastTile != null) {
+            var t = lastTile.transform.position + lastTile.GetComponent<TileInfo>().tileLength / 2;
+            if (score.GetDist(t) >= target_distance) {
+                ChangeBiom(5);
+            }
+        }
         tmpTile = Instantiate(bioms[currentBiom].tiles[RandomInt(0, bioms[currentBiom].tiles.Count)]);
         tmpTile.GetComponent<TileInfo>().generator = gameObject;
         tmpTile.GetComponent<TileInfo>().isExample = false;

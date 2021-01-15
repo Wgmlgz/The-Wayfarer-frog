@@ -13,11 +13,14 @@ public class ItemUI : MonoBehaviour {
 
     public TMPro.TextMeshProUGUI name_text;
     public TMPro.TextMeshProUGUI weight_text;
+    public TMPro.TextMeshProUGUI target_text;
     public UnityEngine.UI.Image img;
 
     public void refreshTexts() {
         name_text.SetText(item.name);
         weight_text.SetText(item.weight.ToString() + " kg");
+        target_text.SetText("target: " + item.target.ToString());
+        if (item.is_in_task == false) { target_text.SetText(""); }
         foreach (var i in imgs) {
             if (i.name == item.img_name) {
                 Debug.Log("da");

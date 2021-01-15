@@ -52,9 +52,16 @@ public class CarryItem : MonoBehaviour {
             foreach (var tmp_task in from_city_tasks) {
                 foreach (var tmp_item in tmp_task.items) {
                     if (Item.isEqual(tmp_item, item)) {
+                        GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
+                            "You have completed the task!",
+                            "You delivered " + item.name + " from " +
+                            tmp_task.from + " to " + tmp_task.target +
+                            " in task: " + tmp_task.task_name
+                            );
                         Debug.Log("You delivered " + item.name + " from " +
                             tmp_task.from + " to " + tmp_task.target +
                             " in task: " + tmp_task.task_name);
+
                         tmp_task.items.Remove(tmp_item);
                         if (tmp_task.items.Count == 0) {
                             Debug.Log("You delivered " + tmp_task.task_name + "!");

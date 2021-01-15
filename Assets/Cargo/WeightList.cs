@@ -73,7 +73,7 @@ public class WeightList : MonoBehaviour {
     public TMPro.TextMeshProUGUI weight_obj_first;
     public TMPro.TextMeshProUGUI weight_obj_second;
 
-    public GameObject addItem(GameObject parent, GameObject example, bool is_first, float offset = 75) {
+    public GameObject addItem(GameObject parent, GameObject example, bool is_first, float offset = 110) {
         float length = example.GetComponent<RectTransform>().rect.width;
         GameObject tmp = Instantiate(example, parent.transform);
         tmp.SetActive(true);
@@ -85,7 +85,7 @@ public class WeightList : MonoBehaviour {
         return tmp;
     }
     void updateItemsPositions() {
-        float offset = 75;
+        float offset = 110;
         int tmp_weight = 0;
         for (int i = 0; i < list_first.Count; ++i) {
             float length = list_first[i].GetComponent<RectTransform>().rect.width;
@@ -175,8 +175,8 @@ public class WeightList : MonoBehaviour {
         loadSecond(PlayerPrefs.GetString("CurrentCity"));
     }
     void Update() {
-        content_first.GetComponent<RectTransform>().sizeDelta = new Vector2(0, list_first.Count * 75);
-        content_second.GetComponent<RectTransform>().sizeDelta = new Vector2(0, list_second.Count * 75);
+        content_first.GetComponent<RectTransform>().sizeDelta = new Vector2(0, list_first.Count * 110);
+        content_second.GetComponent<RectTransform>().sizeDelta = new Vector2(0, list_second.Count * 110);
         updateItemsPositions();
     }
 }

@@ -13,4 +13,13 @@ public class ScenesManager : MonoBehaviour {
     public void toCargo() { toCargoSt(); }
     public void toTasks() { toTasksSt(); }
     public void toMain()  { toMainSt();  }
+
+    public static void arriveToCitySt() {
+        PlayerPrefs.SetString("CurrentCity", PlayerPrefs.GetString("TargetCity"));
+        toMapSt();
+    }
+    public void arriveToCity() {
+        Debug.LogWarning("dfasdfsd");
+        arriveToCitySt();
+    }
 }

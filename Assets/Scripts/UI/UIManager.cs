@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour {
     public GameObject camIdle;
     public GameObject camCharacterSelection;
 
+    public TMPro.TextMeshProUGUI route_text;
+
     public GameObject[] hearts;
     public int acitveHeart;
 
@@ -22,6 +24,15 @@ public class UIManager : MonoBehaviour {
     public TMPro.TextMeshProUGUI redText;
     public Slider speedVis;
     private void Start() {
+        route_text.SetText(
+            "Your current route: " +
+            PlayerPrefs.GetString("CurrentCity") + 
+            " -> " +
+            PlayerPrefs.GetString("TargetCity") +
+            " (" +
+            PlayerPrefs.GetInt("DistanceToTargetCity").ToString() +
+            " m.)"
+            );
     }
     public void ToGame() {
         GetComponent<Animation>().Play();

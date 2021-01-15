@@ -11,6 +11,7 @@ TagManager:
   - WindParticles
   - ZhSelect
   - MapU
+  - Popup
   layers:
   - Default
   - TransparentFX
