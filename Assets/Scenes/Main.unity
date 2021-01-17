@@ -14727,6 +14727,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 2014131435}
   - {fileID: 1906103736}
   m_Father: {fileID: 2046574188}
   m_RootOrder: 0
@@ -16756,7 +16757,6 @@ RectTransform:
   - {fileID: 176313961}
   - {fileID: 1836733442}
   - {fileID: 1051830997}
-  - {fileID: 2014131435}
   m_Father: {fileID: 1288166109}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -18358,6 +18358,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &528604617 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1245350044574910518, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+    type: 3}
+  m_PrefabInstance: {fileID: 1954810744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13442e7b5707274fb3143d42eaf9abd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &539913372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53276,7 +53288,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -33, y: -0}
+  m_AnchoredPosition: {x: -33, y: 0}
   m_SizeDelta: {x: 2268.2874, y: 188.03473}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1776042493
@@ -56885,7 +56897,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 370044535}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -58182,12 +58194,12 @@ PrefabInstance:
     - target: {fileID: 1245350044574910518, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: NPCName
-      value: Cat
+      value: CityCat
       objectReference: {fileID: 0}
     - target: {fileID: 1245350044574910518, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109219424005, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -58208,6 +58220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -5.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 2704272109815807510, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: m_Priority
+      value: -133
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109815807511, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -58254,6 +58271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2704272109858274674, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: Events.Array.size
@@ -58262,7 +58284,7 @@ PrefabInstance:
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
@@ -58294,11 +58316,6 @@ PrefabInstance:
       propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
-        type: 3}
-      propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1267986367}
     - target: {fileID: 2704272109858274676, guid: 0debd2bd7ac3bdb4a80f4f7d370553fc,
         type: 3}
       propertyPath: Events.Array.data[0].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -59634,19 +59651,19 @@ RectTransform:
   m_GameObject: {fileID: 2014131434}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_LocalScale: {x: 0.35999995, y: 0.35999995, z: 36}
   m_Children:
   - {fileID: 161815864}
   - {fileID: 1339251962}
   - {fileID: 1169882563}
-  m_Father: {fileID: 500728625}
-  m_RootOrder: 12
+  m_Father: {fileID: 370044535}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -13.928, y: 15.3}
-  m_SizeDelta: {x: 2261.9038, y: 435.66803}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50, y: -50}
+  m_SizeDelta: {x: 1052, y: 720}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &2014131436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61437,11 +61454,16 @@ MonoBehaviour:
     spawnDistance: 10
     spawnOnce: 1
     isSpawned: 0
+  - NPCName: CityCat
+    spawnDistance: 10
+    spawnOnce: 0
+    isSpawned: 0
   whiteList:
   - {fileID: 2139204650}
   - {fileID: 622247612}
   - {fileID: 2064288814}
   - {fileID: 2036382220}
+  - {fileID: 528604617}
   spawnedBox: {fileID: 0}
   spawnedPepe: {fileID: 0}
   spawnedGod: {fileID: 0}

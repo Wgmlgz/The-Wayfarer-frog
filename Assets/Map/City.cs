@@ -77,7 +77,7 @@ public class City : MonoBehaviour {
 
     }
     public void targetSelf() {
-        scopeSelf();
+        //scopeSelf();
         if (map_u.GetComponent<MapU>().cur_city != this) {
             map_u.GetComponent<MapU>().target_city = this;
             map_u.GetComponent<ImgLine>().target = gameObject.GetComponent<RectTransform>();
@@ -90,5 +90,6 @@ public class City : MonoBehaviour {
     public void tpSelf() {
         map_u.GetComponent<MapU>().cur_city = this;
         PlayerPrefs.SetString("CurrentCity", name);
+        scopeSelf();
     }
 }

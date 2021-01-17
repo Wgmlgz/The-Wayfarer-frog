@@ -33,12 +33,13 @@ public class TileGenerator : MonoBehaviour {
     int target_distance;
 
     private void Awake() {
-        target_distance = PlayerPrefs.GetInt("DistanceToTargetCity");
         foreach (var i in bioms) {
             foreach (var j in i.tiles) {
                 j.GetComponent<TileInfo>().biome_name = i.name;
             }
         }
+        if (PlayerPrefs.HasKey("DistanceToTargetCity") == false) { PlayerPrefs.SetInt("DistanceToTargetCity", 149); }
+        target_distance = PlayerPrefs.GetInt("DistanceToTargetCity");
     }
     private int RandomInt(int minV, int maxV) {
         float i = Random.Range(minV, maxV);
@@ -98,7 +99,7 @@ public class TileGenerator : MonoBehaviour {
         }
     }
     void Start() {
-
+        
     }
 
     // Update is called once per frame
