@@ -20,14 +20,10 @@ public class ZhabaSelector : MonoBehaviour {
     public int selectedHat;
 
     public List<bool> isLock;
-    public List<UnlockRequirements> unlockCost;
-    public List<Cinemachine.CinemachineVirtualCamera> cams;
-    public List<Arrows> ars;
-    public List<TMPro.TextMeshProUGUI> staT;
-    public List<GameObject> locks;
     public ZhabaSoul zsoul;
     public List<GameObject> hatDA;
     public GameObject hatNET;
+    public List<ToadUnlockHandler> toads;
 
     private ZhabaController zh;
 
@@ -37,7 +33,7 @@ public class ZhabaSelector : MonoBehaviour {
         int sel_t = PlayerPrefs.GetInt("SelectedToad");
         int sel_h = PlayerPrefs.GetInt("SelectedHat");
 
-        for (int i = 1; i < locks.Count; i++) {
+        for (int i = 1; i < toads.Count; i++) {
             if (PlayerPrefs.GetInt("ToadLock" + i.ToString()) == 1 || PlayerPrefs.HasKey("ToadLock" + i.ToString()) == false) {
                 LockToad(i);
             } else {
@@ -61,7 +57,7 @@ public class ZhabaSelector : MonoBehaviour {
     public void ViewTop() {
         viewN = 0;
         ViewInt(0);
-        cams[0].Priority = -9999;
+        toads[0].cam.Priority = -9999;
         mainCam.SetActive(true);
     }
     public void ViewLeft() {
@@ -71,32 +67,32 @@ public class ZhabaSelector : MonoBehaviour {
         }
     }
     public void ViewRight() {
-        if (viewN < cams.Count - 1) {
+        if (viewN < toads.Count - 1) {
             viewN += 1;
             ViewInt(viewN);
         }
     }
     public void ViewInt(int j) {
-        foreach (var i in ars) {
+        foreach (var i in toads) {
             i.ar1.SetActive(false);
             i.ar2.SetActive(false);
         }
-        ars[j].ar1.SetActive(true);
-        ars[j].ar2.SetActive(true);
+        toads[j].ar1.SetActive(true);
+        toads[j].ar2.SetActive(true);
 
-        foreach (var i in cams) {
-            i.Priority = -9999;
+        foreach (var i in toads) {
+            i.cam.Priority = -9999;
         }
-        cams[j].Priority = 9999;
+        toads[j].cam.Priority = 9999;
     }
     public void SelectToad(int j) {
         selectedN = j;
         PlayerPrefs.SetInt("SelectedToad", j);
 
-        foreach (var i in staT) {
-            i.SetText("(tap on toad to select)");
+        foreach (var i in toads) {
+            i.staT.SetText("(tap on toad to select)");
         }
-        staT[j].SetText("selected");
+        toads[j].staT.SetText("selected");
         zsoul.selectToad(j);
 
         zh.canDoubleJump = false;
@@ -134,14 +130,14 @@ public class ZhabaSelector : MonoBehaviour {
         zh.RestoreLives();
     }
     public void LockToad(int j) {
-        locks[j].SetActive(true);
+        toads[j].locker.SetActive(true);
         PlayerPrefs.SetInt("ToadLock" + j.ToString(), 1);
         if (selectedN == j) {
             selectedN = 0;
         }
     }
     public void UnlockToad(int j) {
-        locks[j].SetActive(false);
+        toads[j].locker.SetActive(false);
         PlayerPrefs.SetInt("ToadLock" + j.ToString(), 0);
         SelectToad(j);
     }
