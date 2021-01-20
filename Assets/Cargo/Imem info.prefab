@@ -716,8 +716,6 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: 22d9257c2abe86f46ae7ee8cbe85c267, type: 3}
   - name: pizza
     img: {fileID: 21300000, guid: 3297fd0abdc76624986691c022e56e2a, type: 3}
-  - name: rock
-    img: {fileID: 21300000, guid: 68410da9918a61a4dba9d90e7a8e94cf, type: 3}
   item:
     name: Default name
     weight: 10
