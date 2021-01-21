@@ -24,8 +24,8 @@ public class UIManager : MonoBehaviour {
     public TMPro.TextMeshProUGUI redText;
     public Slider speedVis;
     private void Start() {
-        if (PlayerPrefs.HasKey("CurrentCity") == false) { PlayerPrefs.SetString("CurrentCity", "Jim"); }
-        if (PlayerPrefs.HasKey("TargetCity") == false) { PlayerPrefs.SetString("TargetCity", "Da"); }
+        if (PlayerPrefs.HasKey("CurrentCity") == false) { PlayerPrefs.SetString("CurrentCity", "Da"); }
+        if (PlayerPrefs.HasKey("TargetCity") == false) { PlayerPrefs.SetString("TargetCity", "Lork"); }
         if (PlayerPrefs.HasKey("DistanceToTargetCity") == false) { PlayerPrefs.SetInt("DistanceToTargetCity", 149); }
         route_text.SetText(
             "Your current route: " +

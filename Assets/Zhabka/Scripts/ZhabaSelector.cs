@@ -88,6 +88,8 @@ public class ZhabaSelector : MonoBehaviour {
     public void SelectToad(int j) {
         selectedN = j;
         PlayerPrefs.SetInt("SelectedToad", j);
+        PlayerPrefs.SetInt("MaxTravelDistance", toads[j].max_distance_lvl[toads[j].toad_level]);
+        PlayerPrefs.SetInt("MaxWeight", toads[j].max_weight_lvl[toads[j].toad_level]);
 
         foreach (var i in toads) {
             i.staT.SetText("(tap on toad to select)");

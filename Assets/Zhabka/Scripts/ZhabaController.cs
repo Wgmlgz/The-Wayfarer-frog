@@ -315,6 +315,10 @@ public class ZhabaController : MonoBehaviour {
 
         onPlay.Invoke();
     }
+    public void EndDialog() {
+        isPlaying = true;
+        RB.velocity = new Vector2(minSpeed, 0f);
+    }
     public void Death(string s = "ded") {
         Debug.Log("death");
         if (lastDeath < 1) return;

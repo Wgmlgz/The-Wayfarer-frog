@@ -13,6 +13,7 @@ public class NPC {
 public class NPCManager : MonoBehaviour {
     public List<NPC> NPCs;
     public List<NPCInfo> whiteList;
+    public List<GameObject> whiteListGO;
 
     public Boss spawnedBox;
     public Boss spawnedPepe;
@@ -26,6 +27,7 @@ public class NPCManager : MonoBehaviour {
 
     public bool LifeRequest(NPCInfo d) {
         foreach (var i in whiteList) if (i == d) return true;
+        foreach (var i in whiteListGO) if (i.transform == d.transform.parent) return true;
 
         foreach (var i in NPCs) {
             if (i.NPCName == d.NPCName) {
