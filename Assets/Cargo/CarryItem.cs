@@ -57,12 +57,14 @@ public class CarryItem : MonoBehaviour {
                             " in task: " + tmp_task.task_name);
                         tmp_task.items.Remove(tmp_item);
                         if (tmp_task.items.Count == 0) {
+                            list.collector.AddCoins(tmp_task.revard);
                             Debug.Log("You delivered " + tmp_task.task_name + "!");
                             GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
                                 "You have completed the task!",
                                 "You delivered " + item.name + " from " +
                                 tmp_task.from + " to " + tmp_task.target +
-                                " in task: " + tmp_task.task_name
+                                " in task: " + tmp_task.task_name + "\n" +
+                                "And earned " + tmp_task.revard + " coins!"
                             );
                         }
                         from_city_tasks.Remove(tmp_task);

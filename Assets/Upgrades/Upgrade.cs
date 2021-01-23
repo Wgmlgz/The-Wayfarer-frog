@@ -73,7 +73,7 @@ public class Upgrade : MonoBehaviour
         maxGO.SetActive(stage == maxStage - 1);
     }
     void SetName(){
-        btnSt.SetText("Buy " + ((stage == maxStage - 1)?"(Max)" : "( " + (costs[stage + 1].ToString() + " coins)")));
+        btnSt.SetText("Buy " + ((stage == maxStage - 1)?"(Max)" : "(" + (costs[stage + 1].ToString() + " coins)")));
     }
     public void Buy(){
         if(stage < maxStage - 1){

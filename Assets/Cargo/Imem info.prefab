@@ -716,6 +716,8 @@ MonoBehaviour:
     img: {fileID: 21300000, guid: 22d9257c2abe86f46ae7ee8cbe85c267, type: 3}
   - name: pizza
     img: {fileID: 21300000, guid: 3297fd0abdc76624986691c022e56e2a, type: 3}
+  - name: cat
+    img: {fileID: 21300000, guid: 1375995e5ef73474abb92384a9abc70f, type: 3}
   item:
     name: Default name
     weight: 10
@@ -788,17 +790,17 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: acf8756472fbc2f4cbbb149db16dd083, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1375995e5ef73474abb92384a9abc70f, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.78
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 23.39

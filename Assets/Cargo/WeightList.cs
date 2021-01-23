@@ -73,6 +73,8 @@ public class WeightList : MonoBehaviour {
     public TMPro.TextMeshProUGUI weight_obj_first;
     public TMPro.TextMeshProUGUI weight_obj_second;
 
+    public CoinCollector collector;
+
     public GameObject addItem(GameObject parent, GameObject example, bool is_first, float offset = 110) {
         float length = example.GetComponent<RectTransform>().rect.width;
         GameObject tmp = Instantiate(example, parent.transform);

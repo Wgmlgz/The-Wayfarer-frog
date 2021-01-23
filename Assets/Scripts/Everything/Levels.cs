@@ -58,7 +58,7 @@ public class Levels : MonoBehaviour {
         }
     }
     public long TimeSinceFeed() {
-        DateTime end = DateTime.Parse(PlayerPrefs.GetString("last_feed")).AddSeconds(5);
+        DateTime end = DateTime.Parse(PlayerPrefs.GetString("last_feed")).AddSeconds(21600);
         DateTime now = DateTime.Now;
 
         long elapsedTicks = end.Ticks - now.Ticks;

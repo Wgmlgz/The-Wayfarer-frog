@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class City : MonoBehaviour {
+    public List<City> connected;
     public TMPro.TextMeshProUGUI tasks_count_text;
     public List<TaskData> default_tasks;
     public List<TaskData> tasks;
@@ -77,8 +78,10 @@ public class City : MonoBehaviour {
 
     }
     public void targetSelf() {
-        //scopeSelf();
         if (map_u.GetComponent<MapU>().cur_city != this) {
+            if (map_u.GetComponent<MapU>().cur_city.connected.Contains(this) == false) {
+                return;
+            }
             map_u.GetComponent<MapU>().target_city = this;
             map_u.GetComponent<ImgLine>().target = gameObject.GetComponent<RectTransform>();
             PlayerPrefs.SetString("TargetCity", name);
