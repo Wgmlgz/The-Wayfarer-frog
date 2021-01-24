@@ -164,9 +164,9 @@ public class ZhabaSelector : MonoBehaviour {
         if (selectedHat == 0) {
             zh.rotMod *= 1.5f; ;
         } else if (selectedHat == 1) {
-            zh.hpMaxHat += 1;
+            zh.hpMaxHat += 2;
         } else if (selectedHat == 2) {
-            zh.hpMaxHat += 3;
+            zh.hpMaxHat += 2;
         } else if (selectedHat == 3) {
             zh.ignoreHead = true;
         } else if (selectedHat == 4) {

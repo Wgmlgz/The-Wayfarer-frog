@@ -66,6 +66,7 @@ public class CarryItem : MonoBehaviour {
                                 " in task: " + tmp_task.task_name + "\n" +
                                 "And earned " + tmp_task.revard + " coins!"
                             );
+                            PlayerPrefs.SetInt(tmp_task.task_name + "_completed", 1);
                         }
                         from_city_tasks.Remove(tmp_task);
                         ItemsListUtility.saveListObj(from_city_tasks, item.from + "_tasks");

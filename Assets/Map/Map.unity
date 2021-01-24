@@ -6077,6 +6077,12 @@ Canvas:
   m_SortingLayerID: -1614200011
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1168471861 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798333179873306346, guid: 7adad0c729f1d2e49b267dafceef47e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1662245688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1171240251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8072,6 +8078,51 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
         type: 3}
+      propertyPath: default_tasks.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
       propertyPath: connected.Array.data[0]
       value: 
       objectReference: {fileID: 1046912852}
@@ -8080,6 +8131,326 @@ PrefabInstance:
       propertyPath: connected.Array.data[1]
       value: 
       objectReference: {fileID: 624320279}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].task_name
+      value: Q1 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].task_name
+      value: Q3 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].task_name
+      value: Q2 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].task_name
+      value: Q4 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].task_name
+      value: Q5 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].task_name
+      value: Q6 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].task_name
+      value: Q7 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].task_name
+      value: Q8 delivery
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].task_description
+      value: Deliver pizza to Q1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].target
+      value: Q1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].items.Array.data[0].name
+      value: Pizza (Q1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].task_description
+      value: Deliver pizza to Q2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].target
+      value: Q2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].items.Array.data[0].name
+      value: Pizza (Q2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].task_description
+      value: Deliver pizza to Q3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].target
+      value: Q3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].items.Array.data[0].name
+      value: Pizza (Q3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].task_description
+      value: Deliver pizza to Q4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].target
+      value: Q4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].items.Array.data[0].name
+      value: Pizza (Q4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].task_description
+      value: Deliver pizza to Q5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].target
+      value: Q5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].items.Array.data[0].name
+      value: Pizza (Q5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].task_description
+      value: Deliver pizza to Q6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].target
+      value: Q6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].items.Array.data[0].name
+      value: Pizza (Q6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].task_description
+      value: Deliver pizza to Q7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].target
+      value: Q7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].items.Array.data[0].name
+      value: Pizza (Q7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].task_description
+      value: Deliver pizza to Q8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].from
+      value: Jim
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].target
+      value: Q8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].items.Array.data[0].name
+      value: Pizza (Q8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].items.Array.data[0].weight
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].revard
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[2].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[1].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[0].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[3].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[4].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[5].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[6].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8343508409782452446, guid: cbf93404be8256b44b8196045c3fa5a7,
+        type: 3}
+      propertyPath: default_tasks.Array.data[7].items.Array.data[0].img_name
+      value: pizza
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf93404be8256b44b8196045c3fa5a7, type: 3}
 --- !u!1 &1465996646
@@ -13598,10 +13969,20 @@ PrefabInstance:
       propertyPath: path
       value: 
       objectReference: {fileID: 1261111098}
+    - target: {fileID: 6912144612742018613, guid: bdc699661888de14b93bfb6e78c82e02,
+        type: 3}
+      propertyPath: to_disable
+      value: 
+      objectReference: {fileID: 1168471861}
     - target: {fileID: 6912144612742018614, guid: bdc699661888de14b93bfb6e78c82e02,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.000030034618
+      value: -0.000026742342
+      objectReference: {fileID: 0}
+    - target: {fileID: 6912144612742018615, guid: bdc699661888de14b93bfb6e78c82e02,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6912144612993993004, guid: bdc699661888de14b93bfb6e78c82e02,
         type: 3}

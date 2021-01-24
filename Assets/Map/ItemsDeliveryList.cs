@@ -9,11 +9,14 @@ public class ItemsDeliveryList : MonoBehaviour {
     public Path path;
     public float offset;
     List<GameObject> list_items = new List<GameObject>();
+    public GameObject to_disable;
     void Start() {
         var loaded_tasks = ItemsListUtility.loadList(inventory_name);
+        bool b = true;
         if (loaded_tasks != null) {
             foreach (var i in loaded_tasks) {
                 if (i.is_in_task == false) continue;
+                b = false;
                 GameObject tmp = Instantiate(example, parent.transform);
 
                 tmp.GetComponent<RectTransform>().localPosition =
@@ -35,6 +38,7 @@ public class ItemsDeliveryList : MonoBehaviour {
                 if (path != null) path.tiles.Add(tmp_tile);
             }
         }
+        if (b) to_disable.SetActive(false);
         if (path != null) path.createPath();
     }
 

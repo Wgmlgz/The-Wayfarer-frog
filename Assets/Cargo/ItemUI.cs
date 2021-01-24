@@ -14,7 +14,7 @@ public class ItemUI : MonoBehaviour {
     public TMPro.TextMeshProUGUI name_text;
     public TMPro.TextMeshProUGUI weight_text;
     public TMPro.TextMeshProUGUI target_text;
-    public UnityEngine.UI.Image img;
+    public UnityEngine.UI.RawImage img;
 
     public void refreshTexts() {
         name_text.SetText(item.name);
@@ -24,7 +24,7 @@ public class ItemUI : MonoBehaviour {
         foreach (var i in imgs) {
             if (i.name == item.img_name) {
                 Debug.Log("da");
-                img.sprite = i.img;
+                img.texture = i.img.texture;
                 break;
             }
         }

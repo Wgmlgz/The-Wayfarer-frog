@@ -825,6 +825,46 @@ MonoBehaviour:
   tasks: []
   default_items: []
   items: []
+--- !u!114 &3977564402891962189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000846662511573260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43643e24203f45b4fb317f4d345f5498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doAwake: 1
+  doStart: 0
+  doUpdate: 0
+  do_by_str: 0
+  str_name: 
+  str_cmp: 
+  doByBool: 1
+  boolName: unlock_tasks
+  onTrue:
+    m_PersistentCalls:
+      m_Calls: []
+  onFalse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7000846662511573260}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  evt:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8286918339162684430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,12 +1224,18 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 941602272826531814}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7000846662511573260}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7000846662511573260 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7798333179873306346, guid: 7adad0c729f1d2e49b267dafceef47e9,
+    type: 3}
+  m_PrefabInstance: {fileID: 941602272826531814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2534199438871744312
 PrefabInstance:
   m_ObjectHideFlags: 0

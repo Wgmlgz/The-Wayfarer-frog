@@ -37,6 +37,9 @@ public class ActionByVar : MonoBehaviour {
             evt.Invoke();
         }
     }
+    public void IncInt(string name) {
+        PlayerPrefs.SetInt(name, PlayerPrefs.GetInt(name) + 1);
+    }
     void Refresh() {
         if (doByBool) {
             if (boolName != null || boolName != "") {
