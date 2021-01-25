@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Settings.unity
     guid: 0cd0747eb24eb3a4fbd0097eb2b7c037
   - enabled: 1
-    path: Assets/Map/Map.unity
+    path: Assets/Scenes/Map.unity
     guid: 695abdaedbf40824f81f8c53f2d90e30
   - enabled: 1
     path: Assets/Cargo/Cargo.unity

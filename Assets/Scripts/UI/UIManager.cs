@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour {
     private void Start() {
         if (PlayerPrefs.HasKey("CurrentCity") == false) { PlayerPrefs.SetString("CurrentCity", "Da"); }
         if (PlayerPrefs.HasKey("TargetCity") == false) { PlayerPrefs.SetString("TargetCity", "Lork"); }
-        if (PlayerPrefs.HasKey("DistanceToTargetCity") == false) { PlayerPrefs.SetInt("DistanceToTargetCity", 149); }
+        if (PlayerPrefs.HasKey("DistanceToTargetCity") == false) { PlayerPrefs.SetInt("DistanceToTargetCity", 142); }
         route_text.SetText(
             "Your current route: " +
             PlayerPrefs.GetString("CurrentCity") + 

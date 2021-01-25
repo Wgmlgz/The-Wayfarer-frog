@@ -19,12 +19,15 @@ public class ActionByVar : MonoBehaviour {
     [Header("Events")]
         public UnityEvent onTrue;
         public UnityEvent onFalse;
-
+        public UnityEvent onRefresh;
 
     string tmpName;
     [SerializeField] UnityEvent evt;
     public void SetName(string name) {
         tmpName = name;
+    }
+    public void SetStr(string value) {
+        PlayerPrefs.SetString(tmpName, value);
     }
     public void SetBool(int value) {
         PlayerPrefs.SetInt(tmpName, value);
@@ -63,6 +66,7 @@ public class ActionByVar : MonoBehaviour {
                 onFalse.Invoke();
             }
         }
+        onRefresh.Invoke();
     }
 
     void Awake() {

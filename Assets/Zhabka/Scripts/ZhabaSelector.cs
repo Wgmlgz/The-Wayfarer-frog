@@ -31,6 +31,7 @@ public class ZhabaSelector : MonoBehaviour {
         zh = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
 
         int sel_t = PlayerPrefs.GetInt("SelectedToad");
+        if (PlayerPrefs.HasKey("SelectedHat") == false) PlayerPrefs.SetInt("SelectedHat", -1);
         int sel_h = PlayerPrefs.GetInt("SelectedHat");
 
         for (int i = 1; i < toads.Count; i++) {

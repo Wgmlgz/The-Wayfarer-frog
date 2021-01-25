@@ -13,14 +13,14 @@ public class City : MonoBehaviour {
     bool load_success = true;
     GameObject map_u;
 
-    public static int getDistance(City a, City b, float da = 10) {
+    public static int getDistance(City a, City b, float da = 30) {
         int ret;
         var delta = a.GetComponent<RectTransform>().position -
             b.GetComponent<RectTransform>().position;
         ret = Mathf.RoundToInt(delta.magnitude * da);
         return ret;
     }
-    void addItemsFromTasks(List<TaskData> n_tasks) {
+    public void addItemsFromTasks(List<TaskData> n_tasks) {
         foreach (var i in n_tasks) {
             foreach (var j in i.items) {
                 j.from = i.from;
@@ -36,10 +36,13 @@ public class City : MonoBehaviour {
         items = default_items;
         tasks = default_tasks;
         addItemsFromTasks(default_tasks);
-        
+
+        saveData();
+        load_success = false;
+    }
+    public void saveData() {
         ItemsListUtility.saveListObj(items, name);
         ItemsListUtility.saveListObj(tasks, name + "_tasks");
-        load_success = false;
     }
     private void Awake() {
         load_success = true;

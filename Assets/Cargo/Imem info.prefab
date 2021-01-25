@@ -235,7 +235,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 311ef577184c31740b0bf7af60b3f4bf, type: 3}
+  m_Texture: {fileID: 2800000, guid: ed53bb8e8bad8224fbd1a3d83de80e84, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -788,7 +788,7 @@ MonoBehaviour:
   - name: pizza
     img: {fileID: 21300000, guid: 3297fd0abdc76624986691c022e56e2a, type: 3}
   - name: cat
-    img: {fileID: 21300000, guid: 1375995e5ef73474abb92384a9abc70f, type: 3}
+    img: {fileID: 21300000, guid: ed53bb8e8bad8224fbd1a3d83de80e84, type: 3}
   item:
     name: Default name
     weight: 10

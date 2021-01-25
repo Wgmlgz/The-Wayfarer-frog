@@ -386,7 +386,7 @@ public class ZhabaController : MonoBehaviour {
 
         if (hieght == -1f) {
             tmpScore = GetComponent<Score>().score;
-            GetComponent<Score>().AddScore(1, "jump");
+            GetComponent<Score>().AddScore(5, "jump");
             tmpVelosity.y = jumpHieght;
         } else if (hieght == 0f) {
             if (!clipMode) return;
