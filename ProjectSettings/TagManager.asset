@@ -12,6 +12,7 @@ TagManager:
   - ZhSelect
   - MapU
   - Popup
+  - CameraTarget
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Ground
   - Mountain
-  - 
+  - Floor
   - 
   - 
   - 

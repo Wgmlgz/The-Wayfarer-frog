@@ -82,8 +82,8 @@ public class UIManager : MonoBehaviour {
         if (lastHpActive < 0f) {
             HideHp();
         }
-
-        //if (ZH.clipMode) speedVis.value = (float)(ZH.actualCurSpeed - ZH.minSpeed) / (ZH.maxSpeed - ZH.minSpeed);
+        float tar = (float)(ZH.actualCurSpeed - ZH.minSpeed) / (ZH.maxSpeed - ZH.minSpeed);
+        if (ZH.clipMode) speedVis.value = Mathf.Lerp(speedVis.value, tar, Time.deltaTime * 10);
     }
     public void SetRedText(string s) {
         redText.gameObject.SetActive(true);

@@ -12,6 +12,7 @@ public class ZhabaController : MonoBehaviour {
     public bool clipMode = false;
     public LayerMask ground;
     public LayerMask mountains;
+    public LayerMask floor;
     public UnityEvent onPlay;
     public UnityEvent onDeath;
     public float actualCurSpeed;
@@ -79,6 +80,7 @@ public class ZhabaController : MonoBehaviour {
     [Header("cam control")]
     public Cinemachine.CinemachineVirtualCamera sceneCam;
     public Cinemachine.CinemachineVirtualCamera gameCam;
+    public float const_cam_size = -1;
     [Range(0f, 100f)] public float camSize = 50f;
     [Range(0f, 1f)] public float camMult = .5f;
     public float offsetFactor = 1.5f;
@@ -131,7 +133,7 @@ public class ZhabaController : MonoBehaviour {
 
                 //raycast
                 RaycastHit2D[] hitAll = Physics2D.RaycastAll(
-                    transform.rotation * Vector3.up * 5 +
+                    transform.rotation * Vector3.up * 2 +
                     transform.rotation.normalized * Vector2.right * curSpeed * Time.deltaTime + transform.position,
                     (transform.rotation * -Vector3.up)
                 );
@@ -159,7 +161,8 @@ public class ZhabaController : MonoBehaviour {
                     Jump();
                 }
                 tmpVelosity = (1f / Time.deltaTime) * (transform.position - lastUpdateFramePos);
-            }else {
+            }
+            else {
                 if (doConstVelosity) Fall();
                 GetComponent<Score>().cleanScoreTime = 9999;
 
@@ -174,10 +177,18 @@ public class ZhabaController : MonoBehaviour {
 
                 //RB.velocity = RB.velocity.normalized * minSpeed;
 
-                Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
+                //Quaternion tq = Quaternion.AngleAxis(Mathf.Atan2(RB.velocity.y, RB.velocity.x) * Mathf.Rad2Deg, Vector3.forward);
+                if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(floor) && jumpTime > maxjumpTime) {
+                    float t = body.transform.rotation.eulerAngles.z;
+                    if (t > 180) t = 360 - t;
+                    if (t < deathAngle * 0.5) {
+                        curSpeed += (GetComponent<Score>().score - tmpScore) * scoreAddFactor;
+                        clipMode = true;
+                    }
+                }
                 if (GetComponent<CapsuleCollider2D>().IsTouchingLayers(ground)) {
                     //death check
-                    RaycastHit2D[] hitAll = Physics2D.RaycastAll(transform.rotation * Vector3.up * 5, (transform.rotation * -Vector3.up));
+                    RaycastHit2D[] hitAll = Physics2D.RaycastAll(transform.rotation * Vector3.up * 2, (transform.rotation * -Vector3.up));
                     RaycastHit2D hit = new RaycastHit2D();
                     foreach (RaycastHit2D i in hitAll) {
                         if (i.transform.gameObject.CompareTag("Ground")) {
@@ -196,7 +207,7 @@ public class ZhabaController : MonoBehaviour {
                         if (t > 180) t = 360 - t;
                         if (t > deathAngle) Death("head");
 
-                        body.transform.rotation = Quaternion.identity;
+                        //body.transform.rotation = Quaternion.identity;
                         curSpeed += (GetComponent<Score>().score - tmpScore) * scoreAddFactor;
                         clipMode = true;
                     }
@@ -209,11 +220,11 @@ public class ZhabaController : MonoBehaviour {
                     body.transform.rotation = Quaternion.Euler(0, 0, body.transform.rotation.eulerAngles.z + rotationSpeed * Time.deltaTime * rotMod);
                     flipTmp += (rotationSpeed * Time.deltaTime * rotMod);
                     if (flipTmp > 300 && lastFFlipTmp < 300) {
-                        GetComponent<Score>().AddScore(10, "flip");
+                        GetComponent<Score>().AddScore(5, "flip");
                     } else if (flipTmp > 630 && lastFFlipTmp < 630) {
-                        GetComponent<Score>().AddScore(15, "double flip");
+                        GetComponent<Score>().AddScore(10, "double flip");
                     } else if (flipTmp > 960 && lastFFlipTmp < 960) {
-                        GetComponent<Score>().AddScore(30, "flip flip flip");
+                        GetComponent<Score>().AddScore(20, "flip flip flip");
                     } else if (flipTmp > 1260 && lastFFlipTmp < 1260) {
                         GetComponent<Score>().AddScore(30, "flip flip flip flip");
                     } else if (flipTmp > 1560 && lastFFlipTmp < 1560) {
@@ -271,7 +282,8 @@ public class ZhabaController : MonoBehaviour {
         if (curSpeed > maxSpeed) curSpeed = maxSpeed;
         actualCurSpeed = curSpeed;
         if (clipMode) {
-            body.transform.rotation = transform.rotation;
+            body.transform.rotation = Quaternion.Lerp(body.transform.rotation, transform.rotation, Time.deltaTime * angleSmooth * 2);
+            //body.transform.rotation = transform.rotation;
         } else {
             actualCurSpeed = RB.velocity.magnitude;
         }
@@ -280,6 +292,9 @@ public class ZhabaController : MonoBehaviour {
         Vector3 tmp = gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset;
         tmp.x = gameCam.m_Lens.OrthographicSize * offsetFactor;
         gameCam.GetCinemachineComponent<CinemachineTransposer>().m_FollowOffset = tmp;
+        if (const_cam_size > 0) {
+            gameCam.m_Lens.OrthographicSize = const_cam_size;
+        }
 
         maxSpeed = (GetComponent<Score>().distance / maxXSpeedDist) * (maxXSpeed - startMaxSpeed) + startMaxSpeed;
         if ((GetComponent<Score>().distance / maxXSpeedDist) > 1f) maxSpeed = maxXSpeed;
@@ -386,7 +401,7 @@ public class ZhabaController : MonoBehaviour {
 
         if (hieght == -1f) {
             tmpScore = GetComponent<Score>().score;
-            GetComponent<Score>().AddScore(5, "jump");
+            GetComponent<Score>().AddScore(2, "jump");
             tmpVelosity.y = jumpHieght;
         } else if (hieght == 0f) {
             if (!clipMode) return;

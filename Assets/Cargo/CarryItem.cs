@@ -42,11 +42,37 @@ public class CarryItem : MonoBehaviour {
 
         list.saveAll();
     }
+    public void finTask(TaskData tmp_task) {
+        list.collector.AddCoins(tmp_task.revard);
+        Debug.Log("You delivered " + tmp_task.task_name + "!");
+        GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
+            "Nice work, oleg!",
+            "You have completed the task: " + tmp_task.task_name + "\n" +
+            (tmp_task.type.Equals(TaskData.TaskType.do_tasks) ? "For additional revard go to " + tmp_task.from + "\n": "") +
+            "And earned " + tmp_task.revard + " coins!"
+        );
+        PlayerPrefs.SetInt(tmp_task.task_name + "_completed", 1);
+        if (tmp_task.type.Equals(TaskData.TaskType.in_do_tasks)) {
+            Debug.LogWarning("dfsdfsdfs");
+            var parent_city_tasks =
+                (List<TaskData>)ItemsListUtility.loadObj(tmp_task.parent_city + "_tasks");
+            foreach (var task_in_parent_city in parent_city_tasks) {
+                if(task_in_parent_city.task_name == tmp_task.parent_task) {
+                    --task_in_parent_city.tasks_left;
+                    if (task_in_parent_city.tasks_left == 0) {
+                        Debug.Log("You done task: " + task_in_parent_city.task_name);
+                        finTask(task_in_parent_city);
+                        parent_city_tasks.Remove(task_in_parent_city);
+                        return;
+                    }
+                    ItemsListUtility.saveListObj(parent_city_tasks, tmp_task.parent_city + "_tasks");
+                }
+            }
+        }
+    }
     public void moveToSecond() {
         string cur_city = PlayerPrefs.GetString("CurrentCity");
         if (item.target == cur_city && item.is_in_task) {
-            
-
             var from_city_tasks =
                 (List<TaskData>)ItemsListUtility.loadObj(item.from + "_tasks");
             foreach (var tmp_task in from_city_tasks) {
@@ -57,18 +83,9 @@ public class CarryItem : MonoBehaviour {
                             " in task: " + tmp_task.task_name);
                         tmp_task.items.Remove(tmp_item);
                         if (tmp_task.items.Count == 0) {
-                            list.collector.AddCoins(tmp_task.revard);
-                            Debug.Log("You delivered " + tmp_task.task_name + "!");
-                            GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
-                                "You have completed the task!",
-                                "You delivered " + item.name + " from " +
-                                tmp_task.from + " to " + tmp_task.target +
-                                " in task: " + tmp_task.task_name + "\n" +
-                                "And earned " + tmp_task.revard + " coins!"
-                            );
-                            PlayerPrefs.SetInt(tmp_task.task_name + "_completed", 1);
+                            finTask(tmp_task);
+                            from_city_tasks.Remove(tmp_task);
                         }
-                        from_city_tasks.Remove(tmp_task);
                         ItemsListUtility.saveListObj(from_city_tasks, item.from + "_tasks");
                         goto Da;
                     } else {

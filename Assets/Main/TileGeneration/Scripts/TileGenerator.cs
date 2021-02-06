@@ -9,6 +9,8 @@ public class Biom {
     public bool canGen;
     public int minBiomSize = 2;
     public int maxBiomSize = 5;
+    public GameObject start_tile;
+    public GameObject end_tile;
     public List<GameObject> tiles;
 }
 
@@ -51,32 +53,30 @@ public class TileGenerator : MonoBehaviour {
         return Random.Range(minV, maxV);
     }
     public void ChangeBiom(int i = -1) {
-        if (i == -1) {
-            currentBiom = RandomInt(0, bioms.Length);
-            if (bioms[currentBiom].canGen == false) {
-                ChangeBiom();
-                return;
+        if (currentBiom > 0) {
+            if (bioms[currentBiom].end_tile != null) {
+                GenTile(bioms[currentBiom].end_tile);
             }
+        }
+        if (i == -1) {
+            int t = currentBiom;
+            while (t == currentBiom || bioms[currentBiom].canGen == false) currentBiom = RandomInt(0, bioms.Length);
+            //if (bioms[currentBiom].canGen == false) {
+            //    ChangeBiom();
+            //    return;
+            //}
         } else {
             currentBiom = i;
         }
         currentBiomSize = RandomInt(bioms[currentBiom].minBiomSize, bioms[currentBiom].maxBiomSize);
         currentBiomFilling = 0;
-    }
-    public void GenNewTile() {
-        if (currentBiom == -1) ChangeBiom();
-        if (currentBiomSize == currentBiomFilling) ChangeBiom();
-        score.GetDist();
-        currentBiomFilling += 1;
-
-        GameObject tmpTile = null;
-        if (lastTile != null) {
-            var t = lastTile.transform.position + lastTile.GetComponent<TileInfo>().tileLength / 2;
-            if (score.GetDist(t) >= target_distance) {
-                ChangeBiom(5);
-            }
+        if (bioms[currentBiom].start_tile != null) {
+            GenTile(bioms[currentBiom].start_tile);
         }
-        tmpTile = Instantiate(bioms[currentBiom].tiles[RandomInt(0, bioms[currentBiom].tiles.Count)]);
+    }
+    public void GenTile(GameObject example) {
+        GameObject tmpTile = null;
+        tmpTile = Instantiate(example);
         tmpTile.GetComponent<TileInfo>().generator = gameObject;
         tmpTile.GetComponent<TileInfo>().isExample = false;
 
@@ -92,6 +92,20 @@ public class TileGenerator : MonoBehaviour {
 
         tmpTile.transform.position = newTilePos;
         lastTile = tmpTile;
+    }
+    public void GenNewTile() {
+        if (currentBiom == -1) ChangeBiom();
+        if (currentBiomSize == currentBiomFilling) ChangeBiom();
+        score.GetDist();
+        currentBiomFilling += 1;
+
+        if (lastTile != null) {
+            var t = lastTile.transform.position + lastTile.GetComponent<TileInfo>().tileLength / 2;
+            if (score.GetDist(t) >= target_distance) {
+                ChangeBiom(5);
+            }
+        }
+        GenTile(bioms[currentBiom].tiles[RandomInt(0, bioms[currentBiom].tiles.Count)]);
     }
     public void SrartGen() {
         for (int i = 0; i < 2; ++i) {

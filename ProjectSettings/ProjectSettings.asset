@@ -19,11 +19,11 @@ PlayerSettings:
   m_SplashScreenBackgroundColor: {r: 0.6618702, g: 0.5238074, b: 0.745283, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1
-  m_SplashScreenOverlayOpacity: 1
-  m_SplashScreenAnimation: 0
+  m_SplashScreenOverlayOpacity: 0.7856
+  m_SplashScreenAnimation: 2
   m_SplashScreenLogoStyle: 1
-  m_SplashScreenDrawMode: 0
-  m_SplashScreenBackgroundAnimationZoom: 1
+  m_SplashScreenDrawMode: 1
+  m_SplashScreenBackgroundAnimationZoom: 0
   m_SplashScreenLogoAnimationZoom: 0
   m_SplashScreenBackgroundLandscapeAspect: 1
   m_SplashScreenBackgroundPortraitAspect: 1
@@ -40,6 +40,8 @@ PlayerSettings:
     width: 1
     height: 1
   m_SplashScreenLogos:
+  - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
+    duration: 2
   - logo: {fileID: 21300000, guid: d9302adc6b35d58438637bc0cdcac486, type: 3}
     duration: 2
   m_VirtualRealitySplashScreen: {fileID: 0}
@@ -126,7 +128,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.6
+  bundleVersion: 0.10.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -173,7 +175,7 @@ PlayerSettings:
     Android: com.Wgmlgz.TheWayfarerfrog
     Standalone: com.Wgmlgz.TheWayfarerfrog
   buildNumber: {}
-  AndroidBundleVersionCode: 9
+  AndroidBundleVersionCode: 10
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 30
   AndroidPreferredInstallLocation: 1
@@ -247,7 +249,7 @@ PlayerSettings:
   clonedFromGUID: 10ad67313f4034357812315f3c407484
   templatePackageId: com.unity.template.2d@4.0.1
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 1
+  AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: '{inproject}: user.keystore'
@@ -632,7 +634,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 8beb8ec50c46f604380bc3ae88fbc085,
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: e2b540625d5d05343b0ce9d75a34b33a,
     type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 1
@@ -654,7 +656,7 @@ PlayerSettings:
   scriptingDefineSymbols: {}
   platformArchitecture: {}
   scriptingBackend:
-    Android: 0
+    Android: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}
   incrementalIl2cppBuild: {}

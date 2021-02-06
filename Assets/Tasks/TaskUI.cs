@@ -5,8 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class TaskData {
     public enum TaskType {
-        delivery
-
+        delivery,
+        do_tasks,
+        in_do_tasks
     }
     public enum TaskStatus {
         active,
@@ -20,13 +21,23 @@ public class TaskData {
     public TaskStatus status;
     public TaskType type;
 
+    [Header("Delivery")]
     public string from;
     public string target;
 
     public List<Item> items;
 
+
+    [Header("Do other tasks")]
+    public int tasks_left;
+
+    [Header("In do other tasks")]
+    public string parent_city;
+    public string parent_task;
+
+    [Header("All")]
+
     public int revard;
-    public DateTime start_time;
 }
 
 public class TaskUI : MonoBehaviour {
