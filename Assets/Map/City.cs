@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class City : MonoBehaviour {
     public List<City> connected;
+    public List<City> new_connected;
+    public string do_connect;
     public TMPro.TextMeshProUGUI tasks_count_text;
     public List<TaskData> default_tasks;
     public List<TaskData> tasks;
@@ -22,6 +24,7 @@ public class City : MonoBehaviour {
     }
     public void addItemsFromTasks(List<TaskData> n_tasks) {
         foreach (var i in n_tasks) {
+            if (i.not_spawn == true) continue;
             foreach (var j in i.items) {
                 j.from = i.from;
                 j.target = i.target;

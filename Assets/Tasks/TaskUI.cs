@@ -7,7 +7,7 @@ public class TaskData {
     public enum TaskType {
         delivery,
         do_tasks,
-        in_do_tasks
+        in_do_tasks,
     }
     public enum TaskStatus {
         active,
@@ -26,7 +26,7 @@ public class TaskData {
     public string target;
 
     public List<Item> items;
-
+    public bool not_spawn;
 
     [Header("Do other tasks")]
     public int tasks_left;
@@ -38,6 +38,7 @@ public class TaskData {
     [Header("All")]
 
     public int revard;
+    public List<Item> reward_items;
 }
 
 public class TaskUI : MonoBehaviour {

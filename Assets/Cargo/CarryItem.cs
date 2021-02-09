@@ -9,11 +9,11 @@ public class Item {
 
     public string img_name;
 
-    [HideInInspector] public string from;
-    [HideInInspector] public string target;
+    public string from;
+    public string target;
 
-    [HideInInspector] public bool is_in_task;
-    [HideInInspector] public string task_name;
+    public bool is_in_task;
+    public string task_name;
 
     public static bool isEqual(Item a, Item b) {
         if (a.name != b.name) return false;
@@ -22,8 +22,8 @@ public class Item {
         if (a.from != b.from) return false;
         if (a.target != b.target) return false;
 
-        if (a.is_in_task != b.is_in_task) return false;
-        if (a.task_name != b.task_name) return false;
+        //if (a.is_in_task != b.is_in_task) return false;
+        //if (a.task_name != b.task_name) return false;
         return true;
     }
 }
@@ -44,6 +44,11 @@ public class CarryItem : MonoBehaviour {
     }
     public void finTask(TaskData tmp_task) {
         list.collector.AddCoins(tmp_task.revard);
+        List<Item> city_items = ItemsListUtility.loadList(tmp_task.from);
+        foreach (var i in tmp_task.reward_items) {
+            city_items.Add(i);
+        }
+        ItemsListUtility.saveListObj(city_items, tmp_task.from);
         Debug.Log("You delivered " + tmp_task.task_name + "!");
         GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
             "Nice work, oleg!",
@@ -53,7 +58,6 @@ public class CarryItem : MonoBehaviour {
         );
         PlayerPrefs.SetInt(tmp_task.task_name + "_completed", 1);
         if (tmp_task.type.Equals(TaskData.TaskType.in_do_tasks)) {
-            Debug.LogWarning("dfsdfsdfs");
             var parent_city_tasks =
                 (List<TaskData>)ItemsListUtility.loadObj(tmp_task.parent_city + "_tasks");
             foreach (var task_in_parent_city in parent_city_tasks) {

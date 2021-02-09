@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43643e24203f45b4fb317f4d345f5498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doAwake: 1
-  doStart: 0
+  doAwake: 0
+  doStart: 1
   doUpdate: 0
   do_by_str: 0
   str_name: 
