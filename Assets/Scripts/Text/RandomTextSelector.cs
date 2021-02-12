@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RandomTextSelector : MonoBehaviour
-{
+public class RandomTextSelector : MonoBehaviour {
     [Header("Const")]
     public bool useConst;
     public string CONST_VAL;
@@ -16,36 +15,29 @@ public class RandomTextSelector : MonoBehaviour
     public int usedVariation;
     public List<string> variations;
 
-    public void SetToConst(string s)
-    {
+    public void SetToConst(string s) {
         useConst = true;
         CONST_VAL = s;
     }
-    public void ChangeText(string newStr = "")
-    {
-        if(newStr != "")
-        {
+    public void ChangeText(string newStr = "") {
+        if (newStr != "") {
             useVar = true;
             varVal = newStr;
             SetStr(varVal);
-        }
-        else if (useConst)
-        {
+        } else if (useConst) {
             SetStr(CONST_VAL);
-        }
-        else
-        {
+        } else if (useVar) {
+            SetStr(PlayerPrefs.GetString(varVal));
+        } else {
             usedVariation = Random.Range(0, variations.Count);
             SetStr(variations[usedVariation]);
         }
     }
-    public void SetStr(string s)
-    {
+    public void SetStr(string s) {
         GetComponent<TMPro.TextMeshProUGUI>().SetText(s);
     }
 
-    private void Start()
-    {
+    private void Start() {
         ChangeText();
     }
 }

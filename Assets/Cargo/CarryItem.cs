@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Firebase.Analytics;
 [System.Serializable]
 public class Item {
     public string name = "Default name";
@@ -43,6 +44,13 @@ public class CarryItem : MonoBehaviour {
         list.saveAll();
     }
     public void finTask(TaskData tmp_task) {
+        FirebaseAnalytics.LogEvent(
+          "task_fin",
+          new Parameter(
+            "name", tmp_task.task_name),
+          new Parameter(
+            "reward", tmp_task.revard)
+        );
         list.collector.AddCoins(tmp_task.revard);
         List<Item> city_items = ItemsListUtility.loadList(tmp_task.from);
         foreach (var i in tmp_task.reward_items) {
@@ -82,6 +90,15 @@ public class CarryItem : MonoBehaviour {
             foreach (var tmp_task in from_city_tasks) {
                 foreach (var tmp_item in tmp_task.items) {
                     if (Item.isEqual(tmp_item, item)) {
+                        FirebaseAnalytics.LogEvent(
+                          "delivered_item",
+                          new Parameter(
+                            "name", item.name),
+                          new Parameter(
+                            "target", tmp_task.target),
+                          new Parameter(
+                            "task", tmp_task.task_name)
+                        );
                         Debug.Log("You delivered " + item.name + " from " +
                             tmp_task.from + " to " + tmp_task.target +
                             " in task: " + tmp_task.task_name);

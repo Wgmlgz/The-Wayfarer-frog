@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using Cinemachine;
+using Firebase.Analytics;
 
 public class ZhabaController : MonoBehaviour {
     [Header("global")]

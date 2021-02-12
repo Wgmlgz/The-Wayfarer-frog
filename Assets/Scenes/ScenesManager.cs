@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Firebase.Analytics;
 public class ScenesManager : MonoBehaviour {
     public static void toMapSt()   { SceneManager.LoadScene("Map");   }
     public static void toCargoSt() { SceneManager.LoadScene("Cargo"); }
@@ -15,11 +15,17 @@ public class ScenesManager : MonoBehaviour {
     public void toMain()  { toMainSt();  }
 
     public static void arriveToCitySt() {
+        FirebaseAnalytics.LogEvent(
+          "arrive_to_city",
+          new Parameter(
+            "current", PlayerPrefs.GetString("CurrentCity")),
+          new Parameter(
+            "target", PlayerPrefs.GetString("TargetCity"))
+        );
         PlayerPrefs.SetString("CurrentCity", PlayerPrefs.GetString("TargetCity"));
         toMapSt();
     }
     public void arriveToCity() {
-        Debug.LogWarning("dfasdfsd");
         arriveToCitySt();
     }
 }

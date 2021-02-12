@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1678722725603462
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4622562484731112}
+  - component: {fileID: 114702320289062492}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4622562484731112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678722725603462}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114702320289062492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678722725603462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5fcf1aa18d6a748bc3fce43c208123, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_backgroundMusicList:
+  - m_name: AbToha - Manner
+    m_audioClip: {fileID: 8300000, guid: 6c5b9fd2906d4584d9fff80f2c56f8e6, type: 3}
+    m_looping: 1
+    m_volume: 0.05
+    m_pitch: 0.8
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  m_sfxList:
+  - m_name: button
+    m_audioClip: {fileID: 8300000, guid: 28b3fde76c90b364bbeed1661f531d66, type: 3}
+    m_looping: 0
+    m_volume: 1
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: death
+    m_audioClip: {fileID: 8300000, guid: c65ea0768e68b7147839a8e529fb9f43, type: 3}
+    m_looping: 0
+    m_volume: 1
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  m_currentMusic:
+    m_name: 
+    m_audioClip: {fileID: 0}
+    m_looping: 0
+    m_volume: 0
+    m_pitch: 0
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  m_prevMusic:
+    m_name: 
+    m_audioClip: {fileID: 0}
+    m_looping: 0
+    m_volume: 0
+    m_pitch: 0
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
