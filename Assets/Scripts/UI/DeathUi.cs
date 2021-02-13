@@ -36,6 +36,14 @@ public class DeathUi : MonoBehaviour
         }
         PrepareDeathScreen();
     }
+    public void FreeLife() {
+        //if (ZH.GetComponent<CoinCollector>().GetCoins() >= slCost) {
+            ZH.secondLifes += 1;
+            PlayerPrefs.SetInt("SL", ZH.secondLifes);
+            //ZH.GetComponent<CoinCollector>().AddCoins(-slCost);
+        //}
+        PrepareDeathScreen();
+    }
     public void UseSeconLife(){
         if(ZH.secondLifes > 0){
             ZH.secondLifes -= 1;

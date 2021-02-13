@@ -33,10 +33,14 @@ public class ToadUnlockHandler : MonoBehaviour
     public void TryUnlock() {
         if (zh.GetComponent<CoinCollector>().GetCoins() >= coins_need) {
             if (zh.GetComponent<Levels>().level >= level_need) {
-                GameObject.FindGameObjectWithTag("ZhSelect").GetComponent<ZhabaSelector>().UnlockToad(index);
+                unlock();
                 zh.GetComponent<CoinCollector>().AddCoins(-coins_need);
             }
         }
+    }
+    public void unlock() {
+        Debug.Log("FA");
+        GameObject.FindGameObjectWithTag("ZhSelect").GetComponent<ZhabaSelector>().UnlockToad(index);
     }
     private void Update() {
         coins.SetText(zh.GetComponent<CoinCollector>().GetCoins().ToString() + " / " + coins_need.ToString() + " coins");
