@@ -13,6 +13,7 @@ TagManager:
   - MapU
   - Popup
   - CameraTarget
+  - tutorial
   layers:
   - Default
   - TransparentFX

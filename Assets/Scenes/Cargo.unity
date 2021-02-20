@@ -1718,7 +1718,7 @@ MonoBehaviour:
     spaceCount: 8
     wordCount: 9
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -4543,7 +4543,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   max_weight_first: 15
-  max_weight_second: 54
+  cur_weight_first: 0
+  max_weight_second: 999999999
   color_ok: {r: 1, g: 1, b: 1, a: 0.7019608}
   color_bad: {r: 0.7735849, g: 0, b: 0, a: 1}
   content_first: {fileID: 103562366}
@@ -7855,7 +7856,7 @@ MonoBehaviour:
     spaceCount: 8
     wordCount: 9
     linkCount: 0
-    lineCount: 3
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -7910,7 +7911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -112.60003, y: 214.79997}
+  m_AnchoredPosition: {x: -112.60003, y: 214.79999}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1968673850

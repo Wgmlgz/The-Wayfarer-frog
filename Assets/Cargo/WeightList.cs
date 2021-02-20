@@ -56,6 +56,7 @@ public class ItemsListUtility {
 }
 public class WeightList : MonoBehaviour {
     public int max_weight_first;
+    public int cur_weight_first;
     public int max_weight_second;
 
     public Color color_ok;
@@ -95,6 +96,8 @@ public class WeightList : MonoBehaviour {
                 new Vector2(length / 2, -i * offset);
             tmp_weight += list_first[i].GetComponent<CarryItem>().item.weight;
         }
+        cur_weight_first = tmp_weight;
+        PlayerPrefs.SetInt("current_weight", cur_weight_first);
         weight_obj_first.SetText(tmp_weight.ToString() + " / " + max_weight_first.ToString() + " kg");
 
         weight_obj_first.color = tmp_weight > max_weight_first ? color_bad : color_ok;
@@ -174,6 +177,7 @@ public class WeightList : MonoBehaviour {
         example_second.SetActive(false);
 
         loadFirst("ZhabkaItems");
+        max_weight_first = PlayerPrefs.GetInt("MaxWeight");
         loadSecond(PlayerPrefs.GetString("CurrentCity"));
     }
     void Update() {

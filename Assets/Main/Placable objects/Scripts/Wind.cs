@@ -28,6 +28,7 @@ public class Wind : MonoBehaviour {
         ZH.GetComponent<ZhabaController>().doCustomRotDir = true;
         ZH.GetComponent<ZhabaController>().customRotDir = customRotDir;
         ZH.GetComponent<Rigidbody2D>().gravityScale = 2f;
+        GameObject.FindGameObjectWithTag("tutorial").GetComponent<Tutorial>().tryShow();
     }
 
     public void EndEffect() {

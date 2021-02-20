@@ -27,6 +27,7 @@ public class ZhabaSelector : MonoBehaviour {
 
     private ZhabaController zh;
 
+    private bool fin_setup = false;
     private void Start() {
         zh = GameObject.FindGameObjectWithTag("Player").GetComponent<ZhabaController>();
 
@@ -51,9 +52,14 @@ public class ZhabaSelector : MonoBehaviour {
         LockToad(2);
         if (System.DateTime.Now.DayOfWeek == System.DayOfWeek.Wednesday) {
             UnlockToad(2);
+        } else {
+            if (sel_t == 2) {
+                sel_t = 0;
+            }
         }
         SelectToad(sel_t);
         SetHat(sel_h);
+        fin_setup = true;
     }
     public void ViewTop() {
         viewN = 0;
@@ -87,9 +93,16 @@ public class ZhabaSelector : MonoBehaviour {
         toads[j].cam.Priority = 9999;
     }
     public void SelectToad(int j) {
+        if (PlayerPrefs.GetInt("current_weight") > toads[j].max_weight_lvl[toads[j].toad_level] && j != 0) {
+            if (fin_setup == false) return;
+            GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
+            "Not enough place in this toad inventory :(",
+            "You can upgrade this toad or use another with more place in inventory"
+            );
+            return;
+        }
         selectedN = j;
         PlayerPrefs.SetInt("SelectedToad", j);
-        PlayerPrefs.SetInt("MaxTravelDistance", toads[j].max_distance_lvl[toads[j].toad_level]);
         PlayerPrefs.SetInt("MaxWeight", toads[j].max_weight_lvl[toads[j].toad_level]);
 
         foreach (var i in toads) {

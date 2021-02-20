@@ -19,7 +19,7 @@ public class Coin : MonoBehaviour
             "_" + transform.position.x.ToString() +
             "_" + transform.position.y.ToString(),
             1);*/
-        //AudioManager.AudioManager.m_instance.PlaySFX(1);
+        AudioManager.AudioManager.m_instance.PlaySFX("coin");
 
         gameObject.AddComponent(typeof(Rigidbody2D));
         this.GetComponent<Rigidbody2D>().simulated = true;

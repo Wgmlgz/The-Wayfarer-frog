@@ -6,7 +6,6 @@ public class ToadUnlockHandler : MonoBehaviour
 {
     public bool isLock;
     public int[] upgrade_cost;
-    public int[] max_distance_lvl;
     public int[] max_weight_lvl;
     public int toad_level;
     public int index;
@@ -70,8 +69,6 @@ public class ToadUnlockHandler : MonoBehaviour
     public void getUpgradeInfo() {
         GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
             "Your toad is now at level " + toad_level.ToString(),
-            "Max distance: " + max_distance_lvl[toad_level].ToString() +
-            (toad_level >= upgrade_cost.Length - 1 ? " (max)" : " (+" + (max_distance_lvl[toad_level + 1] - max_distance_lvl[toad_level]).ToString() + " if upgrade)") + "\n" +
             "Max carry weight: " + max_weight_lvl[toad_level].ToString() +
             (toad_level >= upgrade_cost.Length - 1 ? " (max)" : " (+" + (max_weight_lvl[toad_level + 1] - max_weight_lvl[toad_level]).ToString() + " if upgrade)") + "\n");
     }

@@ -36,6 +36,13 @@ public class CarryItem : MonoBehaviour {
     public WeightList list;
 
     public void moveToFirst() {
+        if (item.weight + list.cur_weight_first > list.max_weight_first) {
+            GameObject.FindGameObjectWithTag("Popup").GetComponent<Popup>().show(
+            "Not enough place in your inventory :(",
+            "You can upgrade your toad or use another with more place in inventory"
+            );
+            return;
+        }
         GameObject tmp = list.CreateFirst();
         list.setProperties(tmp.GetComponent<CarryItem>(), item);
         list.list_second.Remove(gameObject);

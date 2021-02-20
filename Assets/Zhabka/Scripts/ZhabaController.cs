@@ -16,6 +16,7 @@ public class ZhabaController : MonoBehaviour {
     public LayerMask floor;
     public UnityEvent onPlay;
     public UnityEvent onDeath;
+    public UnityEvent on_hit;
     public float actualCurSpeed;
 
 
@@ -352,6 +353,7 @@ public class ZhabaController : MonoBehaviour {
         curSpeed = minSpeed;
         if (hpLeft >= 0) {
             UIM.RemoveHeart();
+            on_hit.Invoke();
             return;
         }
 

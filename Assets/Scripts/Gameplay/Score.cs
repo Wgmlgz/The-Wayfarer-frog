@@ -79,6 +79,7 @@ public class Score : MonoBehaviour {
         return Mathf.RoundToInt((t - startPos).magnitude * distanceFactor);
     }
     public void AddScore(int i, string comment = "") {
+        if (comment != "jump") AudioManager.AudioManager.m_instance.PlaySFX("flip");
         score += i;
 
         //i = Random.Range(0, 54);

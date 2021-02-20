@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class Ads : MonoBehaviour {
     private string second_life = "ca-app-pub-4800162937668095/5639897775";
     private string death = "ca-app-pub-4800162937668095/9060268030";
-    private string arrival = "ca-app-pub-4800162937668095/8001912205";
+    private string portal = "ca-app-pub-4800162937668095/8001912205";
 
     public InterstitialAd death_ad;
     public InterstitialAd portal_ad;
@@ -34,7 +34,7 @@ public class Ads : MonoBehaviour {
 
     #region WAYFARER FROG
     public void restartButton() {
-        if (PlayerPrefs.GetInt("no_ads") == 1) return;
+        if (PlayerPrefs.GetInt("no_ads") == 1) { on_restart.Invoke(); return; }
         if (ShowInterstitialAd()) {
 
         } else {
@@ -42,7 +42,7 @@ public class Ads : MonoBehaviour {
         }
     }
     public void toPortal() {
-        if (PlayerPrefs.GetInt("no_ads") == 1) return;
+        if (PlayerPrefs.GetInt("no_ads") == 1) { on_portal.Invoke(); return; }
         if (ShowPortalAd()) {
 
         } else {
@@ -204,7 +204,7 @@ public class Ads : MonoBehaviour {
     }
     public bool ShowPortalAd() {
         if (portal_ad.IsLoaded()) {
-            death_ad.Show();
+            portal_ad.Show();
         } else {
             statusText.text = "Interstitial ad is not ready yet";
         }

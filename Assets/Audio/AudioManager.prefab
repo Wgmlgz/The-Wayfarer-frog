@@ -65,10 +65,10 @@ MonoBehaviour:
     m_fade: 0
     m_object: {fileID: 0}
     m_audioSource: {fileID: 0}
-  - m_name: death
-    m_audioClip: {fileID: 8300000, guid: c65ea0768e68b7147839a8e529fb9f43, type: 3}
+  - m_name: coin
+    m_audioClip: {fileID: 8300000, guid: 177613d6b659dd4448aac3cdda90cce9, type: 3}
     m_looping: 0
-    m_volume: 1
+    m_volume: 0.4
     m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0

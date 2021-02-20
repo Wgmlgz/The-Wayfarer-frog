@@ -101,7 +101,7 @@ public class TileGenerator : MonoBehaviour {
 
         if (lastTile != null) {
             var t = lastTile.transform.position + lastTile.GetComponent<TileInfo>().tileLength / 2;
-            if (score.GetDist(t) >= target_distance) {
+            if (score.GetDist(t) >= target_distance - 20) {
                 ChangeBiom(5);
             }
         }
