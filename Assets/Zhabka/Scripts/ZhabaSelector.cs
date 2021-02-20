@@ -119,7 +119,7 @@ public class ZhabaSelector : MonoBehaviour {
         zh.gameObject.GetComponent<CoinCollector>().coinMult = 1;
 
         if (selectedN == 0) {
-            //
+            ///
         } else if (selectedN == 1) {
             zh.hpMaxToad = 2;
         } else if (selectedN == 2) {
@@ -137,8 +137,8 @@ public class ZhabaSelector : MonoBehaviour {
         } else if (selectedN == 6) {
             zh.canDoubleJump = true;
             zh.ignoreHead = true;
-            zh.rotMod *= 1.5f; ;
-            zh.canFall = true;
+            zh.rotMod *= 1.5f;
+            //zh.canFall = true;
             zh.hpMaxToad = 3;
             zh.gameObject.GetComponent<CoinCollector>().coinMult *= 4;
         }
@@ -180,13 +180,13 @@ public class ZhabaSelector : MonoBehaviour {
         } else if (selectedHat == 1) {
             zh.hpMaxHat += 2;
         } else if (selectedHat == 2) {
-            zh.hpMaxHat += 2;
+            zh.rotMod *= 0.1f; ;
         } else if (selectedHat == 3) {
             zh.ignoreHead = true;
         } else if (selectedHat == 4) {
             zh.gameObject.GetComponent<CoinCollector>().coinMult *= 2;
         } else if (selectedHat == 5) {
-            zh.canFall = true;
+            //zh.canFall = true;
         }
     }
 }

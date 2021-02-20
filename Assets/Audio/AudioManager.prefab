@@ -44,11 +44,101 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_backgroundMusicList:
-  - m_name: AbToha - Manner
+  - m_name: 1
     m_audioClip: {fileID: 8300000, guid: 6c5b9fd2906d4584d9fff80f2c56f8e6, type: 3}
     m_looping: 1
-    m_volume: 0.05
-    m_pitch: 0.8
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 2
+    m_audioClip: {fileID: 8300000, guid: 02f38c74d946eea40bf99eff8319d50d, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 4
+    m_audioClip: {fileID: 8300000, guid: edec0b5df1f8b1b4692f2198d4d206e4, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 5
+    m_audioClip: {fileID: 8300000, guid: 51bd7afc4cf869e4f83c4b5c2d5baab9, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 6
+    m_audioClip: {fileID: 8300000, guid: 163299d00e2fe914588979bdae6b9dc6, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 7
+    m_audioClip: {fileID: 8300000, guid: 952793c05be3cc142a4e9fc104726575, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 8
+    m_audioClip: {fileID: 8300000, guid: f5675caca9aed7547b3c1a8106dacc72, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 9
+    m_audioClip: {fileID: 8300000, guid: 715a48f1fe5613e46bff4984ad4e805d, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 10
+    m_audioClip: {fileID: 8300000, guid: ef19876c123230a4abf13b6b662e786a, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: 11
+    m_audioClip: {fileID: 8300000, guid: 4ac8639e462ec3e49bbdacca93ef6812, type: 3}
+    m_looping: 1
+    m_volume: 0.5
+    m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0
     m_fade: 0
@@ -66,9 +156,39 @@ MonoBehaviour:
     m_object: {fileID: 0}
     m_audioSource: {fileID: 0}
   - m_name: coin
-    m_audioClip: {fileID: 8300000, guid: 177613d6b659dd4448aac3cdda90cce9, type: 3}
+    m_audioClip: {fileID: 8300000, guid: fc413a366d5b09e41b68a9e5979a2405, type: 3}
     m_looping: 0
     m_volume: 0.4
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: water_in
+    m_audioClip: {fileID: 8300000, guid: 27e607940567b7448a30a8c83d6e37b4, type: 3}
+    m_looping: 0
+    m_volume: 0.1
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: water_out
+    m_audioClip: {fileID: 8300000, guid: c5c0d01845aff8b409f2113624077edb, type: 3}
+    m_looping: 0
+    m_volume: 0.1
+    m_pitch: 1
+    m_fadeInSpeed: 0
+    m_fadeOutSpeed: 0
+    m_fade: 0
+    m_object: {fileID: 0}
+    m_audioSource: {fileID: 0}
+  - m_name: flip
+    m_audioClip: {fileID: 8300000, guid: fa638058d2733e149bd2d651ab5e30c6, type: 3}
+    m_looping: 0
+    m_volume: 0.15
     m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0

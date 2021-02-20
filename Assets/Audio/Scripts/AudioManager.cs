@@ -30,6 +30,7 @@ namespace AudioManager
             SetUpAudioArray(m_sfxList);
 
             ClearCurrentPrevMusic();
+            playRandomSoundtrack();
         }
 
         private void CreateInstance()
@@ -43,7 +44,11 @@ namespace AudioManager
                 Destroy(gameObject);
             }
         }
-
+        void playRandomSoundtrack()
+        {
+            if (PlayerPrefs.GetInt("disable_music") == 1) return;
+            PlayMusic(UnityEngine.Random.Range(0, m_backgroundMusicList.Length));
+        }
         private void SetUpAudioArray(AudioData[] _array)
         {
             for (int i = 0; i < _array.Length; i++)

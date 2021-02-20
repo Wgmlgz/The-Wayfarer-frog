@@ -15,7 +15,7 @@ public class City : MonoBehaviour {
     bool load_success = true;
     GameObject map_u;
 
-    public static int getDistance(City a, City b, float da = 30) {
+    public static int getDistance(City a, City b, float da = 50) {
         int ret;
         var delta = a.GetComponent<RectTransform>().position -
             b.GetComponent<RectTransform>().position;

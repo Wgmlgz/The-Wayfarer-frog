@@ -62,16 +62,6 @@ public class Wind : MonoBehaviour {
 
         // calc dist factor
         var zhp = ZH.transform.position;
-        //RaycastHit2D[] hitAll = Physics2D.RaycastAll(zhp, (-Vector3.up) + zhp);
-        //RaycastHit2D hit = new RaycastHit2D();
-        //foreach (RaycastHit2D i in hitAll) {
-        //    if (i.transform.gameObject.CompareTag("Ground")) {
-        //        hit = i;
-        //          8 &* break;
-        //    }
-        //}
-        //float distFactor = Vector2.Distance(hit.transform.position, zhp);
-        //Debug.Log(distFactor);
 
         var emission = PS.emission;
         if (angle > 0 && ZHC.jumpTime > ZHC.maxjumpTime) {

@@ -33,9 +33,15 @@ public class ToadAudio : MonoBehaviour {
             }
         }
         if (zh.clipMode) {
-            float tar = Mathf.Pow((zh.curSpeed - zh.minSpeed) / (zh.maxXSpeed - zh.minSpeed), 1f);
+            float tar = Mathf.Pow((zh.curSpeed - zh.minSpeed) / (zh.maxXSpeed - zh.minSpeed), 0.6f);
+            if (zh.gameObject.GetComponent<Rigidbody2D>().gravityScale.Equals(2f)) tar = 1;
             wind.volume = Mathf.Lerp(wind.volume, tar, Time.deltaTime * 2);
             wind2.volume = wind.volume;
+        } else if (zh.gameObject.GetComponent<Rigidbody2D>().gravityScale.Equals(2f)) {
+            float tar = tar = 1;
+            wind.volume = Mathf.Lerp(wind.volume, tar, Time.deltaTime * 2);
+            wind2.volume = wind.volume;
+
         }
 
         last_clip_mode = zh.clipMode;
