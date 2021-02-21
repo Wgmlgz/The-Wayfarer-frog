@@ -104,6 +104,9 @@ public class ZhabaController : MonoBehaviour {
         FL = GetComponent<FirebaseLogger>();
     }
     void Update() {
+        if (GetComponent<Rigidbody2D>().velocity.magnitude > 1000) {
+            InstantDeath();
+        }
         if (isPlaying) {
             jumpTime += Time.deltaTime;
             lastDeath += Time.deltaTime;

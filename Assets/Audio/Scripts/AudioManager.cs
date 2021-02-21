@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace AudioManager
 {
@@ -25,16 +26,25 @@ namespace AudioManager
 
             CreateInstance();
 
+            if (PlayerPrefs.HasKey("music_volume") == false) PlayerPrefs.SetFloat("music_volume", 1);
+            SetUpVolume(m_backgroundMusicList, PlayerPrefs.GetFloat("music_volume"));
             SetUpAudioArray(m_backgroundMusicList);
 
+            if (PlayerPrefs.HasKey("sfx_volume") == false) PlayerPrefs.SetFloat("sfx_volume", 1);
+            SetUpVolume(m_sfxList, PlayerPrefs.GetFloat("sfx_volume"));
             SetUpAudioArray(m_sfxList);
 
             ClearCurrentPrevMusic();
             playRandomSoundtrack();
         }
-
         private void CreateInstance()
         {
+            if (SceneManager.GetActiveScene().name == "Settings")
+            {
+                if (m_instance) Destroy(m_instance.gameObject);
+                Destroy(gameObject);
+                return;
+            }
             if (!m_instance)
             {
                 m_instance = this;
@@ -46,8 +56,15 @@ namespace AudioManager
         }
         void playRandomSoundtrack()
         {
-            if (PlayerPrefs.GetInt("disable_music") == 1) return;
+            //if (PlayerPrefs.GetInt("disable_music") == 1) return;
             PlayMusic(UnityEngine.Random.Range(0, m_backgroundMusicList.Length));
+        }
+        private void SetUpVolume(AudioData[] _array, float volume)
+        {
+            for (int i = 0; i < _array.Length; i++)
+            {
+                _array[i].m_volume *= volume;
+            }
         }
         private void SetUpAudioArray(AudioData[] _array)
         {

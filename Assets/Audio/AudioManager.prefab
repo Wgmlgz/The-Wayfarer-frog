@@ -158,7 +158,7 @@ MonoBehaviour:
   - m_name: coin
     m_audioClip: {fileID: 8300000, guid: fc413a366d5b09e41b68a9e5979a2405, type: 3}
     m_looping: 0
-    m_volume: 0.4
+    m_volume: 0.6
     m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0
@@ -166,9 +166,9 @@ MonoBehaviour:
     m_object: {fileID: 0}
     m_audioSource: {fileID: 0}
   - m_name: water_in
-    m_audioClip: {fileID: 8300000, guid: 27e607940567b7448a30a8c83d6e37b4, type: 3}
+    m_audioClip: {fileID: 8300000, guid: 64ea8075319e06a4ca2ce03cab8a502f, type: 3}
     m_looping: 0
-    m_volume: 0.1
+    m_volume: 0.3
     m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0
@@ -176,10 +176,10 @@ MonoBehaviour:
     m_object: {fileID: 0}
     m_audioSource: {fileID: 0}
   - m_name: water_out
-    m_audioClip: {fileID: 8300000, guid: c5c0d01845aff8b409f2113624077edb, type: 3}
+    m_audioClip: {fileID: 8300000, guid: 64ea8075319e06a4ca2ce03cab8a502f, type: 3}
     m_looping: 0
-    m_volume: 0.1
-    m_pitch: 1
+    m_volume: 0.3
+    m_pitch: 1.4
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0
     m_fade: 0
@@ -188,7 +188,7 @@ MonoBehaviour:
   - m_name: flip
     m_audioClip: {fileID: 8300000, guid: fa638058d2733e149bd2d651ab5e30c6, type: 3}
     m_looping: 0
-    m_volume: 0.15
+    m_volume: 0.3
     m_pitch: 1
     m_fadeInSpeed: 0
     m_fadeOutSpeed: 0

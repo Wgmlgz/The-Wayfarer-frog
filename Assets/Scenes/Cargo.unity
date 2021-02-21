@@ -3267,7 +3267,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 88815807}
   m_HandleRect: {fileID: 88815806}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4637,7 +4637,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2027278933}
   m_HandleRect: {fileID: 2027278932}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -5321,7 +5321,7 @@ MonoBehaviour:
   useConst: 0
   CONST_VAL: 
   useVar: 1
-  varVal: TargetCity
+  varVal: CurrentCity
   usedVariation: 0
   variations: []
 --- !u!1 &1418334289
@@ -7911,7 +7911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -112.60003, y: 214.8}
+  m_AnchoredPosition: {x: -112.60003, y: 214.80002}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1968673850

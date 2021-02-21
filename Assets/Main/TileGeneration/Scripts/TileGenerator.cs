@@ -61,6 +61,7 @@ public class TileGenerator : MonoBehaviour {
         if (i == -1) {
             int t = currentBiom;
             while (t == currentBiom || bioms[currentBiom].canGen == false) currentBiom = RandomInt(0, bioms.Length);
+            if (PlayerPrefs.GetInt("QrertonDF") == 0) currentBiom = 0;
             //if (bioms[currentBiom].canGen == false) {
             //    ChangeBiom();
             //    return;

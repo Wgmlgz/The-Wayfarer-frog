@@ -9,10 +9,22 @@ public class ToadAudio : MonoBehaviour {
     public AudioSource wind2;
     public AudioSource sand_drop;
     public AudioSource sand_up;
+    public AudioSource death;
+    public AudioSource coin;
     public AudioSource hit;
     private bool last_clip_mode;
+    float vol;
     // Start is called before the first frame update
     void Start() {
+        vol = PlayerPrefs.GetFloat("sfx_volume");
+        sand.volume = vol;
+        wind.volume = vol;
+        wind2.volume = vol;
+        sand_drop.volume = vol;
+        sand_up.volume = vol;
+        hit.volume = vol;
+        coin.volume = vol;
+        death.volume = vol;
         last_clip_mode = zh.clipMode;
     }
 
@@ -33,12 +45,12 @@ public class ToadAudio : MonoBehaviour {
             }
         }
         if (zh.clipMode) {
-            float tar = Mathf.Pow((zh.curSpeed - zh.minSpeed) / (zh.maxXSpeed - zh.minSpeed), 0.6f);
-            if (zh.gameObject.GetComponent<Rigidbody2D>().gravityScale.Equals(2f)) tar = 1;
+            float tar = Mathf.Pow((zh.curSpeed - zh.minSpeed) / (zh.maxXSpeed - zh.minSpeed), 0.6f) * vol;
+            if (zh.gameObject.GetComponent<Rigidbody2D>().gravityScale.Equals(2f)) tar = 1 * vol;
             wind.volume = Mathf.Lerp(wind.volume, tar, Time.deltaTime * 2);
             wind2.volume = wind.volume;
         } else if (zh.gameObject.GetComponent<Rigidbody2D>().gravityScale.Equals(2f)) {
-            float tar = tar = 1;
+            float tar = 1 * vol;
             wind.volume = Mathf.Lerp(wind.volume, tar, Time.deltaTime * 2);
             wind2.volume = wind.volume;
 
