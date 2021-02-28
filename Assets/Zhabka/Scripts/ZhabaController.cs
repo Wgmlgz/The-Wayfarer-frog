@@ -103,6 +103,10 @@ public class ZhabaController : MonoBehaviour {
         RB = GetComponent<Rigidbody2D>();
         FL = GetComponent<FirebaseLogger>();
     }
+    public void spop() {
+        doConstVelosity = true;
+        constVelosity = 0;
+    }
     void Update() {
         if (GetComponent<Rigidbody2D>().velocity.magnitude > 1000) {
             InstantDeath();
